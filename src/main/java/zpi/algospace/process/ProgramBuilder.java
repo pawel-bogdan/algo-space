@@ -12,7 +12,7 @@ public class ProgramBuilder {
     File output;
 
     public void run() throws IOException, InterruptedException {
-        ProcessBuilder process = new ProcessBuilder("cmd");
+        ProcessBuilder process = new ProcessBuilder("bash");
         process.redirectInput(input);
         process.redirectOutput(output);
         process.redirectError(error);

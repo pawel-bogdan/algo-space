@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 public abstract class FileExecutor {
-    private static String filesDirectory = "src/main/resources/static/";
+    private static String filesDirectory = "/home/";
 
     private final String fileName;
     private final String sourceCode;

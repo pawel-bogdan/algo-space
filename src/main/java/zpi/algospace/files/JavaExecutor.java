@@ -13,7 +13,7 @@ import java.util.List;
 public class JavaExecutor extends FileExecutor{
 
     private static final String extension = Language.JAVA.getFileExtension();
-  //  private final File compiledFile;
+    private final File compiledFile;
     private final File code;
 
     public JavaExecutor(String sourceCode, String fileName) throws IOException {
@@ -32,7 +32,7 @@ public class JavaExecutor extends FileExecutor{
                 commands,
                 StandardCharsets.UTF_8);
 
-//        compiledFile = new File(super.getFilesDirectory() + fileName + ".class");
+        compiledFile = new File(super.getFilesDirectory() + fileName + ".class");
     }
 
     @Override
@@ -47,6 +47,7 @@ public class JavaExecutor extends FileExecutor{
     public List<String> getFilePathsToDelete() {
         return List.of(
                 code.getAbsolutePath(),
+                compiledFile.getAbsolutePath(),
                 super.getInputFile().getAbsolutePath(),
                 super.getOutputFile().getAbsolutePath(),
                 super.getErrorFile().getAbsolutePath());

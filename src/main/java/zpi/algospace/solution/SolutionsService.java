@@ -38,6 +38,7 @@ public class SolutionsService {
 
         String output = Files.readString(fileExecutor.getOutputFile().toPath(),
                 StandardCharsets.UTF_8);
+        log.info("received output: " + output);
 
 
         Cleaner.cleanDirectory(fileExecutor.getFilePathsToDelete());
@@ -47,6 +48,6 @@ public class SolutionsService {
 
     private Boolean compareResult(String output, Task task) {
         //cos takiego return output == task.getExpectedOutput();
-        return Objects.equals(output, "hello");
+        return Objects.equals(output.trim(), "hello");
     }
 }
