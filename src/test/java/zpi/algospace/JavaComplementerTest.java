@@ -3,6 +3,7 @@ package zpi.algospace;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
+import zpi.algospace.complementer.JavaComplementer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

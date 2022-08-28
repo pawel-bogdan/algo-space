@@ -1,4 +1,4 @@
-package zpi.algospace;
+package zpi.algospace.complementer;
 
 public class PythonComplementer implements Complementary {
     //nwm czy tu czy w enumach podmieni sie najwyzej
