@@ -1,36 +1,15 @@
 package zpi.algospace;
 
 import lombok.Data;
-import zpi.algospace.models.Difficulty;
-import zpi.algospace.models.dto.TaskGeneralInfo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.List;
 
 @Data
-@Entity
-public class Task {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
+class Task {
+    // TODO tu musimy sie zastanowic czy chcemy ten content
+    //  juz w tej klasie przechowywac jako HTML jakis
+    private final Long id;
     private String content;
     private Category category;
-    private Difficulty difficulty;
-
-    public Task() {
-
-    }
-
-    public TaskGeneralInfo toTaskGeneralInfo() {
-        return TaskGeneralInfo.builder()
-                .id(this.id)
-                .name(this.name)
-                .category(this.category)
-                .difficulty(this.difficulty)
-                .build();
-    }
-    //private List<Hint> hints;
+    private List<Hint> hints;
 }
