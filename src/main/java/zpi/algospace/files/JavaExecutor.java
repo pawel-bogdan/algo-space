@@ -24,7 +24,7 @@ public class JavaExecutor extends FileExecutor{
                 sourceCode,
                 StandardCharsets.UTF_8);
 
-        File input = new File(super.getFilesDirectory() + fileName + FileNames.INPUT.getFileName());
+        File input = new File(super.getFilesDirectory() + fileName + FileNames.INPUT.getName());
         super.setInputFile(input);
         String commands = buildCommands(fileName, super.getFilesDirectory());
 

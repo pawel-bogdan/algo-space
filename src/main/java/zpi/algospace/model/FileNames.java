@@ -10,5 +10,5 @@ public enum FileNames{
     ERROR("error.txt"),
     OUTPUT("output.txt");
 
-    private final String fileName;
+    private final String name;
 }

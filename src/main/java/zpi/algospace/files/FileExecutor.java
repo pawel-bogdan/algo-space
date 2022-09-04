@@ -20,8 +20,8 @@ public abstract class FileExecutor {
         this.fileName = fileName;
         this.sourceCode = sourceCode;
 
-        errorFile = new File(getFilesDirectory() + fileName + FileNames.ERROR.getFileName());
-        outputFile = new File(getFilesDirectory() + fileName + FileNames.OUTPUT.getFileName());
+        errorFile = new File(getFilesDirectory() + fileName + FileNames.ERROR.getName());
+        outputFile = new File(getFilesDirectory() + fileName + FileNames.OUTPUT.getName());
     }
 
     public String getFilesDirectory() {

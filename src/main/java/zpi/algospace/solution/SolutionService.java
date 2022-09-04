@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import zpi.algospace.files.FileExecutor;
 import zpi.algospace.files.FilesHandler;
 import zpi.algospace.model.Solution;
-import zpi.algospace.model.Task;
 import zpi.algospace.process.ProgramBuilder;
 
 import java.io.IOException;
@@ -21,7 +20,7 @@ import java.util.UUID;
 @Getter
 @Slf4j
 @RequiredArgsConstructor
-public class SolutionsService {
+public class SolutionService {
 
     private final SolutionHandler solutionHandler;
     private final FilesHandler filesHandler;
@@ -43,10 +42,10 @@ public class SolutionsService {
 
         Cleaner.cleanDirectory(fileExecutor.getFilePathsToDelete());
         //testowo
-        return compareResult(output, new Task(1));
+        return compareResult(output);
     }
 
-    private Boolean compareResult(String output, Task task) {
+    private Boolean compareResult(String output) {
         //cos takiego return output == task.getExpectedOutput();
         return Objects.equals(output.trim(), "hello");
     }

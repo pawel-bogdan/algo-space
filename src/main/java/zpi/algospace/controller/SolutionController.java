@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import zpi.algospace.solution.SolutionsService;
+import zpi.algospace.solution.SolutionService;
 
 import java.io.IOException;
 
@@ -15,9 +15,9 @@ import java.io.IOException;
 @RequiredArgsConstructor
 @Tag(name = "solutionJudger")
 @Slf4j
-public class SolutionsController {
+public class SolutionController {
 
-    final SolutionsService solutionsService;
+    private final SolutionService solutionsService;
 
     //nie bedzie boolean tylko jakas klasa w stylu SolutionResult
     @PostMapping("/checkSolution/{taskId}/{language}")
