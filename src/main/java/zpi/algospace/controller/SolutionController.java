@@ -3,34 +3,25 @@ package zpi.algospace.controller;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import zpi.algospace.model.Solution;
 import zpi.algospace.solution.SolutionService;
 
 import java.io.IOException;
 
 @RestController
 @RequiredArgsConstructor
-@Tag(name = "solutionJudger")
+@Tag(name = "solutionJudge")
 @Slf4j
+@RequestMapping({"/solution", "/api/solution"})
 public class SolutionController {
 
     private final SolutionService solutionsService;
 
     //nie bedzie boolean tylko jakas klasa w stylu SolutionResult
-    @PostMapping("/checkSolution/{taskId}/{language}")
-    public Boolean judgeSolution(
-            @RequestBody String sourceCode,
-            @PathVariable int taskId,
-            @PathVariable String language) throws IOException, InterruptedException {
-        return solutionsService.judgeFunction(taskId, language, 0, sourceCode);
+    @PostMapping("/check")
+    public Boolean judgeSolution(@RequestBody Solution solution) throws IOException, InterruptedException {
+        return solutionsService.judgeSolution(solution);
     }
 
 }
-//testowa metoda
-//{     "userId": 0,
-//        "sourceCode": "public static void run(){ System.out.println("testOutput");}"
-//}
-

@@ -1,14 +1,14 @@
 package zpi.algospace.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import zpi.algospace.model.dto.TaskGeneralInfo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
-@Data
+@NoArgsConstructor
+@Getter
 @Entity
 public class Task {
 
@@ -19,15 +19,9 @@ public class Task {
     private String content;
     private Category category;
     private Difficulty difficulty;
-
-    public Task() {
-
-    }
-
-    public Task(long taskId) {
-
-    }
-
+    @OneToMany
+    @JoinColumn(name = "taskId")
+    private List<Hint> hints;
 
     public TaskGeneralInfo toTaskGeneralInfo() {
         return TaskGeneralInfo.builder()
@@ -38,5 +32,4 @@ public class Task {
                 .build();
     }
 
-    //private List<Hint> hints;
 }

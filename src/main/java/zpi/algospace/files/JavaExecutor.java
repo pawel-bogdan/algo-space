@@ -12,7 +12,7 @@ import java.util.List;
 
 public class JavaExecutor extends FileExecutor{
 
-    private static final String extension = Language.JAVA.getFileExtension();
+    private static final String extension = Language.JAVA.getExtension();
     private final File compiledFile;
     private final File code;
 

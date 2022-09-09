@@ -10,6 +10,6 @@ public enum Language {
     PYTHON("python", ".py"),
     CPP("cpp", ".cpp");
 
-    private final String languageName;
-    private final String fileExtension;
+    private final String name;
+    private final String extension;
 }

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import zpi.algospace.model.Category;
 import zpi.algospace.model.Difficulty;
 import zpi.algospace.model.Task;
+import zpi.algospace.model.dto.TaskDTO;
 import zpi.algospace.model.dto.TaskGeneralInfo;
 import zpi.algospace.repository.TaskRepository;
 
@@ -19,17 +20,21 @@ public class TaskService {
         this.taskRepository = taskRepository;
     }
 
-    public List<TaskGeneralInfo> findAllTasks() {
-        return taskRepository.findAll().stream().map(Task::toTaskGeneralInfo).collect(Collectors.toList());
-    }
-
-    public List<TaskGeneralInfo> findTasks(Optional<Category> category, Optional<Difficulty> difficulty) {
-        List<Task> tasks = category.isPresent() ? taskRepository.findAllByCategory(category.get()) : taskRepository.findAll();
+    public List<TaskGeneralInfo> findTasks(Category category, Difficulty difficulty) {
+        List<Task> tasks;
+        if(category == null && difficulty == null) {
+            tasks = taskRepository.findAll();
+        } else if (category == null && difficulty != null) {
+            tasks = taskRepository.findAllByDifficulty(difficulty);
+        } else if (category != null && difficulty == null) {
+            tasks = taskRepository.findAllByCategory(category);
+        } else {
+            tasks = taskRepository.findAllByCategoryAndAndDifficulty(category, difficulty);
+        }
         return tasks.stream().map(Task::toTaskGeneralInfo).collect(Collectors.toList());
     }
 
-    public List<TaskGeneralInfo> findTasks(Optional<Category> category) {
-        List<Task> tasks = category.isPresent() ? taskRepository.findAllByCategory(category.get()) : taskRepository.findAll();
-        return tasks.stream().map(Task::toTaskGeneralInfo).collect(Collectors.toList());
+    public Optional<Task> findTask(Long id) {
+        return taskRepository.findById(id);
     }
 }
