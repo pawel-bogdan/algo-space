@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import zpi.algospace.files.FileExecutor;
-import zpi.algospace.files.FilesHandler;
+import zpi.algospace.files.SolutionHandler;
 import zpi.algospace.model.Solution;
 import zpi.algospace.process.ProgramBuilder;
 
@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.Objects;
-import java.util.UUID;
 
 
 @Service
@@ -22,15 +21,14 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class SolutionService {
 
+    private final SolutionComplementer solutionComplementer;
     private final SolutionHandler solutionHandler;
-    private final FilesHandler filesHandler;
 
-    public Boolean judgeFunction(long taskId, String language, int userId, String sourceCode) throws IOException, InterruptedException {
-        Solution solution = new Solution(sourceCode, language, taskId, userId);
-        String fileName = solution.getLanguage().getLanguageName() + String.valueOf(UUID.randomUUID()).replace("-", "");
-        String complementedSolution = solutionHandler.handle(solution, fileName);
+    public Boolean judgeSolution(Solution solution) throws IOException, InterruptedException {
 
-        FileExecutor fileExecutor = filesHandler.handle(solution.getLanguage(), fileName, complementedSolution);
+        String complementedSolution = solutionComplementer.complement(solution);
+
+        FileExecutor fileExecutor = solutionComplementer.complement(solution.getLanguage(), fileName, complementedSolution);
 
         ProgramBuilder builder = new ProgramBuilder(fileExecutor.getInputFile(), fileExecutor.getErrorFile(), fileExecutor.getOutputFile());
         builder.run();

@@ -7,7 +7,7 @@ import zpi.algospace.model.Language;
 
 @Slf4j
 @Component
-public class FilesHandler {
+public class SolutionHandler {
     @SneakyThrows//chwilowo bo narazie nie chce mi sie tg pozadnei obslugiwac
     public FileExecutor handle(Language language, String fileName, String complementedSolution) {
         switch (language) {

@@ -5,6 +5,7 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 
 @Getter
+//@Entity
 public class Solution {
     private final LocalDateTime submitionDate;
     private final String content;
@@ -16,7 +17,7 @@ public class Solution {
         this.submitionDate = LocalDateTime.now();
         this.content = content;
         this.language = Language.JAVA;
-        this.task = new Task(taskId);
+        this.task = new Task();
         //cos takiego pewnie potem this.solver = User.getUser(userID);
     }
 }
