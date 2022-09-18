@@ -3,10 +3,13 @@ springdoc:
     path: /api-documentation
 spring:
   datasource:
-    url: jdbc:h2:mem:mydb
-    driver-class-name: org.h2.Driver
-    username: algo-space
-    password: 12345
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSL_PORT:3306}/${MYSQL_DATABASE:algo_space}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${MYSQL_USERNAME:algo_space}
+    password: ${MYSQL_PASWORD:pass}
   h2:
     console:
       enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: create-drop

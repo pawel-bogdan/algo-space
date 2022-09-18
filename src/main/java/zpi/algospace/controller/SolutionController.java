@@ -15,12 +15,10 @@ import java.io.IOException;
 @Slf4j
 @RequestMapping({"/solution", "/api/solution"})
 public class SolutionController {
-
     private final SolutionService solutionsService;
 
-    //nie bedzie boolean tylko jakas klasa w stylu SolutionResult
     @PostMapping("/check")
-    public Boolean judgeSolution(@RequestBody Solution solution) throws IOException, InterruptedException {
+    public Boolean judgeSolution(@RequestBody Solution solution) {
         return solutionsService.judgeSolution(solution);
     }
 
