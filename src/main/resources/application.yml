@@ -3,10 +3,10 @@ springdoc:
     path: /api-documentation
 spring:
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSL_PORT:3306}/${MYSQL_DATABASE:algo_space}
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:algo_space}
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: ${MYSQL_USERNAME:algo_space}
-    password: ${MYSQL_PASWORD:pass}
+    password: ${MYSQL_PASSWORD:pass}
   h2:
     console:
       enabled: true
