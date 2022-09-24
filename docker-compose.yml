@@ -1,0 +1,28 @@
+version: '3'
+services:
+
+  algo-space-backend:
+    container_name: algo-space
+    image: zpi/algo-space
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - MYSQL_HOST=mysqldb
+      - MYSQL_PORT=3306
+      - MYSQL_USERNAME=root
+      - MYSQL_PASSWORD=pass
+      - MYSQL_DATABASE=algo_space
+    restart: always
+    links:
+      - mysqldb
+
+  mysqldb:
+    image: mysql
+    container_name: mysql_algo_space
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass
+      - MYSQL_DATABASE=algo_space
+

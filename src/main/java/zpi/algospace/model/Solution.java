@@ -10,14 +10,14 @@ public class Solution {
     private final LocalDateTime submitionDate;
     private final String content;
     private final Language language;
-    private final Task task;
-    private User solver;
+    private final long taskId;
+    private final long solverId;
 
-    public Solution(String content, String language, long taskId, int userID){
+    public Solution(String content, Language language, long taskId, int solverId){
         this.submitionDate = LocalDateTime.now();
         this.content = content;
-        this.language = Language.JAVA;
-        this.task = new Task();
-        //cos takiego pewnie potem this.solver = User.getUser(userID);
+        this.language = language;
+        this.taskId = taskId;
+        this.solverId = solverId;
     }
 }
