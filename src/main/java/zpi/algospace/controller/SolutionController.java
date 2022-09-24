@@ -1,5 +1,6 @@
 package zpi.algospace.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,15 +12,23 @@ import java.io.IOException;
 
 @RestController
 @RequiredArgsConstructor
-@Tag(name = "solutionJudge")
+@Tag(name = "Solution Judge")
 @Slf4j
 @RequestMapping({"/solution", "/api/solution"})
 public class SolutionController {
     private final SolutionService solutionsService;
 
     @PostMapping("/check")
+    @Operation(
+            summary = "Judges function.",
+            description = "Judges if function written by user is correct."
+    )
     public Boolean judgeSolution(@RequestBody Solution solution) {
-        return solutionsService.judgeSolution(solution);
+        try {
+            return solutionsService.judgeSolution(solution);
+        } catch (IOException | InterruptedException e) {
+            log.error("Failed to execute given solution", e);
+            return false;
+        }
     }
-
 }

@@ -1,10 +1,10 @@
 package zpi.algospace.files;
 
+import lombok.SneakyThrows;
 import zpi.algospace.model.FileNames;
 import zpi.algospace.model.Language;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,7 +16,8 @@ public class JavaExecutor extends FileExecutor{
     private final File compiledFile;
     private final File code;
 
-    public JavaExecutor(String sourceCode, String fileName) throws IOException {
+    @SneakyThrows
+    public JavaExecutor(String sourceCode, String fileName) {
         super(fileName, sourceCode);
 
         code = new File(super.getFilesDirectory() + fileName + extension);

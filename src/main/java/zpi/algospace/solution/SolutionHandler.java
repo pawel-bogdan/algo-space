@@ -1,7 +1,6 @@
 package zpi.algospace.solution;
 
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import zpi.algospace.files.CppExecutor;
@@ -10,14 +9,15 @@ import zpi.algospace.files.JavaExecutor;
 import zpi.algospace.files.PythonExecutor;
 import zpi.algospace.model.Language;
 
+import java.io.IOException;
+
 @Slf4j
 @Component
 @RequiredArgsConstructor
 public class SolutionHandler {
     private final ProgramRunner programRunner;
 
-    @SneakyThrows
-    public Boolean handle(Language language, String fileName, String complementedSolution, long taskId) {
+    public Boolean handle(Language language, String fileName, String complementedSolution, long taskId) throws IOException, InterruptedException {
         FileExecutor fileExecutor = chooseFileExecutor(language, fileName, complementedSolution);
 
         try {
@@ -27,7 +27,6 @@ public class SolutionHandler {
         }
     }
 
-    @SneakyThrows
     public FileExecutor chooseFileExecutor(Language language, String fileName, String complementedSolution) {
         switch (language) {
             case JAVA:

@@ -17,10 +17,6 @@ public class ProgramBuilder {
         process.redirectOutput(output);
         process.redirectError(error);
 
-        Process compiling = process.start();
-        //ta metoda blokuje watek wiec nwm czy tak powinno byc
-        //trzeb abd sie zorietnowac czy to zwalnia jak kilka requestow naraz pojdzie i ew.
-        //inaczej zrobic to
-        compiling.waitFor();
+        process.start().waitFor();
     }
 }

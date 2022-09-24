@@ -17,6 +17,10 @@ public class Task {
     private Long id;
     private String name;
     private String content;
+    private String expectedOutput;
+    @OneToMany
+    @JoinColumn(name = "taskId")
+    private List<Test> tests;
     private Category category;
     private Difficulty difficulty;
     @OneToMany

@@ -15,7 +15,7 @@ public class Cleaner {
     public void cleanDirectory(List<String> filesToDelete) throws IOException {
         for (String filePath: filesToDelete) {
             log.info("Deleting file: " + filePath);
-            Files.delete(Path.of(filePath));
+            Files.deleteIfExists(Path.of(filePath));
         }
     }
 }
