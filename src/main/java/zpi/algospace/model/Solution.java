@@ -1,23 +1,31 @@
 package zpi.algospace.model;
 
-import lombok.Getter;
+import lombok.*;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-//@Entity
+@Setter
+@Builder
 public class Solution {
-    private final LocalDateTime submitionDate;
-    private final String content;
-    private final Language language;
-    private final long taskId;
-    private final long solverId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private LocalDateTime submitionDate;
+    private String content;
+    @Transient
+    private String complementedContent;
+    private Language language;
+    @ManyToOne
+    private Task task;
+    @ManyToOne
+    private User solver;
 
-    public Solution(String content, Language language, long taskId, int solverId){
-        this.submitionDate = LocalDateTime.now();
-        this.content = content;
-        this.language = language;
-        this.taskId = taskId;
-        this.solverId = solverId;
+    public void setComplementedContent(String complementedContent) {
+        this.complementedContent = complementedContent;
     }
 }

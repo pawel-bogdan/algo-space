@@ -1,5 +1,7 @@
 package zpi.algospace.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import zpi.algospace.model.dto.TaskGeneralInfo;
@@ -7,9 +9,11 @@ import zpi.algospace.model.dto.TaskGeneralInfo;
 import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@Entity
+@Builder
 public class Task {
 
     @Id
@@ -26,6 +30,12 @@ public class Task {
     @OneToMany
     @JoinColumn(name = "taskId")
     private List<Hint> hints;
+    private String template;
+    /*@OneToMany
+    @JoinColumn(name = "name")*/
+    //private List<Language> availableLanguages;
+    @OneToMany(mappedBy = "task")
+    private List<Solution> solutions;
 
     public TaskGeneralInfo toTaskGeneralInfo() {
         return TaskGeneralInfo.builder()

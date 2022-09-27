@@ -10,7 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
-public class JavaExecutor extends FileExecutor{
+public class JavaExecutor extends FileExecutor {
 
     private static final String extension = Language.JAVA.getExtension();
     private final File compiledFile;
@@ -37,7 +37,7 @@ public class JavaExecutor extends FileExecutor{
     }
 
     @Override
-    protected String buildCommands(String fileName, String filesDirectory){
+    protected String buildCommands(String fileName, String filesDirectory) {
         return String.format("cd %s\njavac %s\njava %s",
                 filesDirectory,
                 fileName + extension,

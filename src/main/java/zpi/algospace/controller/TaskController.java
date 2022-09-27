@@ -31,8 +31,7 @@ public class TaskController {
     )
     public ResponseEntity<List<TaskGeneralInfo>> getTasks(
             @RequestParam(required = false) Category category,
-            @RequestParam(required = false) Difficulty difficulty
-    ) {
+            @RequestParam(required = false) Difficulty difficulty) {
         log.info(" >>> Request got. /tasks with params: category: {} difficulty: {}", category, difficulty);
         List<TaskGeneralInfo> tasks = taskService.findTasks(category, difficulty);
         log.info(" >>> Returned response with data: {}", tasks);
@@ -40,9 +39,7 @@ public class TaskController {
     }
 
     @GetMapping("/tasks/{id}")
-    @Operation(
-            summary = "Get task with given id from database"
-    )
+    @Operation(summary = "Get task with given id from database")
     public ResponseEntity<TaskDTO> getTask(@PathVariable Long id) {
         log.info(" >>> Request got. /tasks/{}", id);
         Optional<Task> task = taskService.findTask(id);

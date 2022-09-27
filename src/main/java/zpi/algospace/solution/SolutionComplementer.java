@@ -3,9 +3,11 @@ package zpi.algospace.solution;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import zpi.algospace.complementer.Complementary;
 import zpi.algospace.complementer.CppComplementer;
 import zpi.algospace.complementer.JavaComplementer;
 import zpi.algospace.complementer.PythonComplementer;
+import zpi.algospace.model.Language;
 import zpi.algospace.model.Solution;
 import zpi.algospace.repository.TaskRepository;
 
@@ -14,22 +16,27 @@ import zpi.algospace.repository.TaskRepository;
 @Component
 class SolutionComplementer {
 
-    private final TaskRepository taskRepository;
+    private Complementary complementer;
 
-    public String complement(Solution solution, String fileName) {
+    /**
+     * It modifies given solution. It is setting solution.complementedContent attribute.
+     * @param solution
+     */
+    public void complement(Solution solution, String fileName) {
         switch (solution.getLanguage()) {
             case JAVA:
-                JavaComplementer javaComplementer = new JavaComplementer(fileName, solution.getTaskId(), taskRepository);
-                return javaComplementer.complement(solution.getContent());
+                complementer = new JavaComplementer(fileName);
+                break;
             case CPP:
-                CppComplementer cppComplementer = new CppComplementer(solution.getTaskId(), taskRepository);
-                return cppComplementer.complement(solution.getContent());
+                complementer = new CppComplementer();
+                break;
             case PYTHON:
-                PythonComplementer pythonComplementer = new PythonComplementer(solution.getTaskId(), taskRepository);
-                return pythonComplementer.complement(solution.getContent());
+                complementer = new PythonComplementer();
+                break;
             default:
                 log.error("The specified language is not yet supported.");
                 throw new IllegalArgumentException();
         }
+        complementer.complement(solution);
     }
 }

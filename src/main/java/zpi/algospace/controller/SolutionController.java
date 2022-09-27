@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import zpi.algospace.model.Solution;
+import zpi.algospace.model.dto.SolutionDTO;
 import zpi.algospace.solution.SolutionService;
 
 import java.io.IOException;
@@ -16,16 +17,17 @@ import java.io.IOException;
 @Slf4j
 @RequestMapping({"/solution", "/api/solution"})
 public class SolutionController {
-    private final SolutionService solutionsService;
+    private final SolutionService solutionService;
 
     @PostMapping("/check")
     @Operation(
             summary = "Judges function.",
             description = "Judges if function written by user is correct."
     )
-    public Boolean judgeSolution(@RequestBody Solution solution) {
+    public Boolean judgeSolution(@RequestBody SolutionDTO solution) {
+
         try {
-            return solutionsService.judgeSolution(solution);
+            return solutionService.judgeSolution(solution.toSolution());
         } catch (IOException | InterruptedException e) {
             log.error("Failed to execute given solution", e);
             return false;

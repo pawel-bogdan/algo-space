@@ -1,27 +1,41 @@
 package zpi.algospace;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import zpi.algospace.complementer.JavaComplementer;
+import zpi.algospace.model.Language;
+import zpi.algospace.model.Solution;
+import zpi.algospace.model.Task;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
 class JavaComplementerTest {
 
-   // JavaComplementer javaComplementer = new JavaComplementer("javaClass");
+    private JavaComplementer uut = new JavaComplementer("Solution");
 
-    //na szybko, nic szczegolnego
-    @Test
+    /*@Test
     void complement() {
-        //given
-        String solution = "static void helloWorld(){System.out.println(\"hello world!\");}";
-        String expectedResult = "import java.util.*; java.lang.Math.*;" +
-                "public class javaClass public static void main() (String[] args){ System.out.println(\"hello\"); } " +
-                "static void helloWorld(){System.out.println(\"hello world!\");} }";
+        // given
+        Task task = Mockito.mock(Task.class);
+        Mockito.when(task.getTests()).thenReturn(List.of(new zpi.algospace.model.Test(), ))
 
-        //when
-     //   String complementedSolution = javaComplementer.complement(solution);
+        String solutionContent = String.join(StringUtils.LF,
+                "int solution(String word) {",
+                "   return word.length();",
+                "}");
+        Solution solution = Solution.builder()
+                .id(101L)
+                .content(solutionContent)
+                .language(Language.JAVA)
+                .task()
+                .build();
+        // when
 
-        //then
-       // assertThat(complementedSolution).isEqualTo(expectedResult);
-    }
+        // then
+    }*/
 }

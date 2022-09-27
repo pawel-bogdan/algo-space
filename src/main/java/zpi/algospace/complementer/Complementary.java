@@ -1,6 +1,7 @@
 package zpi.algospace.complementer;
 
+import zpi.algospace.model.Solution;
+
 public interface Complementary {
-    String complement(String solution);
-    String prepareTests(Long taskId);
+    void complement(Solution solution);
 }
