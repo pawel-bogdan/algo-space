@@ -5,8 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import zpi.algospace.model.Language;
 import zpi.algospace.model.Solution;
-import zpi.algospace.model.Task;
-import zpi.algospace.model.User;
+import zpi.algospace.repository.TaskRepository;
+import zpi.algospace.repository.UserRepository;
 
 import java.time.LocalDateTime;
 
@@ -20,7 +20,16 @@ public class SolutionDTO {
     private Long taskId;
     private String solverEmail;
 
-    public Solution toSolution() {
-        return new Solution(101L, LocalDateTime.now(), "cont", "onttasda", Language.JAVA, new Task(), new User());
+    public Solution toSolution(TaskRepository taskRepository, UserRepository userRepository) {
+        Solution solution = new Solution();
+        solution.setSubmitionDate(submitionDate);
+        solution.setContent(content);
+        solution.setLanguage(language);
+        solution.setTask(taskRepository.findById(taskId)
+                .orElseThrow(() -> new IllegalArgumentException("Requested task doesn't exist")));
+        solution.setSolver(userRepository.findFirstByEmail(solverEmail)
+                .orElseThrow(() -> new IllegalArgumentException("Requested user doesn't exist")));
+
+        return solution;
     }
 }

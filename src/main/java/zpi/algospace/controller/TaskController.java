@@ -26,9 +26,7 @@ public class TaskController {
     private final TaskService taskService;
 
     @GetMapping("/tasks")
-    @Operation(
-            summary = "Get all tasks from database"
-    )
+    @Operation(summary = "Get all tasks from database")
     public ResponseEntity<List<TaskGeneralInfo>> getTasks(
             @RequestParam(required = false) Category category,
             @RequestParam(required = false) Difficulty difficulty) {

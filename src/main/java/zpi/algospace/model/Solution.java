@@ -24,8 +24,4 @@ public class Solution {
     private Task task;
     @ManyToOne
     private User solver;
-
-    public void setComplementedContent(String complementedContent) {
-        this.complementedContent = complementedContent;
-    }
 }
