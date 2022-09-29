@@ -5,7 +5,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-import zpi.algospace.model.Solution;
 import zpi.algospace.model.dto.SolutionDTO;
 import zpi.algospace.solution.SolutionService;
 
@@ -27,7 +26,7 @@ public class SolutionController {
     public Boolean judgeSolution(@RequestBody SolutionDTO solution) {
 
         try {
-            return solutionService.judgeSolution(solution.toSolution());
+            return solutionService.judgeSolution(solution);
         } catch (IOException | InterruptedException e) {
             log.error("Failed to execute given solution", e);
             return false;

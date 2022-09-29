@@ -31,9 +31,10 @@ public class Task {
     @JoinColumn(name = "taskId")
     private List<Hint> hints;
     private String template;
-    /*@OneToMany
-    @JoinColumn(name = "name")*/
-    //private List<Language> availableLanguages;
+    @ElementCollection(targetClass = Language.class)
+    @CollectionTable
+    @Enumerated(EnumType.STRING)
+    private List<Language> availableLanguages;
     @OneToMany(mappedBy = "task")
     private List<Solution> solutions;
 
@@ -45,5 +46,4 @@ public class Task {
                 .difficulty(this.difficulty)
                 .build();
     }
-
 }
