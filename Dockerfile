@@ -4,7 +4,7 @@ COPY . ./
 RUN mvn clean package -DskipTests
 
 FROM adoptopenjdk/openjdk11
-RUN apt-get update && apt-get install --yes python3 && apt-get install --yes g++
+RUN apt-get update && apt-get install --yes python3 && apt-get install --yes g++ && apt-get install --yes pip && pip install numpy
 EXPOSE 8080
 COPY --from=build /usr/src/app/target/algo-space-0.0.1-SNAPSHOT.jar ./app.jar
 ENTRYPOINT ["java", "-jar", "./app.jar"]

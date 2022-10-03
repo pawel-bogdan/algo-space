@@ -33,7 +33,7 @@ public class Task {
     private String template;
     @ElementCollection(targetClass = Language.class)
     @CollectionTable
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     private List<Language> availableLanguages;
     @OneToMany(mappedBy = "task")
     private List<Solution> solutions;
