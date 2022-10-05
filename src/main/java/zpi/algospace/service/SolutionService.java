@@ -1,4 +1,4 @@
-package zpi.algospace.solution;
+package zpi.algospace.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -7,6 +7,9 @@ import zpi.algospace.model.Solution;
 import zpi.algospace.model.dto.SolutionDTO;
 import zpi.algospace.repository.TaskRepository;
 import zpi.algospace.repository.UserRepository;
+import zpi.algospace.solution.FileNameCreator;
+import zpi.algospace.solution.SolutionComplementer;
+import zpi.algospace.solution.SolutionHandler;
 
 import java.io.IOException;
 
@@ -14,24 +17,23 @@ import java.io.IOException;
 @Slf4j
 @RequiredArgsConstructor
 public class SolutionService {
-    private final SolutionComplementer solutionComplementer;
     private final SolutionHandler solutionHandler;
     private final TaskRepository taskRepository;
     private final UserRepository userRepository;
     private static final boolean INVALID_SOLUTION = false;
 
     public Boolean judgeSolution(SolutionDTO solutionDTO) throws IOException, InterruptedException {
-        Solution solution = parseDtoToSolution(solutionDTO, taskRepository, userRepository);
+        Solution solution = convertToSolution(solutionDTO);
         String fileName = FileNameCreator.createFileName(solution);
         try {
-            solutionComplementer.complement(solution, fileName);
+            SolutionComplementer.complement(solution, fileName);
         } catch (IllegalArgumentException e) {
             return INVALID_SOLUTION;
         }
         return solutionHandler.handle(solution, fileName);
     }
 
-    public Solution parseDtoToSolution(SolutionDTO solutionDTO, TaskRepository taskRepository, UserRepository userRepository) {
+    public Solution convertToSolution(SolutionDTO solutionDTO) {
         return Solution.builder()
                 .submitionDate(solutionDTO.getSubmitionDate())
                 .content(solutionDTO.getContent())

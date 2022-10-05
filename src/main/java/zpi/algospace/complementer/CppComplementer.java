@@ -2,6 +2,7 @@ package zpi.algospace.complementer;
 
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Component;
 import zpi.algospace.model.Language;
 import zpi.algospace.model.Solution;
 import zpi.algospace.model.Test;

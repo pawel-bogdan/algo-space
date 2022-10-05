@@ -3,11 +3,10 @@ package zpi.algospace.solution;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import zpi.algospace.files.CppExecutor;
-import zpi.algospace.files.FileExecutor;
-import zpi.algospace.files.JavaExecutor;
-import zpi.algospace.files.PythonExecutor;
-import zpi.algospace.model.Language;
+import zpi.algospace.files.CppProgramConfig;
+import zpi.algospace.files.ProgramConfig;
+import zpi.algospace.files.JavaProgramConfig;
+import zpi.algospace.files.PythonProgramConfig;
 import zpi.algospace.model.Solution;
 
 import java.io.IOException;
@@ -17,24 +16,27 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class SolutionHandler {
     private final ProgramRunner programRunner;
+    private final ProgramResultValidator programResultValidator;
 
     public Boolean handle(Solution solution, String fileName) throws IOException, InterruptedException {
-        FileExecutor fileExecutor = createFileExecutor(solution.getLanguage(), fileName, solution.getComplementedContent());
+        ProgramConfig programConfig = createProgramConfig(solution, fileName);
         try {
-            return programRunner.runProgram(fileExecutor, solution.getTask().getId());
+            programRunner.run(programConfig);
+            return programResultValidator.validateResult(programConfig, solution.getTask());
         } finally {
-            Cleaner.cleanDirectory(fileExecutor.getFilePathsToDelete());
+            Cleaner.cleanDirectory(programConfig.getFilePathsToDelete());
         }
     }
 
-    private FileExecutor createFileExecutor(Language language, String fileName, String complementedSolution) {
-        switch (language) {
+    private ProgramConfig createProgramConfig(Solution solution, String fileName) {
+        final String complementedContent = solution.getComplementedContent();
+        switch (solution.getLanguage()) {
             case JAVA:
-                return new JavaExecutor(complementedSolution, fileName);
+                return new JavaProgramConfig(complementedContent, fileName);
             case CPP:
-                return new CppExecutor(complementedSolution, fileName);
+                return new CppProgramConfig(complementedContent, fileName);
             case PYTHON:
-                return new PythonExecutor(complementedSolution, fileName);
+                return new PythonProgramConfig(complementedContent, fileName);
             default:
                 log.error("The specified language is not yet supported.");
                 throw new IllegalArgumentException();

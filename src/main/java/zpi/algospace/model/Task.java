@@ -30,7 +30,9 @@ public class Task {
     @OneToMany
     @JoinColumn(name = "taskId")
     private List<Hint> hints;
-    private String template;
+    @OneToMany
+    @JoinColumn(name = "taskId")
+    private List<Template> template;
     @ElementCollection(targetClass = Language.class)
     @CollectionTable
     @Enumerated(EnumType.ORDINAL)

@@ -47,7 +47,7 @@ public class ComplementersIntegrationTest {
                 "public static void main(String[] args) {" +
                 "System.out.println(returnInput(\"siema\"));\n" +
                 "System.out.println(returnInput(\"elo\"));} " +
-                "static String returnInput(String input) { " +
+                "String returnInput(String input) { " +
                 "return input; }" +
                 "}";
         String content = "static String returnInput(String input) { return input; }";

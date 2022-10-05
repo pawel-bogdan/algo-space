@@ -9,38 +9,38 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
-public class CppExecutor extends FileExecutor{
 
-    private static final String extension = Language.CPP.getExtension();
-    private final File exeFile;
+public class JavaProgramConfig extends ProgramConfig {
+
+    private static final String extension = Language.JAVA.getExtension();
+    private final File compiledFile;
     private final File code;
 
     @SneakyThrows
-    public CppExecutor(String sourceCode, String fileName) {
+    public JavaProgramConfig(String sourceCode, String fileName) {
         super(fileName, sourceCode);
 
-        code = new File(super.getFilesDirectory() + fileName + extension);
-        Files.writeString(Path.of(super.getFilesDirectory() + fileName + extension),
+        code = new File(FILES_DIRECTORY + fileName + extension);
+        Files.writeString(Path.of(FILES_DIRECTORY + fileName + extension),
                 sourceCode,
                 StandardCharsets.UTF_8);
 
-        File input = new File(super.getFilesDirectory() + fileName + FileNames.INPUT.getName());
+        File input = new File(FILES_DIRECTORY + fileName + FileNames.INPUT.getName());
         super.setInputFile(input);
-        String commands = buildCommands(fileName, super.getFilesDirectory());
+        String commands = getBuildCommands(fileName, FILES_DIRECTORY);
 
         Files.writeString(input.toPath(),
                 commands,
                 StandardCharsets.UTF_8);
 
-        exeFile = new File(super.getFilesDirectory() + fileName + ".exe");
+        compiledFile = new File(FILES_DIRECTORY + fileName + ".class");
     }
 
     @Override
-    protected String buildCommands(String fileName, String filesDirectory) {
-        return String.format("cd %s\ng++ %s -o %s\n./%s",
+    protected String getBuildCommands(String fileName, String filesDirectory) {
+        return String.format("cd %s\njavac %s\njava %s",
                 filesDirectory,
                 fileName + extension,
-                fileName,
                 fileName);
     }
 
@@ -48,10 +48,9 @@ public class CppExecutor extends FileExecutor{
     public List<String> getFilePathsToDelete() {
         return List.of(
                 code.getAbsolutePath(),
-                exeFile.getAbsolutePath(),
+                compiledFile.getAbsolutePath(),
                 super.getInputFile().getAbsolutePath(),
                 super.getOutputFile().getAbsolutePath(),
                 super.getErrorFile().getAbsolutePath());
     }
-
 }

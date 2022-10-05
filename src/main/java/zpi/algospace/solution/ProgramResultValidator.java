@@ -1,28 +1,25 @@
 package zpi.algospace.solution;
 
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import zpi.algospace.files.ProgramConfig;
 import zpi.algospace.model.Task;
-import zpi.algospace.repository.TaskRepository;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.Objects;
-import java.util.Optional;
 
 @Slf4j
 @Component
-@AllArgsConstructor
 public class ProgramResultValidator {
-    final TaskRepository taskRepository;
 
-    public Boolean validateResult(String readString, long taskId) {
-        String expectedOutput = "";
-        Optional<Task> task = taskRepository.findById(taskId);
-        if (task.isPresent())
-            expectedOutput = task.get().getExpectedOutput();
+    public static Boolean validateResult(ProgramConfig programConfig, Task task) throws IOException {
+        String solutionOutput = Files.readString(programConfig.getOutputFile().toPath(), StandardCharsets.UTF_8);
+        String expectedOutput = task.getExpectedOutput();
 
-        log.info("Received output: {}", readString);
+        log.info("Actual output: {}", solutionOutput);
         log.info("Expected output: {}", expectedOutput);
-        return Objects.equals(readString.trim(), expectedOutput.trim());
+        return Objects.equals(solutionOutput.trim(), expectedOutput.trim());
     }
 }

@@ -1,2 +1,2 @@
-INSERT INTO task(category, content, difficulty, expected_output, name, template) VALUES (1, 'sa', 1, 'a', 'name', 'a');
-INSERT INTO task(category, content, difficulty, expected_output, name, template) VALUES (1, 'sa', 1, 'a', 'name', 'a');
+INSERT INTO task(id, category, content, difficulty, expected_output, name) VALUES (1, 0, 'Znajdź największą wartośc w tablicy', 0, '5\n12', 'Największy w tablicy');
+INSERT INTO application_users(email, points) VALUES ('pelo', 10);

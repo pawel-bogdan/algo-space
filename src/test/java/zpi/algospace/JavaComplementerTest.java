@@ -1,41 +1,60 @@
 package zpi.algospace;
 
-import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
 import zpi.algospace.complementer.JavaComplementer;
 import zpi.algospace.model.Language;
 import zpi.algospace.model.Solution;
 import zpi.algospace.model.Task;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
-@ExtendWith(MockitoExtension.class)
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class JavaComplementerTest {
 
     private JavaComplementer uut = new JavaComplementer("Solution");
 
-    /*@Test
+    @Test
     void complement() {
         // given
-        Task task = Mockito.mock(Task.class);
-        Mockito.when(task.getTests()).thenReturn(List.of(new zpi.algospace.model.Test(), ))
+        Task task = Task.builder()
+                .tests(List.of(
+                        new zpi.algospace.model.Test("System.out.println(solution(\"test1\"));", Language.JAVA),
+                        new zpi.algospace.model.Test("System.out.println(solution(\"test2\"));", Language.JAVA),
+                        new zpi.algospace.model.Test("System.out.println(solution(\"test3\"));", Language.JAVA)
+                ))
+                .build();
 
-        String solutionContent = String.join(StringUtils.LF,
-                "int solution(String word) {",
-                "   return word.length();",
-                "}");
+        String solutionContent =
+                "int solution(String word) {\n" +
+                        "\treturn word.length();\n" +
+                        "\t}";
+
         Solution solution = Solution.builder()
                 .id(101L)
                 .content(solutionContent)
                 .language(Language.JAVA)
-                .task()
+                .task(task)
                 .build();
+
         // when
+        uut.complement(solution);
 
         // then
-    }*/
+        String expectedComplementedContent =
+                "import java.util.*;\n" +
+                        "public class Solution {\n" +
+                        "    public static void main(String[] args) {\n" +
+                        "\t\tSystem.out.println(solution(\"test1\"));\n" +
+                        "\t\tSystem.out.println(solution(\"test2\"));\n" +
+                        "\t\tSystem.out.println(solution(\"test3\"));\n" +
+                        "    }\n" +
+                        "\n" +
+                        "\tstatic int solution(String word) {\n" +
+                        "\treturn word.length();\n" +
+                        "\t}\n" +
+                        "}";
+
+        assertEquals(expectedComplementedContent, solution.getComplementedContent());
+    }
 }

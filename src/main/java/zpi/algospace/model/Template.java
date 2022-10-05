@@ -9,18 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-@Getter
-@NoArgsConstructor
-public class Test {
+@Getter // Jackson
+@NoArgsConstructor // Hibernate
+public class Template {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Language language;
     private String content;
+    private Integer level;
     private Long taskId;
-
-    public Test(String content, Language language) {
-        this.content = content;
-        this.language = language;
-    }
 }

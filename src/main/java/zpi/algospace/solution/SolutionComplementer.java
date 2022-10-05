@@ -1,28 +1,22 @@
 package zpi.algospace.solution;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 import zpi.algospace.complementer.Complementary;
 import zpi.algospace.complementer.CppComplementer;
 import zpi.algospace.complementer.JavaComplementer;
 import zpi.algospace.complementer.PythonComplementer;
-import zpi.algospace.model.Language;
 import zpi.algospace.model.Solution;
-import zpi.algospace.repository.TaskRepository;
 
 @Slf4j
-@RequiredArgsConstructor
-@Component
-class SolutionComplementer {
-
-    private Complementary complementer;
+public class SolutionComplementer {
 
     /**
      * It modifies given solution. It is setting solution.complementedContent attribute.
+     *
      * @param solution
      */
-    public void complement(Solution solution, String fileName) {
+    public static void complement(Solution solution, String fileName) {
+        Complementary complementer;
         switch (solution.getLanguage()) {
             case JAVA:
                 complementer = new JavaComplementer(fileName);

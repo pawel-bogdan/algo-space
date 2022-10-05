@@ -6,10 +6,10 @@ import java.io.File;
 import java.io.IOException;
 
 @AllArgsConstructor
-public class ProgramBuilder {
-    File input;
-    File error;
-    File output;
+public class ProgramRunner {
+    private File input;
+    private File error;
+    private File output;
 
     public void run() throws IOException, InterruptedException {
         ProcessBuilder process = new ProcessBuilder("bash");
