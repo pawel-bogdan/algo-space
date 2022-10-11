@@ -32,5 +32,6 @@ public class SolutionComplementer {
                 throw new IllegalArgumentException();
         }
         complementer.complement(solution);
+        log.info("Complemented solution: {}", solution.getComplementedContent());
     }
 }

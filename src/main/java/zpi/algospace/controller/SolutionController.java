@@ -24,7 +24,7 @@ public class SolutionController {
             description = "Judges if function written by user is correct."
     )
     public Boolean judgeSolution(@RequestBody SolutionDTO solution) {
-
+        log.info(" >>> Request got. /solution/check with params: solution: {}", solution);
         try {
             return solutionService.judgeSolution(solution);
         } catch (IOException | InterruptedException e) {
