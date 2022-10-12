@@ -25,8 +25,8 @@ public class EmbeddedMysqlForComplementers {
                 .withUser(DB_USER, DB_PASS)
                 .build();
 
-        String connectionString = String.format("jdbc:mysql://localhost:%d/test", config.getPort());
-        setProperty("spring.datasource.url", connectionString);
+        String url = String.format("jdbc:mysql://localhost:%d/test", config.getPort());
+        setProperty("spring.datasource.url", url);
         setProperty("spring.datasource.username", DB_USER);
         setProperty("spring.datasource.password", DB_PASS);
 
@@ -35,7 +35,7 @@ public class EmbeddedMysqlForComplementers {
                 .start();
     }
 
-    public void stopMysql(){
+    public void stopMySql(){
         embeddedMysql.stop();
     }
 }

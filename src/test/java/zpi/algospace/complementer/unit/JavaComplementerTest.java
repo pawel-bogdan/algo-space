@@ -44,6 +44,7 @@ class JavaComplementerTest {
         // then
         String expectedComplementedContent = """
             import java.util.*;
+            
             public class Solution {
                 public static void main(String [] args) {
                 System.out.println(solution("test1"));System.out.println(solution("test2"));System.out.println(solution("test3"));

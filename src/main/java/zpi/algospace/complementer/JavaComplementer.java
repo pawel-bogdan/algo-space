@@ -10,6 +10,7 @@ public class JavaComplementer implements Complementary {
     private static final String CLASS_TEMPLATE =
             """
             import java.util.*;
+            
             public class %s {
                 public static void main(String [] args) {
                 %s
