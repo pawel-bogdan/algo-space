@@ -9,22 +9,21 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
 import zpi.algospace.model.Language;
 import zpi.algospace.model.Solution;
-import zpi.algospace.model.User;
 import zpi.algospace.repository.TaskRepository;
 
 import javax.annotation.Resource;
-import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ActiveProfiles("mysql-test")
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class ComplementersIntegrationTest {
+public class ComplementerIntegrationTest {
 
     private final JavaComplementer javaComplementer = new JavaComplementer("testSolution");
     private final PythonComplementer pythonComplementer = new PythonComplementer();
     private final CppComplementer cppComplementer = new CppComplementer();
+
     @Resource
     private TaskRepository taskRepository;
     private static EmbeddedMysqlForComplementers embeddedMysql;
@@ -36,79 +35,102 @@ public class ComplementersIntegrationTest {
 
     @AfterAll
     public static void tearDown() {
-        embeddedMysql.stopMysql();
+        embeddedMysql.stopMySql();
     }
 
     @SneakyThrows
     @Test
-    void javaComplement(){
-        String expectedComplementedSolution = "import java.util.*; import java.lang.Math.*; " +
-                "public class testSolution { " +
-                "public static void main(String[] args) {" +
-                "System.out.println(returnInput(\"siema\"));\n" +
-                "System.out.println(returnInput(\"elo\"));} " +
-                "String returnInput(String input) { " +
-                "return input; }" +
-                "}";
-        String content = "static String returnInput(String input) { return input; }";
+    void javaComplement() {
+        String expectedComplementedContent = """
+                import java.util.*;
+                            
+                public class testSolution {
+                    public static void main(String [] args) {
+                    System.out.println(returnInput("siema"));System.out.println(returnInput("elo"));
+                    }
+                    
+                static String returnInput(String input) {
+                    return input;
+                }
+                            
+                }
+                """;
+        String content = """
+                static String returnInput(String input) {
+                    return input; 
+                }
+                """;
+
         Solution solution = Solution.builder()
                 .id(1L)
-                .submitionDate(LocalDateTime.now())
                 .content(content)
                 .language(Language.JAVA)
                 .task(taskRepository.findById(1L).get())
-                .solver(new User())
                 .build();
 
         javaComplementer.complement(solution);
 
-        assertThat(solution.getComplementedContent().trim()).isEqualTo(expectedComplementedSolution.trim());
+        assertThat(solution.getComplementedContent()).isEqualTo(expectedComplementedContent);
     }
 
     @SneakyThrows
     @Test
-    void pythonComplement(){
-        String expectedComplementedSolution = "import numpy as np\n" +
-                "def returnInput(input): \n" +
-                "\treturn input\n" +
-                "\n" +
-                "if __name__ == \"__main__\":\n" +
-                "\tprint(returnInput(\"siema\"))\n" +
-                "\tprint(returnInput(\"elo\"))";
-        String content = "def returnInput(input): \n\treturn input";
+    void pythonComplement() {
+        String expectedComplementedContent = """
+                def returnInput(input):
+                    return input
+                     
+                if __name__ == "__main__":
+                    print(returnInput("siema"))
+                    print(returnInput("elo"))
+                 """;
+
+        String content = """
+                def returnInput(input):
+                    return input""";
+
         Solution solution = Solution.builder()
                 .id(1L)
-                .submitionDate(LocalDateTime.now())
                 .content(content)
                 .language(Language.PYTHON)
                 .task(taskRepository.findById(1L).get())
-                .solver(new User())
                 .build();
 
         pythonComplementer.complement(solution);
 
-        assertThat(solution.getComplementedContent().trim()).isEqualTo(expectedComplementedSolution.trim());
+        assertThat(solution.getComplementedContent()).isEqualTo(expectedComplementedContent);
     }
 
     @SneakyThrows
     @Test
-    void cppComplement(){
-        String expectedComplementedSolution = "#include <bits/stdc++.h>\n" +
-                "using namespace std; string returnInput(string input){return input;} " +
-                "int main() { cout << returnInput(\"siema\") << endl;\n" +
-                "cout << returnInput(\"elo\") << endl; }";
-        String content = "string returnInput(string input){return input;}";
+    void cppComplement() {
+        String content = """
+                string returnInput(string input) {
+                    return input;
+                }""";
+        String expectedComplementedContent = """
+                #include <iostream>
+                #include <stdio.h>
+                using namespace std;
+                            
+                string returnInput(string input) {
+                    return input;
+                }
+                            
+                int main() {
+                cout << returnInput("siema") << endl;cout << returnInput("elo") << endl;
+                }
+                """;
+
         Solution solution = Solution.builder()
                 .id(1L)
-                .submitionDate(LocalDateTime.now())
                 .content(content)
                 .language(Language.CPP)
                 .task(taskRepository.findById(1L).get())
-                .solver(new User())
                 .build();
 
         cppComplementer.complement(solution);
 
-        assertThat(solution.getComplementedContent().trim()).isEqualTo(expectedComplementedSolution.trim());
+        assertThat(solution.getComplementedContent()).isEqualTo(expectedComplementedContent);
     }
 }

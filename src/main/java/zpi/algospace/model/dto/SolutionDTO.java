@@ -3,6 +3,7 @@ package zpi.algospace.model.dto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import zpi.algospace.model.Language;
 
 import java.time.LocalDateTime;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class SolutionDTO {
     private LocalDateTime submitionDate;
     private String content;

@@ -19,7 +19,8 @@ create table test (
     primary key (id)
     );
 
-INSERT INTO task(category, content, difficulty, expected_output, name, template) VALUES (1, 'task content', 1, 'expected output', 'test task', 'static String printInput() { }');
+INSERT INTO task(category, content, difficulty, expected_output, name, template)
+VALUES (1, 'task content', 1, 'expected output', 'test task', 'static String printInput() { }');
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(returnInput("siema"));', 0, 1);
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(returnInput("elo"));', 0, 1);
 INSERT INTO test(content, language, task_id) VALUES ('print(returnInput("siema"))', 1, 1);

@@ -1,4 +1,4 @@
-package zpi.algospace;
+package zpi.algospace.complementer.unit;
 
 import org.junit.jupiter.api.Test;
 import zpi.algospace.complementer.JavaComplementer;
@@ -25,10 +25,11 @@ class JavaComplementerTest {
                 ))
                 .build();
 
-        String solutionContent =
-                "int solution(String word) {\n" +
-                        "\treturn word.length();\n" +
-                        "\t}";
+        String solutionContent = """
+                static int solution(String word) {
+                    return word.length();
+                }
+                """;
 
         Solution solution = Solution.builder()
                 .id(101L)
@@ -41,19 +42,20 @@ class JavaComplementerTest {
         uut.complement(solution);
 
         // then
-        String expectedComplementedContent =
-                "import java.util.*;\n" +
-                        "public class Solution {\n" +
-                        "    public static void main(String[] args) {\n" +
-                        "\t\tSystem.out.println(solution(\"test1\"));\n" +
-                        "\t\tSystem.out.println(solution(\"test2\"));\n" +
-                        "\t\tSystem.out.println(solution(\"test3\"));\n" +
-                        "    }\n" +
-                        "\n" +
-                        "\tstatic int solution(String word) {\n" +
-                        "\treturn word.length();\n" +
-                        "\t}\n" +
-                        "}";
+        String expectedComplementedContent = """
+            import java.util.*;
+            
+            public class Solution {
+                public static void main(String [] args) {
+                System.out.println(solution("test1"));System.out.println(solution("test2"));System.out.println(solution("test3"));
+                }
+                
+            static int solution(String word) {
+                return word.length();
+            }
+            
+            }
+            """;
 
         assertEquals(expectedComplementedContent, solution.getComplementedContent());
     }
