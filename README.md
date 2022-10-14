@@ -20,5 +20,5 @@ docker run --name mysql -p 3306:3306 -e MYSQL_USER=algo_space -e MYSQL_ROOT_PASS
 ```
 #### After executing above command, you can get to mysql client by executing below command  
 ```bash
-docker exec -it mysql mysql -ualgo_space -ppass
+docker exec -it mysql mysql -u algo_space -p pass
 ```
