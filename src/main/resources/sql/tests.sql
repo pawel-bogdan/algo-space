@@ -252,44 +252,87 @@ INSERT INTO test(content, language, task_id) VALUES ('cout << distinctChars(„a
 INSERT INTO test(content, language, task_id) VALUES ('cout << distinctChars(„aaaaa”) << endl;', 2, 16);
 INSERT INTO test(content, language, task_id) VALUES ('cout << distinctChars(„”) << endl;', 2, 16);
 INSERT INTO test(content, language, task_id) VALUES ('cout << distinctChars(„abcdefghij”) << endl;', 2, 16);
-#------------task_17#------------String
+#------------task_17#------------String jeden,dwa,trzy\nsiema;czesc;hej\njeden
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(concatArrays(new String[]{„jeden”,”dwa”,”trzy”}, \',\'));', 0, 17);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(concatArrays(new String[]{„siema”,”czesc”,”hej”}, \';\'));', 0, 17);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(concatArrays(new String[]{„jeden”}, \',\'));', 0, 17);
 #python
 INSERT INTO test(content, language, task_id) VALUES ('println(concatArrays([„jeden”,”dwa”,”trzy”], \',\'))', 1, 17);
+INSERT INTO test(content, language, task_id) VALUES ('println(concatArrays([„siema”,”czesc”,”hej”], \',\'))', 1, 17);
+INSERT INTO test(content, language, task_id) VALUES ('println(concatArrays([„jeden”], \',\'))', 1, 17);
 #cpp
 INSERT INTO test(content, language, task_id) VALUES ('cout << concatArrays({„jeden”,”dwa”,”trzy”}, \',\') << endl;', 2, 17);
-#------------task_18#------------int
+INSERT INTO test(content, language, task_id) VALUES ('cout << concatArrays({„siema”,"czesc”,”hej”}, \',\') << endl;', 2, 17);
+INSERT INTO test(content, language, task_id) VALUES ('cout << concatArrays({„jeden”}, \',\') << endl;', 2, 17);
+#------------task_18#------------int 4\n3\n0\n6\n6
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(longestCommonSubstring(„aatrala”, „wwatrasw”));', 0, 18);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(longestCommonSubstring(„ababc”, „babca”));', 0, 18);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(longestCommonSubstring(„abc”, „def”));', 0, 18);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(longestCommonSubstring(„abcdef”, „abcdef”));', 0, 18);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(longestCommonSubstring(„abcdefdsds”, „nbnbabcdef”));', 0, 18);
 #python
 INSERT INTO test(content, language, task_id) VALUES ('println(longestCommonSubstring(„aatrala”, „wwatrasw”))', 1, 18);
+INSERT INTO test(content, language, task_id) VALUES ('println(longestCommonSubstring(„ababc”, „babca”))', 1, 18);
+INSERT INTO test(content, language, task_id) VALUES ('println(longestCommonSubstring(„abc”, „def”))', 1, 18);
+INSERT INTO test(content, language, task_id) VALUES ('println(longestCommonSubstring(„abcdef”, „abcdef”))', 1, 18);
+INSERT INTO test(content, language, task_id) VALUES ('println(longestCommonSubstring(„abcdefdsds”, „nbnbabcdef”))', 1, 18);
 #cpp
 INSERT INTO test(content, language, task_id) VALUES ('cout << longestCommonSubstring(„aatrala”, „wwatrasw”) << endl;', 2, 18);
-#------------task_19#------------int
+INSERT INTO test(content, language, task_id) VALUES ('cout << longestCommonSubstring(„ababc”, „babca”) << endl;', 2, 18);
+INSERT INTO test(content, language, task_id) VALUES ('cout << longestCommonSubstring(„abc”, „def”) << endl;', 2, 18);
+INSERT INTO test(content, language, task_id) VALUES ('cout << longestCommonSubstring(„abcdef”, „abcdef”) << endl;', 2, 18);
+INSERT INTO test(content, language, task_id) VALUES ('cout << longestCommonSubstring(„abcdefdsds”, „nbnbabcdef”) << endl;', 2, 18);
+#------------task_19#------------int 14\n3724\n4\n28
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(convertRomanToArabic(„XIV”));', 0, 19);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(convertRomanToArabic(„MMMDCCXXIV”));', 0, 19);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(convertRomanToArabic(„IV”));', 0, 19);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(convertRomanToArabic(„XXVIII”));', 0, 19);
 #python
 INSERT INTO test(content, language, task_id) VALUES ('println(convertRomanToArabic(„XIV”))', 1, 19);
+INSERT INTO test(content, language, task_id) VALUES ('println(convertRomanToArabic(„MMMDCCXXIV”))', 1, 19);
+INSERT INTO test(content, language, task_id) VALUES ('println(convertRomanToArabic(„IV”))', 1, 19);
+INSERT INTO test(content, language, task_id) VALUES ('println(convertRomanToArabic(„XXVIII”))', 1, 19);
 #cpp
 INSERT INTO test(content, language, task_id) VALUES ('cout << convertRomanToArabic(„XIV”) << endl;', 2, 19);
-#------------task_20#------------String
+INSERT INTO test(content, language, task_id) VALUES ('cout << convertRomanToArabic(„MMMDCCXXIV”) << endl;', 2, 19);
+INSERT INTO test(content, language, task_id) VALUES ('cout << convertRomanToArabic(„IV”) << endl;', 2, 19);
+INSERT INTO test(content, language, task_id) VALUES ('cout << convertRomanToArabic(„XXVIII”) << endl;', 2, 19);
+#------------task_20#------------String XIV\nMMMDCCXXIV\nIV\nXXVIII
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(convertArabicToRoman(14));', 0, 20);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(convertArabicToRoman(3724));', 0, 20);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(convertArabicToRoman(4));', 0, 20);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(convertArabicToRoman(28));', 0, 20);
 #python
 INSERT INTO test(content, language, task_id) VALUES ('println(convertArabicToRoman(14))', 1, 20);
+INSERT INTO test(content, language, task_id) VALUES ('println(convertArabicToRoman(3724))', 1, 20);
+INSERT INTO test(content, language, task_id) VALUES ('println(convertArabicToRoman(4))', 1, 20);
+INSERT INTO test(content, language, task_id) VALUES ('println(convertArabicToRoman(28))', 1, 20);
 #cpp
 INSERT INTO test(content, language, task_id) VALUES ('cout << convertArabicToRoman(14) << endl;', 2, 20);
-#------------task_21#------------int
+INSERT INTO test(content, language, task_id) VALUES ('cout << convertArabicToRoman(14) << endl;', 2, 20);
+INSERT INTO test(content, language, task_id) VALUES ('cout << convertArabicToRoman(14) << endl;', 2, 20);
+INSERT INTO test(content, language, task_id) VALUES ('cout << convertArabicToRoman(14) << endl;', 2, 20);
+#------------task_21#------------int 6\n1\n6456
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(missingNumber(new int[]{1,2,3,4,5,7}));', 0, 21);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(missingNumber(new int[]{2,3,4,5,6,7}));', 0, 21);
+INSERT INTO test(content, language, task_id) VALUES ('int[] numbers = new int[999999999];int counter=0;for(int i=1000000000;i>0;i--){if(i!=6456){numbers[counter]=i;counter++;}} System.out.println(missingNumber(numbers));', 0, 21);
 #python
 INSERT INTO test(content, language, task_id) VALUES ('println(missingNumber([1,2,3,4,5,7]))', 1, 21);
+INSERT INTO test(content, language, task_id) VALUES ('println(missingNumber([2,3,4,5,6,7]))', 1, 21);
+INSERT INTO test(content, language, task_id) VALUES ('numbers = []\n\tfor i in range(1000000000, 1):\n\t\tif(i != 6456):\n\t\t\tnumbers.append(i)\n\tprintln(missingNumber(numbers))', 1, 21);
 #cpp
 INSERT INTO test(content, language, task_id) VALUES ('cout << missingNumber({1,2,3,4,5,7}) << endl;', 2, 21);
-#------------task_22#------------int
+INSERT INTO test(content, language, task_id) VALUES ('cout << missingNumber({2,3,4,5,6,7}) << endl;', 2, 21);
+INSERT INTO test(content, language, task_id) VALUES ('int numbers[999999999];int counter=0;for(int i=1000000000;i>0;i--){if(i!=6456) {numbers[counter]=i;counter++; }} cout << missingNumber(numbers) << endl;', 2, 21);
+#------------task_22#------------int 5\n-1\n742621
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(itemIndeX(new int[]{1,2,3,4,7,5,2,7}, 5));', 0, 22);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(itemIndeX(new int[]{1,2,3,4,7,5,2,7}, 15));', 0, 22);
 #python
 INSERT INTO test(content, language, task_id) VALUES ('println(itemIndeX([1,2,3,4,7,5,2,7], 5))', 1, 22);
 #cpp
