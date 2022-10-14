@@ -12,8 +12,13 @@ spring:
     database: mysql
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     properties:
       hibernate:
         hbm2ddl:
           import_files: sql/tasks.sql,sql/hints.sql,sql/tests.sql,sql/tasks_available_languages.sql
+
+          import_files: database/tasks.sql,database/hints.sql,database/tests.sql,database/tasks_available_languages.sql
+logging:
+  level:
+    root: info

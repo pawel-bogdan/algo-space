@@ -2,7 +2,7 @@ version: '3'
 services:
 
   algo-space-backend:
-    container_name: algo-space
+    container_name: algo-space-backend
     image: zpi/algo-space
     build: .
     ports:
