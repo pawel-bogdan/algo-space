@@ -113,64 +113,145 @@ INSERT INTO test(content, language, task_id) VALUES ('println(lcm(0,36))', 1, 8)
 #cpp
 INSERT INTO test(content, language, task_id) VALUES ('cout << lcm(24,36) << endl;', 2, 8);
 INSERT INTO test(content, language, task_id) VALUES ('cout << lcm(112,73) << endl;', 2, 8);
-INSERT INTO test(content, language, task_id) VALUES ('cout << lcm(24,36) << endl;', 2, 8);
-INSERT INTO test(content, language, task_id) VALUES ('cout << lcm(24,36) << endl;', 2, 8);
-#------------task_9#------------int
+INSERT INTO test(content, language, task_id) VALUES ('cout << lcm(12,12) << endl;', 2, 8);
+INSERT INTO test(content, language, task_id) VALUES ('cout << lcm(0,36) << endl;', 2, 8);
+#------------task_9#------------int 12\n1\n12\n5
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(gcd(24,36));', 0, 9);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(gcd(112,73));', 0, 9);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(gcd(12,12));', 0, 9);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(gcd(15,125));', 0, 9);
 #python
 INSERT INTO test(content, language, task_id) VALUES ('println(gcd(24,36))', 1, 9);
+INSERT INTO test(content, language, task_id) VALUES ('println(gcd(112,73))', 1, 9);
+INSERT INTO test(content, language, task_id) VALUES ('println(gcd(12,12))', 1, 9);
+INSERT INTO test(content, language, task_id) VALUES ('println(gcd(15,125))', 1, 9);
 #cpp
 INSERT INTO test(content, language, task_id) VALUES ('cout << gcd(24,36) << endl;', 2, 9);
-#------------task_10#------------int
+INSERT INTO test(content, language, task_id) VALUES ('cout << gcd(112,73) << endl;', 2, 9);
+INSERT INTO test(content, language, task_id) VALUES ('cout << gcd(12,12) << endl;', 2, 9);
+INSERT INTO test(content, language, task_id) VALUES ('cout << gcd(15,125) << endl;', 2, 9);
+#------------task_10#------------int 0\n1\n1144\n4181
 #java
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(fibonacci(0));', 0, 10);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(fibonacci(1));', 0, 10);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(fibonacci(2));', 0, 10);
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(fibonacci(12));', 0, 10);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(fibonacci(19));', 0, 10);
 #python
+INSERT INTO test(content, language, task_id) VALUES ('println(fibonacci(0))', 1, 10);
+INSERT INTO test(content, language, task_id) VALUES ('println(fibonacci(1))', 1, 10);
+INSERT INTO test(content, language, task_id) VALUES ('println(fibonacci(2))', 1, 10);
 INSERT INTO test(content, language, task_id) VALUES ('println(fibonacci(12))', 1, 10);
+INSERT INTO test(content, language, task_id) VALUES ('println(fibonacci(19))', 1, 10);
 #cpp
+INSERT INTO test(content, language, task_id) VALUES ('cout << fibonacci(0) << endl;', 2, 10);
+INSERT INTO test(content, language, task_id) VALUES ('cout << fibonacci(1) << endl;', 2, 10);
+INSERT INTO test(content, language, task_id) VALUES ('cout << fibonacci(2) << endl;', 2, 10);
 INSERT INTO test(content, language, task_id) VALUES ('cout << fibonacci(12) << endl;', 2, 10);
-#------------task_11#------------char
+INSERT INTO test(content, language, task_id) VALUES ('cout << fibonacci(19) << endl;', 2, 10);
+#------------task_11#------------char a\nb\nf\na
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(mostCommonSign(„aaasrvssaa”));', 0, 11);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(mostCommonSign(„aabbcdewv”));', 0, 11);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(mostCommonSign(„ffffff”));', 0, 11);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(mostCommonSign(„a”));', 0, 11);
 #python
 INSERT INTO test(content, language, task_id) VALUES ('println(mostCommonSign(„aaasrvssaa”))', 1, 11);
+INSERT INTO test(content, language, task_id) VALUES ('println(mostCommonSign(„aabbcdewv”))', 1, 11);
+INSERT INTO test(content, language, task_id) VALUES ('println(mostCommonSign(„ffffff”))', 1, 11);
+INSERT INTO test(content, language, task_id) VALUES ('println(mostCommonSign(„a”))', 1, 11);
 #cpp
 INSERT INTO test(content, language, task_id) VALUES ('cout << mostCommonSign(„aaasrvssaa”) << endl;', 2, 11);
-#------------task_12#------------int
+INSERT INTO test(content, language, task_id) VALUES ('cout << mostCommonSign(„aabbcdewv”) << endl;', 2, 11);
+INSERT INTO test(content, language, task_id) VALUES ('cout << mostCommonSign(„ffffff”) << endl;', 2, 11);
+INSERT INTO test(content, language, task_id) VALUES ('cout << mostCommonSign(„a”) << endl;', 2, 11);
+#------------task_12#------------int 2\n3\n1\n1\n0
 #java
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(numberOfWords(“kaktuskaktus”));', 0, 12);
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(numberOfWords(“ayuaksfkstkfykukspttkua”));', 0, 12);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(numberOfWords(“kaktus”));', 0, 12);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(numberOfWords(“kaktuskatus”));', 0, 12);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(numberOfWords(“katus”));', 0, 12);
 #python
+INSERT INTO test(content, language, task_id) VALUES ('println(numberOfWords(“kaktuskaktus”))', 1, 12);
 INSERT INTO test(content, language, task_id) VALUES ('println(numberOfWords(“ayuaksfkstkfykukspttkua”))', 1, 12);
+INSERT INTO test(content, language, task_id) VALUES ('println(numberOfWords(“kaktus”))', 1, 12);
+INSERT INTO test(content, language, task_id) VALUES ('println(numberOfWords(“kaktuskatus”))', 1, 12);
+INSERT INTO test(content, language, task_id) VALUES ('println(numberOfWords(“katus”))', 1, 12);
 #cpp
+INSERT INTO test(content, language, task_id) VALUES ('cout << numberOfWords(“kaktuskaktus”) << endl;', 2, 12);
 INSERT INTO test(content, language, task_id) VALUES ('cout << numberOfWords(“ayuaksfkstkfykukspttkua”) << endl;', 2, 12);
+INSERT INTO test(content, language, task_id) VALUES ('cout << numberOfWords(“kaktus”) << endl;', 2, 12);
+INSERT INTO test(content, language, task_id) VALUES ('cout << numberOfWords(“kaktuskatus”) << endl;', 2, 12);
+INSERT INTO test(content, language, task_id) VALUES ('cout << numberOfWords(“katus”) << endl;', 2, 12);
 #------------task_13#------------boolean
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(isPalindrome(„kajak”));', 0, 13);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(isPalindrome(„kkk”));', 0, 13);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(isPalindrome(„kajakk”));', 0, 13);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(isPalindrome(„oko”));', 0, 13);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(isPalindrome(„fsdreqgtw”));', 0, 13);
 #python
 INSERT INTO test(content, language, task_id) VALUES ('println(isPalindrome(„kajak”))', 1, 13);
+INSERT INTO test(content, language, task_id) VALUES ('println(isPalindrome(„kkk”))', 1, 13);
+INSERT INTO test(content, language, task_id) VALUES ('println(isPalindrome(„kajakk”))', 1, 13);
+INSERT INTO test(content, language, task_id) VALUES ('println(isPalindrome(„oko”))', 1, 13);
+INSERT INTO test(content, language, task_id) VALUES ('println(isPalindrome(„fsdreqgtw”))', 1, 13);
 #cpp
 INSERT INTO test(content, language, task_id) VALUES ('cout << isPalindrome(„kajak”) << endl;', 2, 13);
-#------------task_14#------------String
+INSERT INTO test(content, language, task_id) VALUES ('cout << isPalindrome(„kkk”) << endl;', 2, 13);
+INSERT INTO test(content, language, task_id) VALUES ('cout << isPalindrome(„kajakk”) << endl;', 2, 13);
+INSERT INTO test(content, language, task_id) VALUES ('cout << isPalindrome(„oko”) << endl;', 2, 13);
+INSERT INTO test(content, language, task_id) VALUES ('cout << isPalindrome(„fsdreqgtw”) << endl;', 2, 13);
+#------------task_14#------------String tset\ns\ntrevniot\nkajak
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(invertedString(„test”));', 0, 14);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(invertedString(„s”));', 0, 14);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(invertedString(„toinvert”));', 0, 14);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(invertedString(„kajak”));', 0, 14);
 #python
 INSERT INTO test(content, language, task_id) VALUES ('println(invertedString(„test”))', 1, 14);
+INSERT INTO test(content, language, task_id) VALUES ('println(invertedString(„s”))', 1, 14);
+INSERT INTO test(content, language, task_id) VALUES ('println(invertedString(„toinvert”))', 1, 14);
+INSERT INTO test(content, language, task_id) VALUES ('println(invertedString(„kajak”))', 1, 14);
 #cpp
 INSERT INTO test(content, language, task_id) VALUES ('cout << invertedString(„test”) << endl;', 2, 14);
-#------------task_15#------------int
+INSERT INTO test(content, language, task_id) VALUES ('cout << invertedString(„s”) << endl;', 2, 14);
+INSERT INTO test(content, language, task_id) VALUES ('cout << invertedString(„toinvert”) << endl;', 2, 14);
+INSERT INTO test(content, language, task_id) VALUES ('cout << invertedString(„kajak”) << endl;', 2, 14);
+#------------task_15#------------int 7\n1\n0\n3
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(longestRepetitionSeq(„siemmmmmmmaaallalala”));', 0, 15);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(longestRepetitionSeq(„abcdefghij”));', 0, 15);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(longestRepetitionSeq(„”));', 0, 15);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(longestRepetitionSeq(„abcccedeaaa”));', 0, 15);
 #python
 INSERT INTO test(content, language, task_id) VALUES ('println(longestRepetitionSeq(„siemmmmmmmaaallalala”))', 1, 15);
+INSERT INTO test(content, language, task_id) VALUES ('println(longestRepetitionSeq(„abcdefghij”))', 1, 15);
+INSERT INTO test(content, language, task_id) VALUES ('println(longestRepetitionSeq(„”))', 1, 15);
+INSERT INTO test(content, language, task_id) VALUES ('println(longestRepetitionSeq(„abcccedeaaa”))', 1, 15);
 #cpp
 INSERT INTO test(content, language, task_id) VALUES ('cout << longestRepetitionSeq(„siemmmmmmmaaallalala”) << endl;', 2, 15);
-#------------task_16#------------int
+INSERT INTO test(content, language, task_id) VALUES ('cout << longestRepetitionSeq(„abcdefghij”) << endl;', 2, 15);
+INSERT INTO test(content, language, task_id) VALUES ('cout << longestRepetitionSeq(„”) << endl;', 2, 15);
+INSERT INTO test(content, language, task_id) VALUES ('cout << longestRepetitionSeq(„abcccedeaaa”) << endl;', 2, 15);
+#------------task_16#------------int 4\n1\n0\n10
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(distinctChars(„aabbbcccddd”));', 0, 16);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(distinctChars(„aaaaa”));', 0, 16);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(distinctChars(„”));', 0, 16);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(distinctChars(„abcdefghij”));', 0, 16);
 #python
 INSERT INTO test(content, language, task_id) VALUES ('println(distinctChars(„aabbbcccddd”))', 1, 16);
+INSERT INTO test(content, language, task_id) VALUES ('println(distinctChars(„aaaaa”))', 1, 16);
+INSERT INTO test(content, language, task_id) VALUES ('println(distinctChars(„”))', 1, 16);
+INSERT INTO test(content, language, task_id) VALUES ('println(distinctChars(„abcdefghij”))', 1, 16);
 #cpp
 INSERT INTO test(content, language, task_id) VALUES ('cout << distinctChars(„aabbbcccddd”) << endl;', 2, 16);
+INSERT INTO test(content, language, task_id) VALUES ('cout << distinctChars(„aaaaa”) << endl;', 2, 16);
+INSERT INTO test(content, language, task_id) VALUES ('cout << distinctChars(„”) << endl;', 2, 16);
+INSERT INTO test(content, language, task_id) VALUES ('cout << distinctChars(„abcdefghij”) << endl;', 2, 16);
 #------------task_17#------------String
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(concatArrays(new String[]{„jeden”,”dwa”,”trzy”}, \',\'));', 0, 17);
