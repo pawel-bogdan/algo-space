@@ -5,6 +5,9 @@
 docker-compose up --build
 ```
 
+## Visit Frontend by clicking on the link below
+[ALGO SPACE](http://localhost:3000/)
+
 ## After execution of this command service is available through
 localhost:8080
 

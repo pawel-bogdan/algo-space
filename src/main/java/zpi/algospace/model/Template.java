@@ -16,6 +16,7 @@ public class Template {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String content;
-    private Integer level;
+    //private Integer level;
+    private Language language;
     private Long taskId;
 }

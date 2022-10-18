@@ -26,3 +26,13 @@ services:
       - MYSQL_ROOT_PASSWORD=pass
       - MYSQL_DATABASE=algo_space
 
+  algo-space-frontend:
+    image: cellitaes/algospace
+    ports:
+      - '3000:3000'
+    stdin_open: true
+    tty: true
+    depends_on:
+      - algo-space-backend
+      - mysqldb
+    restart: always

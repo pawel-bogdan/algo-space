@@ -185,7 +185,7 @@ INSERT INTO test(content, language, task_id) VALUES ('cout << numberOfWords(“a
 INSERT INTO test(content, language, task_id) VALUES ('cout << numberOfWords(“kaktus”) << endl;', 2, 12);
 INSERT INTO test(content, language, task_id) VALUES ('cout << numberOfWords(“kaktuskatus”) << endl;', 2, 12);
 INSERT INTO test(content, language, task_id) VALUES ('cout << numberOfWords(“katus”) << endl;', 2, 12);
-#------------task_13#------------boolean
+#------------task_13#------------boolean true\ntrue\nfalse\ntrue\nfalse
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(isPalindrome(„kajak”));', 0, 13);
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(isPalindrome(„kkk”));', 0, 13);
@@ -331,19 +331,19 @@ INSERT INTO test(content, language, task_id) VALUES ('cout << missingNumber({2,3
 INSERT INTO test(content, language, task_id) VALUES ('int numbers[999999999];int counter=0;for(int i=1000000000;i>0;i--){if(i!=6456) {numbers[counter]=i;counter++; }} cout << missingNumber(numbers) << endl;', 2, 21);
 #------------task_22#------------int 5\n-1\n742621
 #java
-INSERT INTO test(content, language, task_id) VALUES ('System.out.println(itemIndeX(new int[]{1,2,3,4,7,5,2,7}, 5));', 0, 22);
-INSERT INTO test(content, language, task_id) VALUES ('System.out.println(itemIndeX(new int[]{1,2,3,4,7,5,2,7}, 15));', 0, 22);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(itemIndex(new int[]{1,2,3,4,7,5,2,7}, 5));', 0, 22);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(itemIndex(new int[]{1,2,3,4,7,5,2,7}, 15));', 0, 22);
 #python
-INSERT INTO test(content, language, task_id) VALUES ('println(itemIndeX([1,2,3,4,7,5,2,7], 5))', 1, 22);
+INSERT INTO test(content, language, task_id) VALUES ('println(itemIndex([1,2,3,4,7,5,2,7], 5))', 1, 22);
 #cpp
-INSERT INTO test(content, language, task_id) VALUES ('cout << itemIndeX({1,2,3,4,7,5,2,7}, 5) << endl;', 2, 22);
-#------------task_23#------------String
+INSERT INTO test(content, language, task_id) VALUES ('cout << itemIndex({1,2,3,4,7,5,2,7}, 5) << endl;', 2, 22);
+#------------task_23#------------String 8 9\n1 2
 #java
-INSERT INTO test(content, language, task_id) VALUES ('System.out.println(closestPair(new int[]{}));', 0, 23);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(closestPair(new int[]{1,5,12,8,3,9,3,5}));', 0, 23);
 #python
-INSERT INTO test(content, language, task_id) VALUES ('println(closestPair([]))', 1, 23);
+INSERT INTO test(content, language, task_id) VALUES ('println(closestPair([1,5,12,8,3,9,3,5]))', 1, 23);
 #cpp
-INSERT INTO test(content, language, task_id) VALUES ('cout << closestPair({}) << endl;', 2, 23);
+INSERT INTO test(content, language, task_id) VALUES ('cout << closestPair({1,5,12,8,3,9,3,5}) << endl;', 2, 23);
 #------------task_24#------------String "   *\n  ***\n *****\n*******"
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(pyramid(4));', 0, 24);
