@@ -21,6 +21,7 @@ import java.util.Optional;
 @Tag(name = "Task Controller")
 @Slf4j
 @RequestMapping({"/", "/api"})
+@CrossOrigin
 public class TaskController {
 
     private final TaskService taskService;

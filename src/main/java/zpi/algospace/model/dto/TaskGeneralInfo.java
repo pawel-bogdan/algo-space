@@ -12,5 +12,4 @@ public class TaskGeneralInfo {
     private String name;
     private Category category;
     private Difficulty difficulty;
-
 }
