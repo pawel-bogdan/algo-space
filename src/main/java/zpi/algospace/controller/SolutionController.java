@@ -15,6 +15,7 @@ import java.io.IOException;
 @Tag(name = "Solution Judge")
 @Slf4j
 @RequestMapping({"/solution", "/api/solution"})
+@CrossOrigin
 public class SolutionController {
     private final SolutionService solutionService;
 
