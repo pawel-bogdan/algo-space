@@ -11,5 +11,5 @@ public class TaskGeneralInfo {
     private Long id;
     private String name;
     private Category category;
-    private Difficulty difficulty;
+    private DifficultyDTO difficulty;
 }

@@ -8,13 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import zpi.algospace.model.Category;
 import zpi.algospace.model.Difficulty;
-import zpi.algospace.model.Task;
 import zpi.algospace.model.dto.TaskDTO;
 import zpi.algospace.model.dto.TaskGeneralInfo;
 import zpi.algospace.service.TaskService;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -41,11 +39,11 @@ public class TaskController {
     @Operation(summary = "Get task with given id from database")
     public ResponseEntity<TaskDTO> getTask(@PathVariable Long id) {
         log.info(" >>> Request got. /tasks/{}", id);
-        Optional<Task> task = taskService.findTask(id);
-        if (task.isPresent()) {
-            log.info(" >>> Returned response with data: {}", task.get());
-            return ResponseEntity.ok(new TaskDTO(task.get()));
-        } else {
+        try {
+            TaskDTO task = taskService.findTask(id);
+            log.info(" >>> Returned response with data: {}", task);
+            return ResponseEntity.ok(task);
+        } catch (IllegalArgumentException e) {
             return ResponseEntity.notFound().build();
         }
     }
