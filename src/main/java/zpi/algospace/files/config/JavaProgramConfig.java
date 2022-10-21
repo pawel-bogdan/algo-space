@@ -1,4 +1,4 @@
-package zpi.algospace.files;
+package zpi.algospace.files.config;
 
 import lombok.SneakyThrows;
 import zpi.algospace.model.FileNames;

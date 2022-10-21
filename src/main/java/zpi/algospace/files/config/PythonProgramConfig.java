@@ -1,4 +1,4 @@
-package zpi.algospace.files;
+package zpi.algospace.files.config;
 
 import lombok.SneakyThrows;
 import zpi.algospace.model.FileNames;
@@ -9,14 +9,13 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
-public class CppProgramConfig extends ProgramConfig {
+public class PythonProgramConfig extends ProgramConfig {
 
-    private static final String extension = Language.CPP.getExtension();
-    private final File exeFile;
+    private static final String extension = Language.PYTHON.getExtension();
     private final File code;
 
     @SneakyThrows
-    public CppProgramConfig(String sourceCode, String fileName) {
+    public PythonProgramConfig(String sourceCode, String fileName) {
         super(fileName, sourceCode);
 
         code = new File(FILES_DIRECTORY + fileName + extension);
@@ -31,27 +30,21 @@ public class CppProgramConfig extends ProgramConfig {
         Files.writeString(input.toPath(),
                 commands,
                 StandardCharsets.UTF_8);
-
-        exeFile = new File(FILES_DIRECTORY + fileName + ".exe");
     }
 
     @Override
     protected String getBuildCommands(String fileName, String filesDirectory) {
-        return String.format("cd %s\ng++ %s -o %s\n./%s",
+        return String.format("cd %s\npython3 %s",
                 filesDirectory,
-                fileName + extension,
-                fileName,
-                fileName);
+                fileName + extension);
     }
 
     @Override
     public List<String> getFilePathsToDelete() {
         return List.of(
                 code.getAbsolutePath(),
-                exeFile.getAbsolutePath(),
                 super.getInputFile().getAbsolutePath(),
                 super.getOutputFile().getAbsolutePath(),
                 super.getErrorFile().getAbsolutePath());
     }
-
 }

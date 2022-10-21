@@ -1,9 +1,9 @@
-package zpi.algospace.solution;
+package zpi.algospace.files;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import zpi.algospace.files.ProgramConfig;
+import zpi.algospace.files.config.ProgramConfig;
 
 import java.io.IOException;
 
