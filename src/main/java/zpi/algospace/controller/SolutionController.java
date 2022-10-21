@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import zpi.algospace.model.dto.SolutionDTO;
-import zpi.algospace.service.SolutionService;
+import zpi.algospace.solution.service.SolutionService;
 
 import java.io.IOException;
 

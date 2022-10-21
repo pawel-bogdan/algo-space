@@ -17,9 +17,9 @@ public class ProgramResultValidator {
     public static Boolean validateResult(ProgramConfig programConfig, Task task) throws IOException {
         String solutionOutput = Files.readString(programConfig.getOutputFile().toPath(), StandardCharsets.UTF_8);
         String expectedOutput = task.getExpectedOutput();
-
         log.info("Actual output: {}", solutionOutput);
         log.info("Expected output: {}", expectedOutput);
+
         return Objects.equals(solutionOutput.trim(), expectedOutput.trim());
     }
 }

@@ -11,7 +11,7 @@ import zpi.algospace.model.Difficulty;
 import zpi.algospace.model.Task;
 import zpi.algospace.model.dto.TaskDTO;
 import zpi.algospace.model.dto.TaskGeneralInfo;
-import zpi.algospace.service.TaskService;
+import zpi.algospace.solution.service.TaskService;
 
 import java.util.List;
 import java.util.Optional;

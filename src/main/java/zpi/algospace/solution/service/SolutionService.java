@@ -1,4 +1,4 @@
-package zpi.algospace.service;
+package zpi.algospace.solution.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +33,7 @@ public class SolutionService {
         return solutionHandler.handle(solution, fileName);
     }
 
-    public Solution convertToSolution(SolutionDTO solutionDTO) {
+    private Solution convertToSolution(SolutionDTO solutionDTO) {
         return Solution.builder()
                 .submitionDate(solutionDTO.getSubmitionDate())
                 .content(solutionDTO.getContent())
