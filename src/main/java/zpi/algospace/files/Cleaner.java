@@ -1,4 +1,4 @@
-package zpi.algospace.solution;
+package zpi.algospace.files;
 
 import lombok.extern.slf4j.Slf4j;
 

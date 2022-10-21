@@ -1,4 +1,4 @@
-package zpi.algospace.files;
+package zpi.algospace.files.config;
 
 import lombok.Getter;
 import lombok.Setter;
