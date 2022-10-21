@@ -33,7 +33,7 @@ public class SolutionService {
         return solutionHandler.handle(solution, fileName);
     }
 
-    public Solution convertToSolution(SolutionDTO solutionDTO) {
+    private Solution convertToSolution(SolutionDTO solutionDTO) {
         return Solution.builder()
                 .submitionDate(solutionDTO.getSubmitionDate())
                 .content(solutionDTO.getContent())

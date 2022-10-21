@@ -5,8 +5,8 @@ import zpi.algospace.model.Language;
 
 @Getter
 public class LanguageDTO {
-    private Language languageId;
-    private String translation;
+    private final Language languageId;
+    private final String translation;
 
     public LanguageDTO(Language language) {
         this.languageId = language;
