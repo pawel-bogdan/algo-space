@@ -1,4 +1,4 @@
-package zpi.algospace.solution.service;
+package zpi.algospace.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

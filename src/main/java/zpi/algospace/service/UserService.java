@@ -1,4 +1,4 @@
-package zpi.algospace.solution.service;
+package zpi.algospace.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

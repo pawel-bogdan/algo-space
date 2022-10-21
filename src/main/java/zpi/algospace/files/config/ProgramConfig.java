@@ -1,4 +1,4 @@
-package zpi.algospace.files;
+package zpi.algospace.files.config;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,8 +13,8 @@ public abstract class ProgramConfig {
 
     private final String fileName;
     private final String sourceCode;
-    private File errorFile;
-    private File outputFile;
+    private final File errorFile;
+    private final File outputFile;
     @Setter
     private File inputFile;
 

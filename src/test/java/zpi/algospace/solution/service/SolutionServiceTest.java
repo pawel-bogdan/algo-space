@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import zpi.algospace.service.SolutionService;
 import zpi.algospace.model.Language;
 import zpi.algospace.model.Task;
 import zpi.algospace.model.User;

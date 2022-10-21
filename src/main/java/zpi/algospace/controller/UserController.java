@@ -3,17 +3,19 @@ package zpi.algospace.controller;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import zpi.algospace.model.Solution;
-import zpi.algospace.solution.service.UserService;
+import zpi.algospace.service.UserService;
 
 import java.util.List;
 
 @RestController
 @AllArgsConstructor
 @Slf4j
+@CrossOrigin
 public class UserController {
 
     private UserService userService;

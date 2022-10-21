@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import zpi.algospace.model.dto.SolutionDTO;
-import zpi.algospace.solution.service.SolutionService;
+import zpi.algospace.service.SolutionService;
 
 import java.io.IOException;
 
@@ -15,6 +15,7 @@ import java.io.IOException;
 @Tag(name = "Solution Judge")
 @Slf4j
 @RequestMapping({"/solution", "/api/solution"})
+@CrossOrigin
 public class SolutionController {
     private final SolutionService solutionService;
 
