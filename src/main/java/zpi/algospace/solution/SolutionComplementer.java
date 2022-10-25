@@ -9,6 +9,11 @@ import zpi.algospace.model.Solution;
 
 @Slf4j
 public class SolutionComplementer {
+    /**
+     * It modifies given solution. It is setting solution.complementedContent attribute.
+     *
+     * @param solution
+     */
     public static void complement(Solution solution, String fileName) {
         Complementary complementer;
         switch (solution.getLanguage()) {
