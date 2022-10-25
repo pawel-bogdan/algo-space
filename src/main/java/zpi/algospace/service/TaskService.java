@@ -36,15 +36,4 @@ public class TaskService {
                 .orElseThrow(() -> new IllegalArgumentException(String.format(TASK_NOT_FOUND_TEXT, id)))
         );
     }
-
-    public Template findTemplate(Long id, Language language) {
-        Task task = taskRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Task with given id does not exist."));
-
-        return task.getTemplate()
-                .stream()
-                .filter(t -> t.getLanguage() == language)
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Template in given language does not exist for this task."));
-    }
 }

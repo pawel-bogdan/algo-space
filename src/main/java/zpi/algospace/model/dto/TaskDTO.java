@@ -6,6 +6,7 @@ import lombok.Getter;
 import zpi.algospace.model.Category;
 import zpi.algospace.model.Hint;
 import zpi.algospace.model.Language;
+import zpi.algospace.model.Template;
 import zpi.algospace.model.Task;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class TaskDTO {
     private final DifficultyDTO difficulty;
     private final List<HintDTO> hints;
     private final List<Language> availableLanguages;
+    private final List<Template> templates;
 
     public TaskDTO(Task task) {
         this.id = task.getId();
@@ -35,5 +37,6 @@ public class TaskDTO {
         else
             this.hints = null;
         this.availableLanguages = task.getAvailableLanguages();
+        this.templates = task.getTemplate();
     }
 }
