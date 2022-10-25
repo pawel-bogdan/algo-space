@@ -3,6 +3,7 @@ package zpi.algospace.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,14 +17,15 @@ import java.util.List;
 @Tag(name = "Category Controller")
 @RequiredArgsConstructor
 @RequestMapping({"/", "/api"})
-@CrossOrigin
+@CrossOrigin(origins = {"${allowed.origin}"})
+@Slf4j
 public class CategoryController {
-
     private final CategoryService categoryService;
 
     @GetMapping("/categories")
-    @Operation(summary = "Get all available categories")
+    @Operation(summary = "Get all available categories.")
     public List<CategoryDTO> getCategories() {
+        log.info(" >>> Request got. /categories");
         return categoryService.findCategories();
     }
 }

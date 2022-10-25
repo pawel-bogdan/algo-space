@@ -17,10 +17,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @ToString
 public class SolutionDTO {
-    private LocalDateTime submitionDate;
+    private LocalDateTime submissionDate;
     private String content;
     private Language language;
     private Long taskId;
     private String solverEmail;
 }
-

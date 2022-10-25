@@ -29,10 +29,9 @@ public class PythonComplementer implements Complementary {
             return StringUtils.EMPTY;
         }
 
-        // TODO te 4 spacje...
         return tests.stream()
                 .filter(t -> t.getLanguage() == Language.PYTHON)
-                .map(t -> t.getContent())
-                .collect(Collectors.joining("\n    "));
+                .map(Test::getContent)
+                .collect(Collectors.joining(StringUtils.LF + "\t"));
     }
 }

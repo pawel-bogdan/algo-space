@@ -15,8 +15,9 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Service
 public class TaskService {
-    private final TaskRepository taskRepository;
     private static final String TASK_NOT_FOUND_TEXT = "Task with given id: %s does not exist.";
+
+    private final TaskRepository taskRepository;
 
     public List<TaskGeneralInfo> findTasks(Category category, Difficulty difficulty) {
         List<Task> tasks;
@@ -27,7 +28,7 @@ public class TaskService {
         } else if (difficulty == null) {
             tasks = taskRepository.findAllByCategory(category);
         } else {
-            tasks = taskRepository.findAllByCategoryAndAndDifficulty(category, difficulty);
+            tasks = taskRepository.findAllByCategoryAndDifficulty(category, difficulty);
         }
         return tasks.stream().map(Task::toTaskGeneralInfo).collect(Collectors.toList());
     }

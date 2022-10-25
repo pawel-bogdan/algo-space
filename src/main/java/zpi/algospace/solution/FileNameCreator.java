@@ -7,8 +7,7 @@ import java.util.UUID;
 
 public class FileNameCreator {
     public static String createFileName(Solution solution) {
-        return String.format(
-                "sol%s_task%s_%s_%s",
+        return String.format("sol%s_task%s_%s_%s",
                 solution.getId(),
                 solution.getTask().getId(),
                 solution.getLanguage().getName(),

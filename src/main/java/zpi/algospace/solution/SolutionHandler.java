@@ -12,11 +12,12 @@ import zpi.algospace.model.Solution;
 
 import java.io.IOException;
 
-@Slf4j
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class SolutionHandler {
     private final ProgramRunner programRunner;
+
     public Boolean handle(Solution solution, String fileName) throws IOException, InterruptedException {
         ProgramConfig programConfig = createProgramConfig(solution, fileName);
         try {

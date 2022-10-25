@@ -13,17 +13,14 @@ import java.io.IOException;
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "Solution Judge")
-@Slf4j
 @RequestMapping({"/solution", "/api/solution"})
-@CrossOrigin
+@CrossOrigin(origins = {"${allowed.origin}"})
+@Slf4j
 public class SolutionController {
     private final SolutionService solutionService;
 
     @PostMapping("/check")
-    @Operation(
-            summary = "Judges function.",
-            description = "Judges if function written by user is correct."
-    )
+    @Operation(summary = "Judges if function written by user is correct.")
     public Boolean judgeSolution(@RequestBody SolutionDTO solution) {
         log.info(" >>> Request got. /solution/check with params: solution: {}", solution);
         try {

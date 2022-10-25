@@ -1,22 +1,27 @@
 package zpi.algospace.process;
 
-import lombok.AllArgsConstructor;
+import zpi.algospace.files.config.ProgramConfig;
 
 import java.io.File;
 import java.io.IOException;
 
-@AllArgsConstructor
 public class ProgramRunner {
-    private File input;
-    private File error;
-    private File output;
+    private final File input;
+    private final File error;
+    private final File output;
+
+    public ProgramRunner(ProgramConfig programConfig) {
+        this.input = programConfig.getInputFile();
+        this.error = programConfig.getErrorFile();
+        this.output = programConfig.getOutputFile();
+    }
 
     public void run() throws IOException, InterruptedException {
-        ProcessBuilder process = new ProcessBuilder("bash");
-        process.redirectInput(input);
-        process.redirectOutput(output);
-        process.redirectError(error);
-
-        process.start().waitFor();
+        new ProcessBuilder("bash")
+                .redirectInput(input)
+                .redirectOutput(output)
+                .redirectError(error)
+                .start()
+                .waitFor();
     }
 }

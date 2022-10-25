@@ -3,7 +3,6 @@ package zpi.algospace.model.dto;
 import lombok.Getter;
 import zpi.algospace.model.Category;
 
-
 @Getter
 public class CategoryDTO {
     private final Category categoryId;

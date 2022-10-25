@@ -20,3 +20,6 @@ spring:
 logging:
   level:
     root: info
+    zpi.algospace: debug
+allowed:
+  origin: ${FRONTEND_IP:http://localhost:3000}

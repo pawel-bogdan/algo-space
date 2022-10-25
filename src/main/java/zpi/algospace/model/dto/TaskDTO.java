@@ -1,14 +1,19 @@
 package zpi.algospace.model.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import zpi.algospace.model.Category;
+import zpi.algospace.model.Hint;
 import zpi.algospace.model.Language;
 import zpi.algospace.model.Task;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Getter // Jackson
+@Getter
+@Builder
+@AllArgsConstructor
 public class TaskDTO {
     private final Long id;
     private final String name;
@@ -24,7 +29,11 @@ public class TaskDTO {
         this.content = task.getContent();
         this.category = task.getCategory();
         this.difficulty = new DifficultyDTO(task.getDifficulty());
-        this.hints = task.getHints().stream().map(HintDTO::new).collect(Collectors.toList());
+        List<Hint> taskHints = task.getHints();
+        if (taskHints != null)
+            this.hints = task.getHints().stream().map(HintDTO::new).collect(Collectors.toList());
+        else
+            this.hints = null;
         this.availableLanguages = task.getAvailableLanguages();
     }
 }

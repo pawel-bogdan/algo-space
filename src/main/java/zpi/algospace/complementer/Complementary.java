@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 public interface Complementary {
     void complement(Solution solution);
+
     default String prepareTests(Solution solution, Language language) {
         List<Test> tests = solution.getTask().getTests();
         if (tests == null || tests.isEmpty()) {
@@ -18,7 +19,7 @@ public interface Complementary {
 
         return tests.stream()
                 .filter(t -> t.getLanguage() == language)
-                .map(t -> t.getContent())
+                .map(Test::getContent)
                 .collect(Collectors.joining(StringUtils.EMPTY));
     }
 }

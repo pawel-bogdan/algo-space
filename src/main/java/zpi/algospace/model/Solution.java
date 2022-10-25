@@ -1,8 +1,17 @@
 package zpi.algospace.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.Builder;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Transient;
+import javax.persistence.ManyToOne;
+import javax.persistence.GenerationType;
 import java.time.LocalDateTime;
 
 @Entity
@@ -15,7 +24,7 @@ public class Solution {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDateTime submitionDate;
+    private LocalDateTime submissionDate;
     private String content;
     @Transient
     private String complementedContent;
