@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import zpi.algospace.model.dto.CategoryDTO;
 import zpi.algospace.model.dto.DifficultyDTO;
 import zpi.algospace.model.dto.TaskGeneralInfo;
 
@@ -44,7 +45,7 @@ public class Task {
         return TaskGeneralInfo.builder()
                 .id(this.id)
                 .name(this.name)
-                .category(this.category)
+                .category(new CategoryDTO(this.category))
                 .difficulty(new DifficultyDTO(this.difficulty))
                 .build();
     }
