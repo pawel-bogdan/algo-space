@@ -2,9 +2,7 @@ package zpi.algospace.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import zpi.algospace.model.Category;
-import zpi.algospace.model.Difficulty;
-import zpi.algospace.model.Task;
+import zpi.algospace.model.*;
 import zpi.algospace.model.dto.TaskDTO;
 import zpi.algospace.model.dto.TaskGeneralInfo;
 import zpi.algospace.repository.TaskRepository;
@@ -37,5 +35,16 @@ public class TaskService {
         return new TaskDTO(taskRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException(String.format(TASK_NOT_FOUND_TEXT, id)))
         );
+    }
+
+    public Template findTemplate(Long id, Language language) {
+        Task task = taskRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Task with given id does not exist."));
+
+        return task.getTemplate()
+                .stream()
+                .filter(t -> t.getLanguage() == language)
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Template in given language does not exist for this task."));
     }
 }

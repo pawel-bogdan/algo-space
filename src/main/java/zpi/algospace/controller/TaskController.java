@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import zpi.algospace.model.Category;
 import zpi.algospace.model.Difficulty;
+import zpi.algospace.model.Language;
+import zpi.algospace.model.Template;
 import zpi.algospace.model.dto.TaskDTO;
 import zpi.algospace.model.dto.TaskGeneralInfo;
 import zpi.algospace.service.TaskService;
@@ -43,6 +45,22 @@ public class TaskController {
             log.info(" >>> Returned response with data: {}", task);
             return ResponseEntity.ok(task);
         } catch (IllegalArgumentException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/tasks/{id}/template")
+    @Operation(summary = "Get solution template for given task in given language ")
+    public ResponseEntity<Template> getSolutionTemplate(
+            @PathVariable Long id,
+            @RequestParam Language language) {
+        log.info(" >>> Request got. /tasks/{}/template", id);
+        try {
+            Template template = taskService.findTemplate(id, language);
+            log.info(" >>> Returned response with data: {}", template);
+            return ResponseEntity.ok(template);
+        } catch (IllegalArgumentException e){
+            log.error(e.getMessage(), e);
             return ResponseEntity.notFound().build();
         }
     }
