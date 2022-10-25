@@ -1,7 +1,7 @@
 package zpi.algospace.files.config;
 
 import lombok.SneakyThrows;
-import zpi.algospace.model.FileNames;
+import zpi.algospace.model.FileName;
 import zpi.algospace.model.Language;
 
 import java.io.File;
@@ -26,7 +26,7 @@ public class PythonProgramConfig extends ProgramConfig {
                 StandardCharsets.UTF_8
         );
 
-        File input = new File(FILES_DIRECTORY + fileName + FileNames.INPUT.getName());
+        File input = new File(FILES_DIRECTORY + fileName + FileName.INPUT.getName());
         super.setInputFile(input);
 
         String commands = getBuildCommands(fileName, FILES_DIRECTORY);
