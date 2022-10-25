@@ -6,7 +6,6 @@ import zpi.algospace.model.Solution;
 
 @AllArgsConstructor
 public class JavaComplementer implements Complementary {
-
     private static final String CLASS_TEMPLATE =
             """
             import java.util.*;
@@ -20,7 +19,7 @@ public class JavaComplementer implements Complementary {
             }
             """;
 
-    private String className;
+    private final String className;
 
     @Override
     public void complement(Solution solution) {

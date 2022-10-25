@@ -1,27 +1,27 @@
 package zpi.algospace.controller;
 
-import lombok.AllArgsConstructor;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import zpi.algospace.model.Solution;
 import zpi.algospace.service.UserService;
 
 import java.util.List;
 
 @RestController
-@AllArgsConstructor
+@RequiredArgsConstructor
+@Tag(name = "User Controller")
+@RequestMapping({"/", "/api"})
+@CrossOrigin(origins = {"${allowed.origin}"})
 @Slf4j
-@CrossOrigin
 public class UserController {
-
-    private UserService userService;
-
+    private final UserService userService;
 
     @GetMapping("/user/{userId}")
+    @Operation(summary = "Get solutions of given user.")
     public ResponseEntity<List<Solution>> getSolutions(@PathVariable String userId) {
         log.info(" >>> Request got. /user/{}", userId);
         List<Solution> solutions;

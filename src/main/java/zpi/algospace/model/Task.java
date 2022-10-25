@@ -16,7 +16,6 @@ import java.util.List;
 @Getter
 @Builder
 public class Task {
-
     @Id
     private Long id;
     private String name;

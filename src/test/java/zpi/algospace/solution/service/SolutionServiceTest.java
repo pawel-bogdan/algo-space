@@ -27,7 +27,6 @@ import static org.mockito.ArgumentMatchers.eq;
 
 @ExtendWith(MockitoExtension.class)
 class SolutionServiceTest {
-
     @Mock
     TaskRepository taskRepository;
     @Mock
@@ -49,15 +48,13 @@ class SolutionServiceTest {
                 .thenReturn(Optional.of(new Task()));
         Mockito.when(userRepository.findByEmail(solverEmail))
                 .thenReturn(Optional.of(new User()));
-        LocalDateTime date = LocalDateTime.now();
         try (MockedStatic<FileNameCreator> utilities = Mockito.mockStatic(FileNameCreator.class)) {
             utilities.when(() -> FileNameCreator.createFileName(any()))
                     .thenReturn(fileName);
             Mockito.when(solutionHandler.handle(any(), eq(fileName)))
                     .thenReturn(true);
-
             SolutionDTO solutionDTO = SolutionDTO.builder()
-                    .submitionDate(date)
+                    .submissionDate(LocalDateTime.now())
                     .content("content")
                     .language(Language.JAVA)
                     .taskId(taskId)

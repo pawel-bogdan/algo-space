@@ -11,8 +11,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class JavaComplementerTest {
-
-    private JavaComplementer uut = new JavaComplementer("Solution");
+    private final JavaComplementer uut = new JavaComplementer("Solution");
 
     @Test
     void complement() {

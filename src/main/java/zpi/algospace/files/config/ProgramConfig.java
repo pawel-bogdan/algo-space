@@ -15,6 +15,7 @@ public abstract class ProgramConfig {
     private final String sourceCode;
     private final File errorFile;
     private final File outputFile;
+
     @Setter
     private File inputFile;
 

@@ -9,18 +9,20 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import zpi.algospace.model.Category;
 import zpi.algospace.model.Difficulty;
 import zpi.algospace.model.Task;
+import zpi.algospace.model.dto.TaskDTO;
 import zpi.algospace.model.dto.TaskGeneralInfo;
 import zpi.algospace.repository.TaskRepository;
+import zpi.algospace.service.TaskService;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(MockitoExtension.class)
 class TaskServiceTest {
-
     @Mock
     TaskRepository taskRepository;
 
@@ -49,16 +51,16 @@ class TaskServiceTest {
                 .thenReturn(List.of(task1, task2));
         Mockito.when(taskRepository.findAllByDifficulty(Difficulty.EASY))
                 .thenReturn(List.of(task1, task3));
-        Mockito.when(taskRepository.findAllByCategoryAndAndDifficulty(
+        Mockito.when(taskRepository.findAllByCategoryAndDifficulty(
                         Category.ARRAYS,
                         Difficulty.MEDIUM))
                 .thenReturn(List.of(task2));
 
         //when
-        List<TaskGeneralInfo> listOfAll = taskService.findTasks(null, null);
-        List<TaskGeneralInfo> listOfMediumArrays = taskService.findTasks(Category.ARRAYS, Difficulty.MEDIUM);
-        List<TaskGeneralInfo> listOfArrays = taskService.findTasks(Category.ARRAYS, null);
-        List<TaskGeneralInfo> listOfEasy = taskService.findTasks(null, Difficulty.EASY);
+        List<TaskGeneralInfo> allTasks = taskService.findTasks(null, null);
+        List<TaskGeneralInfo> mediumArrayCategoryTasks = taskService.findTasks(Category.ARRAYS, Difficulty.MEDIUM);
+        List<TaskGeneralInfo> arrayCategoryTasks = taskService.findTasks(Category.ARRAYS, null);
+        List<TaskGeneralInfo> easyTasks = taskService.findTasks(null, Difficulty.EASY);
 
         //then
         List<TaskGeneralInfo> expectAll = List.of(
@@ -66,22 +68,22 @@ class TaskServiceTest {
                 task2.toTaskGeneralInfo(),
                 task3.toTaskGeneralInfo()
         );
-        compareLists(expectAll, listOfAll);
+        compareLists(expectAll, allTasks);
 
-        List<TaskGeneralInfo> expectMediumArrays = List.of(task2.toTaskGeneralInfo());
-        compareLists(expectMediumArrays, listOfMediumArrays);
+        List<TaskGeneralInfo> expectMediumArrayCategoryTasks = List.of(task2.toTaskGeneralInfo());
+        compareLists(expectMediumArrayCategoryTasks, mediumArrayCategoryTasks);
 
-        List<TaskGeneralInfo> expectArrays = List.of(
+        List<TaskGeneralInfo> expectArrayCategoryTasks = List.of(
                 task1.toTaskGeneralInfo(),
                 task2.toTaskGeneralInfo()
         );
-        compareLists(expectArrays, listOfArrays);
+        compareLists(expectArrayCategoryTasks, arrayCategoryTasks);
 
-        List<TaskGeneralInfo> expectEasy = List.of(
+        List<TaskGeneralInfo> expectEasyTasks = List.of(
                 task1.toTaskGeneralInfo(),
                 task3.toTaskGeneralInfo()
         );
-        compareLists(expectEasy, listOfEasy);
+        compareLists(expectEasyTasks, easyTasks);
     }
 
     private void compareLists(List<TaskGeneralInfo> expected, List<TaskGeneralInfo> actual){
@@ -93,16 +95,23 @@ class TaskServiceTest {
     void findTask() {
         //given
         long taskId = 1L;
-        Task task1 = Task.builder().build();
-        Mockito.when(taskRepository.findById(1L))
-                .thenReturn(Optional.of(task1));
+        Task task = Task.builder()
+                .id(taskId)
+                .difficulty(Difficulty.EASY)
+                .category(Category.ARRAYS)
+                .build();
+        Mockito.when(taskRepository.findById(taskId))
+                .thenReturn(Optional.of(task));
+        TaskDTO expectedResult = new TaskDTO(task);
 
         //when
-        Optional<Task> expectTask = taskService.findTask(taskId);
-        Optional<Task> expectNull = taskService.findTask(0L);
+        TaskDTO result = taskService.findTask(taskId);
 
         //then
-        assertThat(expectTask.get()).isEqualTo(task1);
-        assertThat(expectNull).isEqualTo(Optional.empty());
+        assertThat(result.equals(expectedResult));
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> taskService.findTask(0L)
+        );
     }
 }

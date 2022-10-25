@@ -9,8 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-@Getter // Jackson
-@NoArgsConstructor // Hibernate
+@Getter
+@NoArgsConstructor
 public class Hint {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

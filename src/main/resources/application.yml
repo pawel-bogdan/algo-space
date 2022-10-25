@@ -19,4 +19,6 @@ spring:
           import_files: sql/tasks.sql,sql/hints.sql,sql/tests.sql,sql/tasks_available_languages.sql
 logging:
   level:
-    root: info
+    root: debug
+allowed:
+  origin: ${FRONTEND_IP:http://localhost:3000}

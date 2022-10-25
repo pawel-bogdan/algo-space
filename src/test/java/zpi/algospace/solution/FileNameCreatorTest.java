@@ -16,7 +16,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
 class FileNameCreatorTest {
-
     @Test
     void createFileName() {
         //given
@@ -29,12 +28,13 @@ class FileNameCreatorTest {
 
         try (MockedStatic<UUID> utilities = Mockito.mockStatic(UUID.class)) {
             utilities.when(UUID::randomUUID).thenReturn(uuid);
+            String expectedResult = "sol1_task1_Java_" + String.valueOf(uuid).replace("-", StringUtils.EMPTY);
 
             //when
-            String createdName = FileNameCreator.createFileName(solution);
+            String result = FileNameCreator.createFileName(solution);
 
             //then
-            assertThat(createdName).isEqualTo("sol1_task1_java_" + String.valueOf(uuid).replace("-", StringUtils.EMPTY));
+            assertThat(result).isEqualTo(expectedResult);
         }
     }
 }

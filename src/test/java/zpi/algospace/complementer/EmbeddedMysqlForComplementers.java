@@ -13,10 +13,10 @@ import static java.lang.System.setProperty;
 
 @ActiveProfiles("mysql-test")
 public class EmbeddedMysqlForComplementers {
-
-    private static EmbeddedMysql embeddedMysql;
     private static final String DB_USER = "testUser";
     private static final String DB_PASS = "testPass";
+
+    private static EmbeddedMysql embeddedMysql;
 
     @SneakyThrows
     public EmbeddedMysqlForComplementers() {

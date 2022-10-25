@@ -8,11 +8,10 @@ import zpi.algospace.model.Task;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CppComplementerTest {
-
-    private CppComplementer uut = new CppComplementer();
+    private final CppComplementer uut = new CppComplementer();
 
     @Test
     void complement() {
@@ -57,5 +56,4 @@ class CppComplementerTest {
 
         assertEquals(expectedComplementedContent, solution.getComplementedContent());
     }
-
 }

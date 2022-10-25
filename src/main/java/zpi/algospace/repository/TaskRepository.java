@@ -14,7 +14,5 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
 
     List<Task> findAllByDifficulty(Difficulty difficulty);
 
-    List<Task> findAllByCategoryAndAndDifficulty(Category category, Difficulty difficulty);
-
-    Task save(Task task);
+    List<Task> findAllByCategoryAndDifficulty(Category category, Difficulty difficulty);
 }

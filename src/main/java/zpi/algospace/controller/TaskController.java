@@ -17,15 +17,14 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "Task Controller")
-@Slf4j
 @RequestMapping({"/", "/api"})
-@CrossOrigin
+@CrossOrigin(origins = {"${allowed.origin}"})
+@Slf4j
 public class TaskController {
-
     private final TaskService taskService;
 
     @GetMapping("/tasks")
-    @Operation(summary = "Get all tasks from database")
+    @Operation(summary = "Get all tasks from database.")
     public ResponseEntity<List<TaskGeneralInfo>> getTasks(
             @RequestParam(required = false) Category category,
             @RequestParam(required = false) Difficulty difficulty) {
@@ -36,7 +35,7 @@ public class TaskController {
     }
 
     @GetMapping("/tasks/{id}")
-    @Operation(summary = "Get task with given id from database")
+    @Operation(summary = "Get task with given id from database.")
     public ResponseEntity<TaskDTO> getTask(@PathVariable Long id) {
         log.info(" >>> Request got. /tasks/{}", id);
         try {

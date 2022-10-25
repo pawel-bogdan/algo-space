@@ -19,7 +19,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(MockitoExtension.class)
 class UserServiceTest {
-
     @Mock
     UserRepository userRepository;
 
@@ -35,10 +34,10 @@ class UserServiceTest {
                 .thenReturn(Optional.of(user1));
 
         //when
-        List<Solution> expectSolutions = userService.findSolutions(userEmail);
+        List<Solution> result = userService.findSolutions(userEmail);
 
         //then
-        assertThat(expectSolutions).isEqualTo(user1.getSolutions());
+        assertThat(result).isEqualTo(user1.getSolutions());
         assertThrows(
                 IllegalArgumentException.class,
                 () -> userService.findSolutions("")
