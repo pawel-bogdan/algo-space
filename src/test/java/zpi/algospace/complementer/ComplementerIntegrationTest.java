@@ -19,6 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class ComplementerIntegrationTest {
+    private static EmbeddedMysqlForComplementers embeddedMysql;
 
     private final JavaComplementer javaComplementer = new JavaComplementer("testSolution");
     private final PythonComplementer pythonComplementer = new PythonComplementer();
@@ -26,7 +27,6 @@ public class ComplementerIntegrationTest {
 
     @Resource
     private TaskRepository taskRepository;
-    private static EmbeddedMysqlForComplementers embeddedMysql;
 
     @BeforeAll
     public static void setUp() {
@@ -41,6 +41,7 @@ public class ComplementerIntegrationTest {
     @SneakyThrows
     @Test
     void javaComplement() {
+        //given
         String expectedComplementedContent = """
                 import java.util.*;
                             
@@ -68,21 +69,24 @@ public class ComplementerIntegrationTest {
                 .task(taskRepository.findById(1L).get())
                 .build();
 
+        //when
         javaComplementer.complement(solution);
 
+        //then
         assertThat(solution.getComplementedContent()).isEqualTo(expectedComplementedContent);
     }
 
     @SneakyThrows
     @Test
     void pythonComplement() {
+        //given
         String expectedComplementedContent = """
                 def returnInput(input):
                     return input
                      
                 if __name__ == "__main__":
                     print(returnInput("siema"))
-                    print(returnInput("elo"))
+                \tprint(returnInput("elo"))
                  """;
 
         String content = """
@@ -96,14 +100,17 @@ public class ComplementerIntegrationTest {
                 .task(taskRepository.findById(1L).get())
                 .build();
 
+        //when
         pythonComplementer.complement(solution);
 
+        //then
         assertThat(solution.getComplementedContent()).isEqualTo(expectedComplementedContent);
     }
 
     @SneakyThrows
     @Test
     void cppComplement() {
+        //given
         String content = """
                 string returnInput(string input) {
                     return input;
@@ -129,8 +136,10 @@ public class ComplementerIntegrationTest {
                 .task(taskRepository.findById(1L).get())
                 .build();
 
+        //when
         cppComplementer.complement(solution);
 
+        //then
         assertThat(solution.getComplementedContent()).isEqualTo(expectedComplementedContent);
     }
 }

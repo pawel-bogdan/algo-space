@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum FileNames{
+public enum FileName {
     INPUT("input.txt"),
     ERROR("error.txt"),
     OUTPUT("output.txt");

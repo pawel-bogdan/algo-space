@@ -14,13 +14,14 @@ import zpi.algospace.solution.SolutionHandler;
 import java.io.IOException;
 
 @Service
-@Slf4j
 @RequiredArgsConstructor
+@Slf4j
 public class SolutionService {
+    private static final boolean INVALID_SOLUTION = false;
+
     private final SolutionHandler solutionHandler;
     private final TaskRepository taskRepository;
     private final UserRepository userRepository;
-    private static final boolean INVALID_SOLUTION = false;
 
     public Boolean judgeSolution(SolutionDTO solutionDTO) throws IOException, InterruptedException {
         Solution solution = convertToSolution(solutionDTO);
@@ -33,9 +34,9 @@ public class SolutionService {
         return solutionHandler.handle(solution, fileName);
     }
 
-    public Solution convertToSolution(SolutionDTO solutionDTO) {
+    private Solution convertToSolution(SolutionDTO solutionDTO) {
         return Solution.builder()
-                .submitionDate(solutionDTO.getSubmitionDate())
+                .submissionDate(solutionDTO.getSubmissionDate())
                 .content(solutionDTO.getContent())
                 .language(solutionDTO.getLanguage())
                 .task(taskRepository.findById(solutionDTO.getTaskId())

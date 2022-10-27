@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import zpi.algospace.model.dto.CategoryDTO;
+import zpi.algospace.model.dto.DifficultyDTO;
 import zpi.algospace.model.dto.TaskGeneralInfo;
 
 import javax.persistence.*;
@@ -15,7 +17,6 @@ import java.util.List;
 @Getter
 @Builder
 public class Task {
-
     @Id
     private Long id;
     private String name;
@@ -44,8 +45,8 @@ public class Task {
         return TaskGeneralInfo.builder()
                 .id(this.id)
                 .name(this.name)
-                .category(this.category)
-                .difficulty(this.difficulty)
+                .category(new CategoryDTO(this.category))
+                .difficulty(new DifficultyDTO(this.difficulty))
                 .build();
     }
 }

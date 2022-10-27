@@ -14,8 +14,7 @@ public class UserService {
     private UserRepository userRepository;
 
     public List<Solution> findSolutions(String userId) {
-        Long id = Long.parseLong(userId);
-        User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("User with given id does not exist"));
+        User user = userRepository.findByEmail(userId).orElseThrow(() -> new IllegalArgumentException("User with given id does not exist"));
         return user.getSolutions();
     }
 }

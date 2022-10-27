@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 @Service
 public class LanguageService {
     public List<LanguageDTO> findLanguages() {
-
         return Arrays.stream(Language.values())
                 .map(LanguageDTO::new)
                 .collect(Collectors.toList());
