@@ -1,6 +1,6 @@
-INSERT INTO hint(id, content, level, task_id) VALUE (1, 'Niesla tibia', 1, 1);
-INSERT INTO hint(id, content, level, task_id) VALUE (2, '', 2, 1);
-INSERT INTO hint(id, content, level, task_id) VALUE (3, '', 1, 2);
+INSERT INTO hint(id, content, level, task_id) VALUE (1, 'Dobrym pomysłem może okazać się użycie pętli for.', 1, 1);
+INSERT INTO hint(id, content, level, task_id) VALUE (2, 'Użyj zmiennej, w której będziesz zapisywał najkrótszy wyraz spośród zbadanych do aktualnej iteracji.', 2, 1);
+INSERT INTO hint(id, content, level, task_id) VALUE (3, 'Dobrym pomysłem może okazać się użycie pętli for.', 1, 2);
 INSERT INTO hint(id, content, level, task_id) VALUE (4, '', 2, 2);
 INSERT INTO hint(id, content, level, task_id) VALUE (5, '', 1, 3);
 INSERT INTO hint(id, content, level, task_id) VALUE (6, '', 2, 3);
