@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Tag(name = "User Controller")
 @RequestMapping({"/", "/api"})
-@CrossOrigin(origins = {"${allowed.origin}"})
+@CrossOrigin
 @Slf4j
 public class UserController {
     private final UserService userService;
