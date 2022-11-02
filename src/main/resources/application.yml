@@ -10,16 +10,22 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     database: mysql
-    show-sql: true
+    show-sql: false
     hibernate:
       ddl-auto: create
     properties:
       hibernate:
         hbm2ddl:
           import_files: sql/tasks.sql,sql/hints.sql,sql/tests.sql,sql/tasks_available_languages.sql
+  kafka:
+    bootstrap-servers: ${KAFKA_SERVER:localhost:9092}
 logging:
   level:
     root: info
     zpi.algospace: debug
-allowed:
-  origin: ${FRONTEND_IP:http://localhost:3000}
+    org.apache.kafka: warn
+docker:
+  host: ${DOCKER_HOST:host.docker.internal}}
+  network: ${DOCKER_NETWORK:algo_space}
+worker:
+  imageName: ${WORKER_IMAGE:algo-space-worker:1.0}

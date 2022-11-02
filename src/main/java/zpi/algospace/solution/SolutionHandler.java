@@ -21,7 +21,7 @@ public class SolutionHandler {
     public Boolean handle(Solution solution, String fileName) throws IOException, InterruptedException {
         ProgramConfig programConfig = createProgramConfig(solution, fileName);
         try {
-            programRunner.run(programConfig);
+            programRunner.run(programConfig, solution.getComplementedContent(), fileName);
             return ProgramResultValidator.validateResult(programConfig, solution.getTask());
         } finally {
             Cleaner.cleanDirectory(programConfig.getFilePathsToDelete());

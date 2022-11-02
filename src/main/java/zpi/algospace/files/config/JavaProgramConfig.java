@@ -38,6 +38,7 @@ public class JavaProgramConfig extends ProgramConfig {
         );
 
         compiledFile = new File(FILES_DIRECTORY + fileName + ".class");
+        commandsTMP=getBuildCommands(fileName,FILES_DIRECTORY);
     }
 
     @Override

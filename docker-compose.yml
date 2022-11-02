@@ -6,29 +6,40 @@ services:
     image: zpi/algo-space
     build: .
     ports:
-      - "8080:8080"
+      - '8080:8080'
     environment:
-      - MYSQL_HOST=mysqldb
-      - MYSQL_PORT=3306
-      - MYSQL_USERNAME=root
-      - MYSQL_PASSWORD=pass
-      - MYSQL_DATABASE=algo_space
-      - FRONTEND_IP=algo-space-frontend:3000
+      MYSQL_HOST: mysqldb
+      MYSQL_PORT: 3306
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: pass
+      MYSQL_DATABASE: algo_space
+      # to run on windows enable | Expose daemon on tcp://localhost:2375 without TLS | option in docker desktop
+      # check docker host using ipconfig command in cmd
+      # set docker host to DockerNAT IPv4Address and add port 2375
+      DOCKER_HOST: tcp://172.17.0.1:2375
+      WORKER_IMAGE: algo-space-worker:1.0
+      KAFKA_SERVER: kafka:9092
+      DOCKER_NETWORK: algo-space_algo-space-network
     restart: always
     links:
       - mysqldb
+    networks:
+      - algo-space-network
 
   mysqldb:
     image: mysql
-    container_name: mysql_algo_space
+    container_name: mysql-algo-space
     ports:
-      - "3306:3306"
+      - '3306:3306'
     environment:
-      - MYSQL_ROOT_PASSWORD=pass
-      - MYSQL_DATABASE=algo_space
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: algo_space
+    networks:
+      - algo-space-network
 
   algo-space-frontend:
     image: cellitaes/algospace
+    container_name: algo-space-frontend
     ports:
       - '3000:3000'
     stdin_open: true
@@ -37,3 +48,38 @@ services:
       - algo-space-backend
       - mysqldb
     restart: always
+    networks:
+      - algo-space-network
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.0.1
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    logging:
+      driver: none
+    networks:
+      - algo-space-network
+
+  kafka:
+    image: confluentinc/cp-kafka:7.0.1
+    container_name: kafka
+    ports:
+      - '9092:9092'
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_INTERNAL://kafka:29092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+    networks:
+      - algo-space-network
+
+networks:
+  algo-space-network:
+    driver: bridge

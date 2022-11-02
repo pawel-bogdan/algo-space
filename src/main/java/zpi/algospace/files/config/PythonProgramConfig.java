@@ -35,6 +35,7 @@ public class PythonProgramConfig extends ProgramConfig {
                 commands,
                 StandardCharsets.UTF_8
         );
+        commandsTMP=getBuildCommands(fileName,FILES_DIRECTORY);
     }
 
     @Override

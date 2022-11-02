@@ -38,6 +38,7 @@ public class CppProgramConfig extends ProgramConfig {
         );
 
         exeFile = new File(FILES_DIRECTORY + fileName + ".exe");
+        commandsTMP=getBuildCommands(fileName,FILES_DIRECTORY);
     }
 
     @Override
