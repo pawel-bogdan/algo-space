@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import zpi.algospace.model.dto.SolutionDTO;
 import zpi.algospace.service.SolutionService;
 
-import java.io.IOException;
-
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "Solution Judge")
@@ -23,11 +21,6 @@ public class SolutionController {
     @Operation(summary = "Judges if function written by user is correct.")
     public Boolean judgeSolution(@RequestBody SolutionDTO solution) {
         log.info(" >>> Request got. /solution/check with params: solution: {}", solution);
-        try {
-            return solutionService.judgeSolution(solution);
-        } catch (IOException | InterruptedException e) {
-            log.error("Failed to execute given solution", e);
-            return false;
-        }
+        return solutionService.judgeSolution(solution);
     }
 }
