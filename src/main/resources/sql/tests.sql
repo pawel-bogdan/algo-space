@@ -1,4 +1,6 @@
-# 0 - JAVA 1 - PYTHON 2 - CPP
+# 0 - JAVA
+# 1 - PYTHON
+# 2 - CPP
 #------------task_1#------------String aaaa\n \naaaa\nc\nbbb
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(shortestWord( new String[]{„aaaa”, „bbbb”, „cccccccc”}));', 0, 1);

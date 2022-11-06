@@ -11,10 +11,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import zpi.algospace.service.SolutionService;
 import zpi.algospace.model.Language;
 import zpi.algospace.model.Task;
-import zpi.algospace.model.User;
+import zpi.algospace.model.ApplicationUser;
 import zpi.algospace.model.dto.SolutionDTO;
 import zpi.algospace.repository.TaskRepository;
-import zpi.algospace.repository.UserRepository;
+import zpi.algospace.repository.ApplicationUserRepository;
 import zpi.algospace.solution.FileNameCreator;
 import zpi.algospace.solution.SolutionHandler;
 
@@ -30,7 +30,7 @@ class SolutionServiceTest {
     @Mock
     TaskRepository taskRepository;
     @Mock
-    UserRepository userRepository;
+    ApplicationUserRepository applicationUserRepository;
     @Mock
     SolutionHandler solutionHandler;
 
@@ -46,8 +46,8 @@ class SolutionServiceTest {
         String fileName = "testFile";
         Mockito.when(taskRepository.findById(taskId))
                 .thenReturn(Optional.of(new Task()));
-        Mockito.when(userRepository.findByEmail(solverEmail))
-                .thenReturn(Optional.of(new User()));
+        Mockito.when(applicationUserRepository.findByEmail(solverEmail))
+                .thenReturn(Optional.of(new ApplicationUser()));
         try (MockedStatic<FileNameCreator> utilities = Mockito.mockStatic(FileNameCreator.class)) {
             utilities.when(() -> FileNameCreator.createFileName(any()))
                     .thenReturn(fileName);

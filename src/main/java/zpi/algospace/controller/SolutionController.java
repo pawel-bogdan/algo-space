@@ -14,7 +14,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 @Tag(name = "Solution Judge")
 @RequestMapping({"/solution", "/api/solution"})
-@CrossOrigin(origins = {"${allowed.origin}"})
+@CrossOrigin()
 @Slf4j
 public class SolutionController {
     private final SolutionService solutionService;

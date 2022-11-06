@@ -1,4 +1,6 @@
-# JAVA - 0, PYTHON - 1, CPP -2
+# JAVA - 0
+# PYTHON - 1
+# CPP -2
 #task1
 INSERT INTO template (content, language, task_id) VALUE('static String shortestWord(String[] words) {  }', 0, 1);
 INSERT INTO template (content, language, task_id) VALUE('def shortestWord(words): ', 1, 1);

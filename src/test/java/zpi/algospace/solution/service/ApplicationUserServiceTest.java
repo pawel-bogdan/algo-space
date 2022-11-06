@@ -6,10 +6,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import zpi.algospace.service.UserService;
+import zpi.algospace.service.ApplicationUserService;
 import zpi.algospace.model.Solution;
-import zpi.algospace.model.User;
-import zpi.algospace.repository.UserRepository;
+import zpi.algospace.model.ApplicationUser;
+import zpi.algospace.repository.ApplicationUserRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,29 +18,29 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(MockitoExtension.class)
-class UserServiceTest {
+class ApplicationUserServiceTest {
     @Mock
-    UserRepository userRepository;
+    ApplicationUserRepository applicationUserRepository;
 
     @InjectMocks
-    UserService userService;
+    ApplicationUserService applicationUserService;
 
     @Test
     void findSolutions() {
         //given
         String userEmail = "testEmail";
-        User user1 = User.builder().build();
-        Mockito.when(userRepository.findByEmail(userEmail))
+        ApplicationUser user1 = ApplicationUser.builder().build();
+        Mockito.when(applicationUserRepository.findByEmail(userEmail))
                 .thenReturn(Optional.of(user1));
 
         //when
-        List<Solution> result = userService.findSolutions(userEmail);
+        List<Solution> result = applicationUserService.findSolutions(userEmail);
 
         //then
         assertThat(result).isEqualTo(user1.getSolutions());
         assertThrows(
                 IllegalArgumentException.class,
-                () -> userService.findSolutions("")
+                () -> applicationUserService.findSolutions("")
         );
     }
 }
