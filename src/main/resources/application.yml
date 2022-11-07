@@ -17,7 +17,7 @@ spring:
     properties:
       hibernate:
         hbm2ddl:
-          import_files: sql/tasks.sql,sql/hints.sql,sql/tests.sql,sql/tasks_available_languages.sql
+          import_files: sql/tasks.sql,sql/hints.sql,sql/tests.sql,sql/tasks_available_languages.sql,sql/templates.sql
   redis:
     host: ${REDIS_HOST:redis}
     port: ${REDIS_PORT:6379}

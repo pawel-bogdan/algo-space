@@ -4,7 +4,7 @@ INSERT INTO template (content, language, task_id) VALUE('static String shortestW
 INSERT INTO template (content, language, task_id) VALUE('def shortestWord(words): ', 1, 1);
 INSERT INTO template (content, language, task_id) VALUE('string shortestWord(string words[]) {  }', 2, 1);
 #task2
-INSERT INTO template (content, language, task_id) VALUE('static int biggestNumber(int[] numbers)', 0, 2);
+INSERT INTO template (content, language, task_id) VALUE('static int biggestNumber(int[] numbers) {  }', 0, 2);
 INSERT INTO template (content, language, task_id) VALUE('def biggestNumber(numbers): ', 1, 2);
 INSERT INTO template (content, language, task_id) VALUE('int biggestNumber(int numbers[]) {  }', 2, 2);
 #task3
