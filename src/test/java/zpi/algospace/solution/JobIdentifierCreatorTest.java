@@ -15,23 +15,22 @@ import java.util.UUID;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
-class FileNameCreatorTest {
+class JobIdentifierCreatorTest {
     @Test
-    void createFileName() {
+    void createJobId() {
         //given
         long taskId = 1L;
-        long solutionId = 1L;
         Language solutionLanguage = Language.JAVA;
         Task task = Task.builder().id(taskId).build();
-        Solution solution = Solution.builder().id(solutionId).task(task).language(solutionLanguage).build();
+        Solution solution = Solution.builder().task(task).language(solutionLanguage).build();
         UUID uuid = new UUID(1L, 1L);
 
         try (MockedStatic<UUID> utilities = Mockito.mockStatic(UUID.class)) {
             utilities.when(UUID::randomUUID).thenReturn(uuid);
-            String expectedResult = "sol1_task1_Java_" + String.valueOf(uuid).replace("-", StringUtils.EMPTY);
+            String expectedResult = "sol_task1_Java_" + String.valueOf(uuid).replace("-", StringUtils.EMPTY);
 
             //when
-            String result = FileNameCreator.createFileName(solution);
+            String result = JobIdentifierCreator.createJobId(solution);
 
             //then
             assertThat(result).isEqualTo(expectedResult);

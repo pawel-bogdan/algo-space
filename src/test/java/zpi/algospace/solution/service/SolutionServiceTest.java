@@ -14,6 +14,8 @@ import zpi.algospace.model.Task;
 import zpi.algospace.model.ApplicationUser;
 import zpi.algospace.model.dto.SolutionDTO;
 import zpi.algospace.repository.TaskRepository;
+import zpi.algospace.repository.UserRepository;
+import zpi.algospace.solution.JobIdentifierCreator;
 import zpi.algospace.repository.ApplicationUserRepository;
 import zpi.algospace.solution.FileNameCreator;
 import zpi.algospace.solution.SolutionHandler;
@@ -46,10 +48,10 @@ class SolutionServiceTest {
         String fileName = "testFile";
         Mockito.when(taskRepository.findById(taskId))
                 .thenReturn(Optional.of(new Task()));
-        Mockito.when(applicationUserRepository.findByEmail(solverEmail))
-                .thenReturn(Optional.of(new ApplicationUser()));
-        try (MockedStatic<FileNameCreator> utilities = Mockito.mockStatic(FileNameCreator.class)) {
-            utilities.when(() -> FileNameCreator.createFileName(any()))
+        Mockito.when(userRepository.findByEmail(solverEmail))
+                .thenReturn(Optional.of(new User()));
+        try (MockedStatic<JobIdentifierCreator> utilities = Mockito.mockStatic(JobIdentifierCreator.class)) {
+            utilities.when(() -> JobIdentifierCreator.createJobId(any()))
                     .thenReturn(fileName);
             Mockito.when(solutionHandler.handle(any(), eq(fileName)))
                     .thenReturn(true);

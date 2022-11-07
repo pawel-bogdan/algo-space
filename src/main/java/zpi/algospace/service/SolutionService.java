@@ -11,8 +11,6 @@ import zpi.algospace.solution.FileNameCreator;
 import zpi.algospace.solution.SolutionComplementer;
 import zpi.algospace.solution.SolutionHandler;
 
-import java.io.IOException;
-
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -23,15 +21,15 @@ public class SolutionService {
     private final TaskRepository taskRepository;
     private final ApplicationUserRepository applicationUserRepository;
 
-    public Boolean judgeSolution(SolutionDTO solutionDTO) throws IOException, InterruptedException {
+    public Boolean judgeSolution(SolutionDTO solutionDTO) {
         Solution solution = convertToSolution(solutionDTO);
-        String fileName = FileNameCreator.createFileName(solution);
+        String jobId = JobIdentifierCreator.createJobId(solution);
         try {
-            SolutionComplementer.complement(solution, fileName);
+            SolutionComplementer.complement(solution, jobId);
         } catch (IllegalArgumentException e) {
             return INVALID_SOLUTION;
         }
-        return solutionHandler.handle(solution, fileName);
+        return solutionHandler.handle(solution, jobId);
     }
 
     private Solution convertToSolution(SolutionDTO solutionDTO) {
