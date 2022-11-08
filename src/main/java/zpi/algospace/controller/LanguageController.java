@@ -18,7 +18,7 @@ import java.util.List;
 @Tag(name = "Language Controller")
 @RequiredArgsConstructor
 @RequestMapping({"/", "/api"})
-@CrossOrigin
+@CrossOrigin()
 @Slf4j
 public class LanguageController {
     private final LanguageService languageService;

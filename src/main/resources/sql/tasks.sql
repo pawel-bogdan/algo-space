@@ -1,5 +1,13 @@
-# ARRAYS - 0, STRINGS - 1, STACKS - 2, RECURSION - 3, SORTING - 4, OTHER - 5
-# EASY - 0, MEDIUM - 1, HARD - 2
+# ARRAYS - 0
+# STRINGS - 1
+# STACKS - 2
+# RECURSION - 3
+# SORTING - 4
+# OTHER - 5
+
+# EASY - 0
+# MEDIUM - 1
+# HARD - 2
 
 # Kategoria - Tablice
 INSERT INTO task(id, name, content, expected_output, category, difficulty) VALUES (1, 'Najkrótszy wyraz', '<div class="task-explanation">    <p>        Znajdź najkrótszy wyraz w tablicy o N elementach.        Jeśli występuje więcej niż jeden taki wyraz, zwróć ten, który wystąpił w tablicy jako pierwszy.    </p>    <div class="example">        Przykładowo dla <span class="example-code">words = ["Michał", "Ala", "kawaleria", "mucha"]</span>        <br>        program powinien zwrócić <span class="example-code">"Ala"</span>.    </div>    <div class="assumptions">        Możesz przyjąć następujące założenia:        <ul>            <li>                words jest niepustą tablicą tzn. N jest liczbą w zakresie [1, 100000]            </li>            <li>                Wszystkie elementy tablicy mają wartość (nie są nullami).            </li>        </ul>    </div>    <div class="footer">        <div>algo-space</div>        <div class="author">Paweł Bogdan</div>    </div></div>', 'aaaa\n \naaaa\nc\nbbb', 0, 0);
@@ -32,5 +40,3 @@ INSERT INTO task(id, name, content, expected_output, category, difficulty) VALUE
 # Kategoria - Inne
 INSERT INTO task(id, name, content, expected_output, category, difficulty) VALUES (24, 'Piramidka', '<div class="task-explanation">    <p>        Piramidka        Wypisz na wyjściu piramidkę utworzoną z symboli * o wysokości podanej na wejściu. Dla wysokości height=3 piramidka wygląda w następujący sposób:          *         ***        *****    </p>        <div class="assumptions">        Możesz przyjąć następujące założenia:        <ul>            <li>                height jest dodatnią liczbą całkowitą            </li>        </ul>    </div>    <div class="footer">        <div>algo-space</div>        <div class="author">Paweł Bogdan</div>    </div></div>', '   *\n  ***\n *****\n*******',5,2);
 INSERT INTO task(id, name, content, expected_output, category, difficulty) VALUES (25, 'Najczęściej powtarzająca się liczba', '<div class="task-explanation">    <p>        Najczęściej powtarzająca się liczba        Na wejściu funkcji znajduje się tablica ciągów znaków, każdy jej element zawiera parę liczb oddzieloną        przecinkiem, np. „1,12”.        Każda z takich par liczb reprezentuje domknięty przedział liczb naturalnych.        Znajdź liczbę która wystąpiła najczęściej razy we wszystkich przedziałach zawartych w całej tablicy wejściowej.        Jeśli istnieje więcej niż jedna taka liczba zwróć najmniejszą z nich.    </p>    <div class="example"> Przykładowo dla <span class="example-code">pairs = ["1,15","15,16"]</span> <br>        program powinien zwrócić <span class="example-code">15</span>.    </div>    <div class="assumptions">        Możesz przyjąć następujące założenia:        <ul>            <li>                pairs jest niepustą tablicą ciągów znaków reprezentujących zbiór liczb            </li>        </ul>    </div>    <div class="footer">        <div>algo-space</div>        <div class="author">Paweł Bogdan</div>    </div></div>', '15', 5, 2);
-
-INSERT INTO application_users(email, points) VALUES ('pelo', 10);

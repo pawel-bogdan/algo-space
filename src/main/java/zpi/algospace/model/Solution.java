@@ -32,5 +32,5 @@ public class Solution {
     @ManyToOne
     private Task task;
     @ManyToOne
-    private User solver;
+    private ApplicationUser solver;
 }

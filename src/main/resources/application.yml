@@ -11,7 +11,7 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     database: mysql
-    show-sql: false
+    show-sql: true
     hibernate:
       ddl-auto: create
     properties:
@@ -32,3 +32,10 @@ docker:
   network: ${DOCKER_NETWORK:bridge}
 worker:
   imageName: ${WORKER_IMAGE:algo-space-worker:1.0}
+allowed:
+  origin: ${FRONTEND_IP:http://localhost:3000}
+security:
+  jwt:
+    secretKey: 'VERYsecretKeyVERYsecretKeyVERYsecretKeyVERYsecretKeyVERYsecretKeyVERYsecretKeyVERYsecretKeyVERYsecretKey'
+    tokenPrefix: 'Bearer '
+    minutesToTokenExpiration: '180'

@@ -5,8 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import zpi.algospace.model.Solution;
 import zpi.algospace.model.dto.SolutionDTO;
+import zpi.algospace.repository.ApplicationUserRepository;
 import zpi.algospace.repository.TaskRepository;
-import zpi.algospace.repository.UserRepository;
 import zpi.algospace.solution.JobIdentifierCreator;
 import zpi.algospace.solution.SolutionComplementer;
 import zpi.algospace.solution.SolutionHandler;
@@ -19,7 +19,7 @@ public class SolutionService {
 
     private final SolutionHandler solutionHandler;
     private final TaskRepository taskRepository;
-    private final UserRepository userRepository;
+    private final ApplicationUserRepository applicationUserRepository;
 
     public Boolean judgeSolution(SolutionDTO solutionDTO) {
         Solution solution = convertToSolution(solutionDTO);
@@ -39,7 +39,7 @@ public class SolutionService {
                 .language(solutionDTO.getLanguage())
                 .task(taskRepository.findById(solutionDTO.getTaskId())
                         .orElseThrow(() -> new IllegalArgumentException("Requested task doesn't exist")))
-                .solver(userRepository.findByEmail(solutionDTO.getSolverEmail())
+                .solver(applicationUserRepository.findByEmail(solutionDTO.getSolverEmail())
                         .orElseThrow(() -> new IllegalArgumentException("Requested user doesn't exist")))
                 .build();
     }

@@ -12,7 +12,7 @@ import zpi.algospace.service.SolutionService;
 @RequiredArgsConstructor
 @Tag(name = "Solution Judge")
 @RequestMapping({"/solution", "/api/solution"})
-@CrossOrigin
+@CrossOrigin()
 @Slf4j
 public class SolutionController {
     private final SolutionService solutionService;
