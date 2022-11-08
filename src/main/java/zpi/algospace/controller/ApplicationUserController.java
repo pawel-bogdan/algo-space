@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import zpi.algospace.model.ApplicationUser;
@@ -27,26 +28,10 @@ public class ApplicationUserController {
         return new ResponseEntity<>(applicationUserService.createUser(applicationUserRegistrationModel), HttpStatus.CREATED);
     }
 
-    /*@GetMapping("/{userId}")
-    @Operation(summary = "Get solutions of given user.")
-    public ResponseEntity<List<Solution>> getSolutions(@PathVariable String userId) {
-        log.info(" >>> Request got. /user/{}", userId);
-        List<Solution> solutions;
-        try {
-            solutions = applicationUserService.findSolutions(userId);
-        } catch (IllegalArgumentException ex) {
-            log.error(">>> Cannot find user with given id: {}", userId);
-            return ResponseEntity.notFound().build();
-        }
-        log.info(" >>> Returned response with data: {}", solutions);
-        return ResponseEntity.ok(solutions);
-    }*/
-
-    /*@GetMapping("/email-check")
+    @PostMapping(value = "/email-availability", consumes = MediaType.TEXT_PLAIN_VALUE)
     @Operation(summary = "Checks if the given email is already used")
-    public ResponseEntity<Boolean> isEmailAlreadyUsed() {
-
-    }*/
-
-
+    public ResponseEntity<Boolean> isEmailAlreadyUsed(@RequestBody String email) {
+        log.info(String.format(" >>> Request got. /users/email-availability with data: %s", email));
+        return ResponseEntity.ok(applicationUserService.isEmailAvailable(email));
+    }
 }

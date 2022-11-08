@@ -13,6 +13,8 @@ import zpi.algospace.repository.ApplicationUserRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
@@ -33,13 +35,6 @@ public class ApplicationUserService implements UserDetailsService {
         return user.getSolutions();
     }
 
-    public List<String> findEmailsAlreadyUsed() {
-        return applicationUserRepository.findAll()
-                .stream()
-                .map(ApplicationUser::getEmail)
-                .collect(toList());
-    }
-
     public ApplicationUser createUser(ApplicationUserRegistrationModel userRegistrationModel) {
         if (isUserDataValid(userRegistrationModel)) {
             String encodedPassword = passwordEncoder.encode(userRegistrationModel.getPassword1());
@@ -56,9 +51,20 @@ public class ApplicationUserService implements UserDetailsService {
         }
     }
 
+    public boolean isEmailAvailable(String email) {
+        return !findEmailsAlreadyUsed().contains(email);
+    }
+
     private boolean isUserDataValid(ApplicationUserRegistrationModel userRegistrationModel) {
-        boolean isEmailUsed = findEmailsAlreadyUsed().contains(userRegistrationModel.getEmail());
+        boolean isEmailUsed = !isEmailAvailable(userRegistrationModel.getEmail());
         boolean passwordsAreEqual = userRegistrationModel.getPassword1().equals(userRegistrationModel.getPassword2());
         return !isEmailUsed && passwordsAreEqual;
+    }
+
+    private Set<String> findEmailsAlreadyUsed() {
+        return applicationUserRepository.findAll()
+                .stream()
+                .map(ApplicationUser::getEmail)
+                .collect(Collectors.toSet());
     }
 }
