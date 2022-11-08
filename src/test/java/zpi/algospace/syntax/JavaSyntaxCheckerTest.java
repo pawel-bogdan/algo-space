@@ -41,7 +41,7 @@ class JavaSyntaxCheckerTest {
                         return biggest;
                     }
                 """;
-        String javaIncorrectCode = """
+        String javaIncorrectCodeA = """
                 static int biggestNumber(int[] numbers) {
                         int biggest = numbers[0];
                         for(int i = 1; i < numbers.length; i++) {
@@ -52,10 +52,22 @@ class JavaSyntaxCheckerTest {
                         return biggest
                     }
                 """;
+        String javaIncorrectCodeB = """
+                static int biggestNumber(int[] numbers) {
+                        int biggest = numbers.atPos(1);
+                        for(int i = 1; i < numbers.length; i++) {
+                            if(biggest < numbers[i]) {
+                                biggest = numbers[i];
+                            }
+                        }
+                        return biggest;
+                    }
+                """;
 
         return Stream.of(
                 Arguments.of(javaCorrectCode, false),
-                Arguments.of(javaIncorrectCode, true)
+                Arguments.of(javaIncorrectCodeA, true),
+                Arguments.of(javaIncorrectCodeB, true)
         );
     }
 }

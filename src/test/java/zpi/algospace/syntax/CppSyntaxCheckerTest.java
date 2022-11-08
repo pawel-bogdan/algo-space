@@ -41,7 +41,7 @@ class CppSyntaxCheckerTest {
                     return biggestNumber;
                 }
                 """;
-        String cppIncorrectCode = """
+        String cppIncorrectCodeA = """
                 int biggestNumber(int numbers[]) {
                     int biggestNumber = numbers[0];
                     for(int i = 1; i < *(&numbers + 1) - numbers; i++) {
@@ -52,10 +52,22 @@ class CppSyntaxCheckerTest {
                     return biggestNumber;
                 }
                 """;
+        String cppIncorrectCodeB = """
+                int biggestNumber(int numbers[]) {
+                    int biggestNumber = numbers[0];
+                    for(int i = 1; i < *(numbers + 1) - numbers; i++) {
+                            if(biggestNumber < numbers[i]) {
+                                biggestNumber = numbers[i]
+                            }
+                        }
+                    return biggestNumber;
+                }
+                """;
 
         return Stream.of(
                 Arguments.of(cppCorrectCode, false),
-                Arguments.of(cppIncorrectCode, true)
+                Arguments.of(cppIncorrectCodeA, true),
+                Arguments.of(cppIncorrectCodeB, true)
         );
     }
 }
