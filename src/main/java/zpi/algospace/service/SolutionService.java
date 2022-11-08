@@ -7,7 +7,7 @@ import zpi.algospace.model.Solution;
 import zpi.algospace.model.dto.SolutionDTO;
 import zpi.algospace.repository.ApplicationUserRepository;
 import zpi.algospace.repository.TaskRepository;
-import zpi.algospace.solution.FileNameCreator;
+import zpi.algospace.solution.JobIdentifierCreator;
 import zpi.algospace.solution.SolutionComplementer;
 import zpi.algospace.solution.SolutionHandler;
 

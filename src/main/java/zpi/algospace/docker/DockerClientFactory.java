@@ -11,6 +11,8 @@ public class DockerClientFactory {
                 .withApiVersion("1.41");
 
     public static synchronized DockerClient getDockerClient(String host) {
-        return DockerClientBuilder.getInstance(configBuilder.withDockerHost(host).build()).build();
+        return DockerClientBuilder
+                .getInstance(configBuilder.withDockerHost(host).build())
+                .build();
     }
 }

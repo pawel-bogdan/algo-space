@@ -20,6 +20,13 @@ import zpi.algospace.service.ApplicationUserService;
 public class ApplicationUserController {
     private final ApplicationUserService applicationUserService;
 
+    @PostMapping("/register")
+    @Operation(summary = "Register user if his registration data are valid")
+    public ResponseEntity<ApplicationUser> postUser(@RequestBody ApplicationUserRegistrationModel applicationUserRegistrationModel) {
+        log.info(" >>> Request got. /users/register");
+        return new ResponseEntity<>(applicationUserService.createUser(applicationUserRegistrationModel), HttpStatus.CREATED);
+    }
+
     /*@GetMapping("/{userId}")
     @Operation(summary = "Get solutions of given user.")
     public ResponseEntity<List<Solution>> getSolutions(@PathVariable String userId) {
@@ -35,10 +42,11 @@ public class ApplicationUserController {
         return ResponseEntity.ok(solutions);
     }*/
 
-    @PostMapping("/register")
-    @Operation(summary = "Register user if his registration data are valid")
-    public ResponseEntity<ApplicationUser> postUser(@RequestBody ApplicationUserRegistrationModel applicationUserRegistrationModel) {
-        log.info(" >>> Request got. /users/register");
-        return new ResponseEntity<>(applicationUserService.createUser(applicationUserRegistrationModel), HttpStatus.CREATED);
-    }
+    /*@GetMapping("/email-check")
+    @Operation(summary = "Checks if the given email is already used")
+    public ResponseEntity<Boolean> isEmailAlreadyUsed() {
+
+    }*/
+
+
 }
