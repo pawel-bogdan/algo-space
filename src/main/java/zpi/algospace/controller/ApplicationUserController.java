@@ -16,7 +16,7 @@ import zpi.algospace.service.ApplicationUserService;
 @RequiredArgsConstructor
 @Tag(name = "User Controller")
 @RequestMapping({"/users", "/api/users"})
-@CrossOrigin()
+@CrossOrigin
 @Slf4j
 public class ApplicationUserController {
     private final ApplicationUserService applicationUserService;
