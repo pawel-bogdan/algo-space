@@ -1,8 +1,7 @@
 package zpi.algospace.syntax;
 
 import lombok.SneakyThrows;
-import org.junit.jupiter.api.condition.DisabledOnOs;
-import org.junit.jupiter.api.condition.OS;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -13,7 +12,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DisabledOnOs(value = OS.WINDOWS, disabledReason = "Bash, g++, python3, openjdk required")
+@Disabled("Bash, g++, python3, openjdk required")
 class PythonSyntaxCheckerTest {
     @SneakyThrows
     @ParameterizedTest

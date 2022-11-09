@@ -12,9 +12,11 @@ import java.io.IOException;
 @Service
 @Slf4j
 public class SyntaxService {
+    private static final String SUCCESS_MESSAGE = "SUCCESS - no errors found!!!";
+
     public String checkSyntax(Code code) throws IllegalArgumentException, IOException, InterruptedException {
         String checkingOutput = handleChecking(code);
-        return checkingOutput.isEmpty() ? "SUCCESS - no errors found!!!" : checkingOutput;
+        return checkingOutput.isEmpty() ? SUCCESS_MESSAGE : checkingOutput;
     }
 
     private String handleChecking(Code code) throws InterruptedException, IOException {

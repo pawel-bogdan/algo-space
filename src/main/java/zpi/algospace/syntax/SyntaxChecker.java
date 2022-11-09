@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class SyntaxChecker {
     protected static final int SYNTAX_CHECKING_TIMEOUT_IN_SECONDS = 5;
+    protected static final String FEEDBACK_FILE_NAME = "your_solution";
 
     protected Code code;
     protected File codeFile;

@@ -7,7 +7,6 @@ import java.io.IOException;
 
 public class PythonSyntaxChecker extends SyntaxChecker {
     private static final String EXTENSION = Language.PYTHON.getExtension();
-    private static final String FEEDBACK_FILE_NAME = "your_solution.py";
 
     public PythonSyntaxChecker(Code code) throws IOException {
         super(code);
@@ -25,8 +24,8 @@ public class PythonSyntaxChecker extends SyntaxChecker {
 
     @Override
     public String clearErrorMessage(String error) {
-        error = error.replaceAll(codeFile.getPath(), FEEDBACK_FILE_NAME);
-        error = error.replaceAll(codeFile.getAbsoluteFile().getName(), FEEDBACK_FILE_NAME);
+        error = error.replaceAll(codeFile.getPath(), FEEDBACK_FILE_NAME + EXTENSION);
+        error = error.replaceAll(codeFile.getAbsoluteFile().getName(), FEEDBACK_FILE_NAME + EXTENSION);
 
         return error;
     }

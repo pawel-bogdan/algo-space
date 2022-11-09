@@ -14,7 +14,6 @@ import static zpi.algospace.syntax.CleaningErrorMessageUtils.findAllLineNumberOc
 
 public class CppSyntaxChecker extends SyntaxChecker {
     private static final String EXTENSION = Language.CPP.getExtension();
-    private static final String FEEDBACK_FILE_NAME = "your_solution.cpp";
     private static final String CLASS_TEMPLATE = """
             #include <iostream>
             #include <stdio.h>
@@ -51,10 +50,10 @@ public class CppSyntaxChecker extends SyntaxChecker {
 
     @Override
     public String clearErrorMessage(String error) {
-        error = error.replaceAll(codeFile.getPath(), FEEDBACK_FILE_NAME);
+        error = error.replaceAll(codeFile.getPath(), FEEDBACK_FILE_NAME + EXTENSION);
 
         ArrayList<Pair<Integer,Integer>> allFileNameOccurrences = new ArrayList<>();
-        findAllLineNumberOccurrences(error, FEEDBACK_FILE_NAME + ":", allFileNameOccurrences);
+        findAllLineNumberOccurrences(error, FEEDBACK_FILE_NAME + EXTENSION + ":", allFileNameOccurrences);
         filterFileNameOccurrences(error, allFileNameOccurrences);
 
         return correctLineNumbers(error, allFileNameOccurrences, LINES_ADDED_BY_CODE);
