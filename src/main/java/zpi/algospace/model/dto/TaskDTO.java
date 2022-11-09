@@ -1,20 +1,16 @@
 package zpi.algospace.model.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
-import zpi.algospace.model.Category;
-import zpi.algospace.model.Hint;
-import zpi.algospace.model.Language;
-import zpi.algospace.model.Template;
-import zpi.algospace.model.Task;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import zpi.algospace.model.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Getter
+@Data
+@RequiredArgsConstructor
 @Builder
-@AllArgsConstructor
 public class TaskDTO {
     private final Long id;
     private final String name;

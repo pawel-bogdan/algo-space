@@ -1,13 +1,13 @@
 package zpi.algospace.model.dto;
 
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 
+@Data
 @Builder
-@Getter
 public class TaskGeneralInfo {
-    private Long id;
-    private String name;
-    private CategoryDTO category;
-    private DifficultyDTO difficulty;
+    private final Long id;
+    private final String name;
+    private final CategoryDTO category;
+    private final DifficultyDTO difficulty;
 }

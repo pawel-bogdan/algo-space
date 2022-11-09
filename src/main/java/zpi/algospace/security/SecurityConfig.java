@@ -33,18 +33,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
+                .cors().disable()
                 .addFilter(new JwtUsernamePasswordAuthenticationFilter(authenticationManager(), jwtConfig, secretKey))
                 .addFilterAfter(new JwtTokenVerifier(secretKey, jwtConfig), JwtUsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
                 .antMatchers(
                         "/categories", "/api/categories",
                         "/languages/**", "/api/languages/**",
-                        "/users/**", "/api/users/**"
+                        "/users/**", "/api/users/**",
+                        "/tasks/number", "/api/tasks/number"
                 )
                 .permitAll()
                 .antMatchers(
                         "/solution/**", "/api/solution/**",
-                        "/tasks/**", "/api/tasks/**"
+                        "/tasks/**", "/api/tasks/**",
+                        "/syntax", "/api/syntax"
                 )
                 .authenticated();
     }

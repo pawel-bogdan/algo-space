@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import zpi.algospace.model.ApplicationUser;
+import zpi.algospace.model.Difficulty;
 import zpi.algospace.model.Solution;
 import zpi.algospace.model.dto.ApplicationUserRegistrationModel;
 import zpi.algospace.repository.ApplicationUserRepository;
@@ -15,8 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.toList;
 
 @Service
 @RequiredArgsConstructor
@@ -55,6 +54,11 @@ public class ApplicationUserService implements UserDetailsService {
         return !findEmailsAlreadyUsed().contains(email);
     }
 
+    public void assign(Solution solution) {
+        String solverEmail = solution.getSolver().getEmail();
+        applicationUserRepository.addPoints(solverEmail, getPoints(solution.getTask().getDifficulty()));
+    }
+
     private boolean isUserDataValid(ApplicationUserRegistrationModel userRegistrationModel) {
         boolean isEmailUsed = !isEmailAvailable(userRegistrationModel.getEmail());
         boolean passwordsAreEqual = userRegistrationModel.getPassword1().equals(userRegistrationModel.getPassword2());
@@ -66,5 +70,15 @@ public class ApplicationUserService implements UserDetailsService {
                 .stream()
                 .map(ApplicationUser::getEmail)
                 .collect(Collectors.toSet());
+    }
+
+    private int getPoints(Difficulty difficulty) {
+        int points = 0;
+        switch (difficulty) {
+            case EASY -> points = 50;
+            case MEDIUM -> points = 150;
+            case HARD -> points = 250;
+        }
+        return points;
     }
 }

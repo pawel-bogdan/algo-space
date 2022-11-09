@@ -1,25 +1,18 @@
 package zpi.algospace.model.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.Data;
 import zpi.algospace.model.Language;
 
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
+
+@Data
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
 public class SolutionDTO {
-    private LocalDateTime submissionDate;
-    private String content;
-    private Language language;
-    private Long taskId;
-    private String solverEmail;
+    private final LocalDateTime submissionDate;
+    private final String content;
+    private final Language language;
+    private final Long taskId;
+    private final String solverEmail;
 }

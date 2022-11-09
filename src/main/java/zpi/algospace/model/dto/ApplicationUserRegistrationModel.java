@@ -1,15 +1,13 @@
 package zpi.algospace.model.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import javax.validation.constraints.Email;
 
-@Setter
-@Getter
+@Data
 public class ApplicationUserRegistrationModel {
     @Email
-    private String email;
-    private String password1;
-    private String password2;
+    private final String email;
+    private final String password1;
+    private final String password2;
 }

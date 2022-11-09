@@ -31,6 +31,10 @@ public class TaskService {
         return tasks.stream().map(Task::toTaskGeneralInfo).collect(Collectors.toList());
     }
 
+    public Integer countAllTasks() {
+        return (int) taskRepository.count();
+    }
+
     public TaskDTO findTask(Long id) {
         return new TaskDTO(taskRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException(String.format(TASK_NOT_FOUND_TEXT, id)))

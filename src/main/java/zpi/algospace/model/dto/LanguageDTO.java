@@ -1,9 +1,9 @@
 package zpi.algospace.model.dto;
 
-import lombok.Getter;
+import lombok.Data;
 import zpi.algospace.model.Language;
 
-@Getter
+@Data
 public class LanguageDTO {
     private final Language languageId;
     private final String translation;

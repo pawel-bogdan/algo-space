@@ -1,9 +1,9 @@
 package zpi.algospace.model.dto;
 
-import lombok.Getter;
+import lombok.Data;
 import zpi.algospace.model.Category;
 
-@Getter
+@Data
 public class CategoryDTO {
     private final Category categoryId;
     private final String translation;

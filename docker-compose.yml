@@ -16,7 +16,7 @@ services:
       # to run on windows enable | Expose daemon on tcp://localhost:2375 without TLS | option in docker desktop
       # check docker host using ipconfig command in cmd
       # set docker host to DockerNAT IPv4Address and add port 2375
-      DOCKER_HOST: tcp://172.17.0.1:2375
+      DOCKER_HOST: tcp://host.docker.internal:2375
       DOCKER_NETWORK: algo-space_algo-space-network
       WORKER_IMAGE: algo-space-worker:1.0
       REDIS_HOST: redis

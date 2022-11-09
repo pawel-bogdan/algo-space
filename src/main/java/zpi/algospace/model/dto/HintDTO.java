@@ -1,9 +1,9 @@
 package zpi.algospace.model.dto;
 
-import lombok.Getter;
+import lombok.Data;
 import zpi.algospace.model.Hint;
 
-@Getter
+@Data
 public class HintDTO {
     private final String content;
     private final Integer level;

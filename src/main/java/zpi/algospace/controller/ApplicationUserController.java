@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import zpi.algospace.model.ApplicationUser;
 import zpi.algospace.model.dto.ApplicationUserRegistrationModel;
 import zpi.algospace.service.ApplicationUserService;
+import zpi.algospace.service.SolutionService;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,6 +21,7 @@ import zpi.algospace.service.ApplicationUserService;
 @Slf4j
 public class ApplicationUserController {
     private final ApplicationUserService applicationUserService;
+    private final SolutionService solutionService;
 
     @PostMapping("/register")
     @Operation(summary = "Register user if his registration data are valid")

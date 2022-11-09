@@ -20,13 +20,13 @@ import java.util.List;
 @Tag(name = "Task Controller")
 @RequestMapping({"/", "/api"})
 @CrossOrigin
-@SecurityRequirement(name = "Bearer Authentication")
 @Slf4j
 public class TaskController {
     private final TaskService taskService;
 
     @GetMapping("/tasks")
     @Operation(summary = "Get all tasks from database.")
+    @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<List<TaskGeneralInfo>> getTasks(
             @RequestParam(required = false) Category category,
             @RequestParam(required = false) Difficulty difficulty) {
@@ -38,6 +38,7 @@ public class TaskController {
 
     @GetMapping("/tasks/{id}")
     @Operation(summary = "Get task with given id from database.")
+    @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<TaskDTO> getTask(@PathVariable Long id) {
         log.info(" >>> Request got. /tasks/{}", id);
         try {
@@ -48,4 +49,14 @@ public class TaskController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/tasks/number")
+    @Operation(summary = "Return number of tasks from database.")
+    public ResponseEntity<Integer> getNumberOfTasks() {
+        log.info(" >>> Request got. /tasks/number");
+        int result = taskService.countAllTasks();
+        log.info(" >>> Returned number of tasks: {}", result);
+        return ResponseEntity.ok(result);
+    }
+
 }

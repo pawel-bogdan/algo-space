@@ -8,5 +8,6 @@ RUN apk add --update openjdk11 g++ python3 bash curl make pkgconfig \
 ADD SolutionExecutor.java /
 RUN chmod a+x /SolutionExecutor.java
 ADD start.sh /
-RUN chmod a+x /start.sh
+RUN chmod a+x /start.sh \
+    && sed -i -e 's/\r$//' start.sh
 CMD exec /start.sh

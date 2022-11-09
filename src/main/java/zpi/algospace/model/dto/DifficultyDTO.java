@@ -1,9 +1,9 @@
 package zpi.algospace.model.dto;
 
-import lombok.Getter;
+import lombok.Data;
 import zpi.algospace.model.Difficulty;
 
-@Getter
+@Data
 public class DifficultyDTO {
     private final Difficulty id;
     private final String translation;

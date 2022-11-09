@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import zpi.algospace.model.Solution;
 import zpi.algospace.model.dto.SolutionDTO;
 import zpi.algospace.repository.ApplicationUserRepository;
+import zpi.algospace.repository.SolutionRepository;
 import zpi.algospace.repository.TaskRepository;
 import zpi.algospace.solution.JobIdentifierCreator;
 import zpi.algospace.solution.SolutionComplementer;
@@ -20,6 +21,8 @@ public class SolutionService {
     private final SolutionHandler solutionHandler;
     private final TaskRepository taskRepository;
     private final ApplicationUserRepository applicationUserRepository;
+    private final SolutionRepository solutionRepository;
+    private final ApplicationUserService applicationUserService;
 
     public Boolean judgeSolution(SolutionDTO solutionDTO) {
         Solution solution = convertToSolution(solutionDTO);
@@ -29,7 +32,13 @@ public class SolutionService {
         } catch (IllegalArgumentException e) {
             return INVALID_SOLUTION;
         }
-        return solutionHandler.handle(solution, jobId);
+
+        boolean result = solutionHandler.handle(solution, jobId);
+
+        if (result == true) {
+            saveSolutionAndUpdatePoints(solution);
+        }
+        return result;
     }
 
     private Solution convertToSolution(SolutionDTO solutionDTO) {
@@ -42,5 +51,10 @@ public class SolutionService {
                 .solver(applicationUserRepository.findByEmail(solutionDTO.getSolverEmail())
                         .orElseThrow(() -> new IllegalArgumentException("Requested user doesn't exist")))
                 .build();
+    }
+
+    public void saveSolutionAndUpdatePoints(Solution solution) {
+        solutionRepository.save(solution);
+        applicationUserService.assign(solution);
     }
 }
