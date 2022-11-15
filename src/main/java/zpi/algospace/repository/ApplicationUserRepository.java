@@ -12,10 +12,10 @@ import java.util.Optional;
 
 @Repository
 public interface ApplicationUserRepository extends JpaRepository<ApplicationUser, Long> {
-    Optional<ApplicationUser> findByEmail(String email);
+    Optional<ApplicationUser> findByUsername(String username);
 
     @Transactional
     @Modifying
-    @Query("update ApplicationUser u set u.points = u.points + ?2 where u.email = ?1")
-    int addPoints(@Param("email") String email, @Param("points") Integer points);
+    @Query("update ApplicationUser u set u.points = u.points + ?2 where u.username = ?1")
+    int addPoints(@Param("username") String username, @Param("points") Integer points);
 }

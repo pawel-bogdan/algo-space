@@ -54,11 +54,11 @@ class SolutionServiceTest {
     void judgeSolution() {
         //given
         long taskId = 1L;
-        String solverEmail = "email";
+        String solverUsername = "email";
         String fileName = "testFile";
         Mockito.when(taskRepository.findById(taskId))
                 .thenReturn(Optional.of(new Task()));
-        Mockito.when(applicationUserRepository.findByEmail(solverEmail))
+        Mockito.when(applicationUserRepository.findByUsername(solverUsername))
                 .thenReturn(Optional.of(new ApplicationUser()));
         try (MockedStatic<JobIdentifierCreator> utilities = Mockito.mockStatic(JobIdentifierCreator.class)) {
             utilities.when(() -> JobIdentifierCreator.createJobId(any()))
@@ -70,7 +70,7 @@ class SolutionServiceTest {
                     .content("content")
                     .language(Language.JAVA)
                     .taskId(taskId)
-                    .solverEmail(solverEmail)
+                    .solverUsername(solverUsername)
                     .build();
 
             //when

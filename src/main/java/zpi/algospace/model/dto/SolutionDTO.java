@@ -14,5 +14,5 @@ public class SolutionDTO {
     private final String content;
     private final Language language;
     private final Long taskId;
-    private final String solverEmail;
+    private final String solverUsername;
 }

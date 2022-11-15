@@ -9,13 +9,17 @@ import org.springframework.stereotype.Service;
 import zpi.algospace.model.ApplicationUser;
 import zpi.algospace.model.Difficulty;
 import zpi.algospace.model.Solution;
+import zpi.algospace.model.dto.ApplicationUserDTO;
 import zpi.algospace.model.dto.ApplicationUserRegistrationModel;
 import zpi.algospace.repository.ApplicationUserRepository;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 @Service
 @RequiredArgsConstructor
@@ -25,12 +29,12 @@ public class ApplicationUserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return applicationUserRepository.findByEmail(username)
-                .orElseThrow(() -> new UsernameNotFoundException(String.format("Username with given email: %s does not exist", username)));
+        return applicationUserRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException(String.format("Username: %s does not exist", username)));
     }
 
     public List<Solution> findSolutions(String userId) {
-        ApplicationUser user = applicationUserRepository.findByEmail(userId).orElseThrow(() -> new IllegalArgumentException("User with given id does not exist"));
+        ApplicationUser user = applicationUserRepository.findByUsername(userId).orElseThrow(() -> new IllegalArgumentException("User with given id does not exist"));
         return user.getSolutions();
     }
 
@@ -38,7 +42,7 @@ public class ApplicationUserService implements UserDetailsService {
         if (isUserDataValid(userRegistrationModel)) {
             String encodedPassword = passwordEncoder.encode(userRegistrationModel.getPassword1());
             ApplicationUser user = ApplicationUser.builder()
-                    .email(userRegistrationModel.getEmail())
+                    .username(userRegistrationModel.getUsername())
                     .password(encodedPassword)
                     .enabled(true)
                     .points(0)
@@ -50,25 +54,32 @@ public class ApplicationUserService implements UserDetailsService {
         }
     }
 
-    public boolean isEmailAvailable(String email) {
-        return !findEmailsAlreadyUsed().contains(email);
+    public List<ApplicationUserDTO> getUsersSortedByPoints() {
+        return applicationUserRepository.findAll().stream()
+                .map(ApplicationUserDTO::new)
+                .sorted(Comparator.comparingInt(ApplicationUserDTO::getPoints).reversed())
+                .collect(toList());
+    }
+
+    public boolean isUsernameAvailable(String username) {
+        return !findUsernamesAlreadyUsed().contains(username);
     }
 
     public void assign(Solution solution) {
-        String solverEmail = solution.getSolver().getEmail();
-        applicationUserRepository.addPoints(solverEmail, getPoints(solution.getTask().getDifficulty()));
+        String solverUsername = solution.getSolver().getUsername();
+        applicationUserRepository.addPoints(solverUsername, getPoints(solution.getTask().getDifficulty()));
     }
 
     private boolean isUserDataValid(ApplicationUserRegistrationModel userRegistrationModel) {
-        boolean isEmailUsed = !isEmailAvailable(userRegistrationModel.getEmail());
+        boolean isUsernameUsed = !isUsernameAvailable(userRegistrationModel.getUsername());
         boolean passwordsAreEqual = userRegistrationModel.getPassword1().equals(userRegistrationModel.getPassword2());
-        return !isEmailUsed && passwordsAreEqual;
+        return !isUsernameUsed && passwordsAreEqual;
     }
 
-    private Set<String> findEmailsAlreadyUsed() {
+    private Set<String> findUsernamesAlreadyUsed() {
         return applicationUserRepository.findAll()
                 .stream()
-                .map(ApplicationUser::getEmail)
+                .map(ApplicationUser::getUsername)
                 .collect(Collectors.toSet());
     }
 

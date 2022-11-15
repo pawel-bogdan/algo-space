@@ -9,9 +9,11 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import zpi.algospace.model.ApplicationUser;
+import zpi.algospace.model.dto.ApplicationUserDTO;
 import zpi.algospace.model.dto.ApplicationUserRegistrationModel;
 import zpi.algospace.service.ApplicationUserService;
-import zpi.algospace.service.SolutionService;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,7 +23,6 @@ import zpi.algospace.service.SolutionService;
 @Slf4j
 public class ApplicationUserController {
     private final ApplicationUserService applicationUserService;
-    private final SolutionService solutionService;
 
     @PostMapping("/register")
     @Operation(summary = "Register user if his registration data are valid")
@@ -30,10 +31,17 @@ public class ApplicationUserController {
         return new ResponseEntity<>(applicationUserService.createUser(applicationUserRegistrationModel), HttpStatus.CREATED);
     }
 
-    @PostMapping(value = "/email-availability", consumes = MediaType.TEXT_PLAIN_VALUE)
-    @Operation(summary = "Checks if the given email is already used")
-    public ResponseEntity<Boolean> isEmailAlreadyUsed(@RequestBody String email) {
-        log.info(String.format(" >>> Request got. /users/email-availability with data: %s", email));
-        return ResponseEntity.ok(applicationUserService.isEmailAvailable(email));
+    @PostMapping(value = "/username-availability", consumes = MediaType.TEXT_PLAIN_VALUE)
+    @Operation(summary = "Checks if the username is already used")
+    public ResponseEntity<Boolean> isUsernameAlreadyUsed(@RequestBody String username) {
+        log.info(String.format(" >>> Request got. /users/username-availability with data: %s", username));
+        return ResponseEntity.ok(applicationUserService.isUsernameAvailable(username));
+    }
+
+    @GetMapping("/ranking")
+    @Operation(summary = "Returns users sorted by their points in descending order")
+    public ResponseEntity<List<ApplicationUserDTO>> getUsers() {
+        log.info(" >>> Request got. /users/ranking");
+        return ResponseEntity.ok(applicationUserService.getUsersSortedByPoints());
     }
 }

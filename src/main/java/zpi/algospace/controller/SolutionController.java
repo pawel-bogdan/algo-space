@@ -5,7 +5,6 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -34,10 +33,10 @@ public class SolutionController {
         return solutionService.judgeSolution(solution);
     }
 
-    @GetMapping(value = "/all", consumes = MediaType.TEXT_PLAIN_VALUE)
+    @GetMapping(value = "/all/{user}")
     @Operation(summary = "Get solutions of given user.")
     @PreAuthorize("#user == authentication.name")
-    public ResponseEntity<List<Solution>> getSolutions(@RequestBody String user) {
+    public ResponseEntity<List<Solution>> getSolutions(@RequestParam String user) {
         log.info(" >>> Request got. /user/{}", user);
         List<Solution> solutions;
         try {

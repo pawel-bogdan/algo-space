@@ -21,9 +21,8 @@ import java.util.List;
 @Builder
 @Table(name = "ApplicationUsers")
 public class ApplicationUser implements UserDetails {
-
     @Id
-    private String email;
+    private String username;
     private String password;
     private boolean enabled;
     private Integer points;
@@ -37,7 +36,7 @@ public class ApplicationUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email;
+        return username;
     }
 
     @Override

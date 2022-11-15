@@ -48,7 +48,7 @@ public class SolutionService {
                 .language(solutionDTO.getLanguage())
                 .task(taskRepository.findById(solutionDTO.getTaskId())
                         .orElseThrow(() -> new IllegalArgumentException("Requested task doesn't exist")))
-                .solver(applicationUserRepository.findByEmail(solutionDTO.getSolverEmail())
+                .solver(applicationUserRepository.findByUsername(solutionDTO.getSolverUsername())
                         .orElseThrow(() -> new IllegalArgumentException("Requested user doesn't exist")))
                 .build();
     }
