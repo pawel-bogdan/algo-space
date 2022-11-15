@@ -331,14 +331,16 @@ INSERT INTO test(content, language, task_id) VALUES ('numbers = []\n\tfor i in r
 INSERT INTO test(content, language, task_id) VALUES ('cout << missingNumber({1,2,3,4,5,7}) << endl;', 2, 21);
 INSERT INTO test(content, language, task_id) VALUES ('cout << missingNumber({2,3,4,5,6,7}) << endl;', 2, 21);
 INSERT INTO test(content, language, task_id) VALUES ('int numbers[999999999];int counter=0;for(int i=1000000000;i>0;i--){if(i!=6456) {numbers[counter]=i;counter++; }} cout << missingNumber(numbers) << endl;', 2, 21);
-#------------task_22#------------int 5\n-1\n742621
+#------------task_22#------------int 4\n-1
 #java
-INSERT INTO test(content, language, task_id) VALUES ('System.out.println(itemIndex(new int[]{1,2,3,4,7,5,2,7}, 5));', 0, 22);
-INSERT INTO test(content, language, task_id) VALUES ('System.out.println(itemIndex(new int[]{1,2,3,4,7,5,2,7}, 15));', 0, 22);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(itemIndex(new int[]{0,2,3,4,5,7,8}, 5));', 0, 22);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(itemIndex(new int[]{0,2,3,4,5,7,8}, 15));', 0, 22);
 #python
-INSERT INTO test(content, language, task_id) VALUES ('println(itemIndex([1,2,3,4,7,5,2,7], 5))', 1, 22);
+INSERT INTO test(content, language, task_id) VALUES ('println(itemIndex([0,2,3,4,5,7,8], 5))', 1, 22);
+INSERT INTO test(content, language, task_id) VALUES ('println(itemIndex([0,2,3,4,5,7,8], 15))', 1, 22);
 #cpp
-INSERT INTO test(content, language, task_id) VALUES ('cout << itemIndex({1,2,3,4,7,5,2,7}, 5) << endl;', 2, 22);
+INSERT INTO test(content, language, task_id) VALUES ('cout << itemIndex({0,2,3,4,5,7,8}, 5) << endl;', 2, 22);
+INSERT INTO test(content, language, task_id) VALUES ('cout << itemIndex({0,2,3,4,5,7,8}, 15) << endl;', 2, 22);
 #------------task_23#------------String 8 9\n1 2
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(closestPair(new int[]{1,5,12,8,3,9,3,5}));', 0, 23);
