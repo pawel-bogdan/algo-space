@@ -3,6 +3,7 @@ package zpi.algospace.security.jwt;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -39,6 +40,7 @@ public class JwtUsernamePasswordAuthenticationFilter extends UsernamePasswordAut
         return this.authenticationManager.authenticate(authentication);
     }
 
+    @SneakyThrows
     @Override
     protected void successfulAuthentication(HttpServletRequest request,
                                             HttpServletResponse response,
@@ -57,6 +59,8 @@ public class JwtUsernamePasswordAuthenticationFilter extends UsernamePasswordAut
                 .signWith(secretKey)
                 .compact();
 
-        response.addHeader(JwtConfig.AUTHORIZATION_HEADER, jwtConfig.getTokenPrefix() + token);
+        response.setContentType("text/plain");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(jwtConfig.getTokenPrefix() + token);
     }
 }
