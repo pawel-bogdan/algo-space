@@ -3,12 +3,12 @@ package zpi.algospace.security.jwt;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import zpi.algospace.model.dto.JwtPayload;
 
 import javax.crypto.SecretKey;
 import javax.servlet.FilterChain;
@@ -26,6 +26,8 @@ public class JwtUsernamePasswordAuthenticationFilter extends UsernamePasswordAut
     private final JwtConfig jwtConfig;
     private final SecretKey secretKey;
 
+    private final ObjectMapper mapper;
+
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         UsernamePasswordAuthenticationRequest authenticationRequest;
@@ -40,7 +42,6 @@ public class JwtUsernamePasswordAuthenticationFilter extends UsernamePasswordAut
         return this.authenticationManager.authenticate(authentication);
     }
 
-    @SneakyThrows
     @Override
     protected void successfulAuthentication(HttpServletRequest request,
                                             HttpServletResponse response,
@@ -59,8 +60,16 @@ public class JwtUsernamePasswordAuthenticationFilter extends UsernamePasswordAut
                 .signWith(secretKey)
                 .compact();
 
-        response.setContentType("text/plain");
+        response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(jwtConfig.getTokenPrefix() + token);
+        JwtPayload jwtPayload = JwtPayload.builder()
+                .username(authResult.getName())
+                .token(jwtConfig.getTokenPrefix() + token)
+                .build();
+        try {
+            response.getWriter().write(mapper.writeValueAsString(jwtPayload));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

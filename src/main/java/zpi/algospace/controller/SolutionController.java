@@ -26,7 +26,7 @@ public class SolutionController {
     private final ApplicationUserService applicationUserService;
 
     @PostMapping("/check")
-    @Operation(summary = "Judges if function written by user is correct.")
+    @Operation(summary = "Checks whether solution is correct")
     public Boolean judgeSolution(@RequestBody SolutionDTO solution) {
         log.info(" >>> Request got. /solution/check with params: solution: {}", solution);
         return solutionService.judgeSolution(solution);
