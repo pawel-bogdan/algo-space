@@ -16,7 +16,6 @@ import java.io.IOException;
 @RequiredArgsConstructor
 @Tag(name = "Syntax controller")
 @RequestMapping({"/syntax", "/api/syntax"})
-@CrossOrigin
 @SecurityRequirement(name = "Bearer Authentication")
 @Slf4j
 public class SyntaxController {

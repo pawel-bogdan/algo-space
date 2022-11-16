@@ -17,7 +17,6 @@ import java.util.List;
 @Tag(name = "Category Controller")
 @RequiredArgsConstructor
 @RequestMapping({"/", "/api"})
-@CrossOrigin
 @Slf4j
 public class CategoryController {
     private final CategoryService categoryService;

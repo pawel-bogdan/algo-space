@@ -19,7 +19,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Tag(name = "Solution Judge")
 @RequestMapping({"/solution", "/api/solution"})
-@CrossOrigin
 @SecurityRequirement(name = "Bearer Authentication")
 @Slf4j
 public class SolutionController {

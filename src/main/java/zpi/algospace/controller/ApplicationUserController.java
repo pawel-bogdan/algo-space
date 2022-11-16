@@ -19,7 +19,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Tag(name = "User Controller")
 @RequestMapping({"/users", "/api/users"})
-@CrossOrigin
 @Slf4j
 public class ApplicationUserController {
     private final ApplicationUserService applicationUserService;

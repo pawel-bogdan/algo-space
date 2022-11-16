@@ -19,7 +19,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Tag(name = "Task Controller")
 @RequestMapping({"/", "/api"})
-@CrossOrigin
 @Slf4j
 public class TaskController {
     private final TaskService taskService;
