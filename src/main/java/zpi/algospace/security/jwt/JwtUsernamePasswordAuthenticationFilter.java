@@ -56,6 +56,7 @@ public class JwtUsernamePasswordAuthenticationFilter extends UsernamePasswordAut
                 .setExpiration(expirationDate)
                 .signWith(secretKey)
                 .compact();
+
         response.addHeader(JwtConfig.AUTHORIZATION_HEADER, jwtConfig.getTokenPrefix() + token);
     }
 }

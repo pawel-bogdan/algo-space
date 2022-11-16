@@ -19,6 +19,7 @@ import zpi.algospace.security.jwt.JwtUsernamePasswordAuthenticationFilter;
 import zpi.algospace.service.ApplicationUserService;
 
 import javax.crypto.SecretKey;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -77,6 +78,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         config.addAllowedOrigin("*");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
+        config.setExposedHeaders(List.of("*"));
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }

@@ -13,11 +13,11 @@ import zpi.algospace.service.SyntaxService;
 import java.io.IOException;
 
 @RestController
-@RequiredArgsConstructor
-@Tag(name = "Syntax controller")
 @RequestMapping({"/syntax", "/api/syntax"})
-@SecurityRequirement(name = "Bearer Authentication")
+@RequiredArgsConstructor
 @Slf4j
+@Tag(name = "Syntax controller")
+@SecurityRequirement(name = "Bearer Authentication")
 public class SyntaxController {
     private final SyntaxService syntaxService;
 
@@ -30,9 +30,11 @@ public class SyntaxController {
         } catch (IOException | InterruptedException e) {
             log.error(e.getMessage(), e);
             return ResponseEntity.internalServerError().build();
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             log.error(e.getMessage(), e);
             return ResponseEntity.badRequest().build();
         }
     }
 }
+
+

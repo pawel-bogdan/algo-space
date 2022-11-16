@@ -1,6 +1,7 @@
 package zpi.algospace.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,10 +16,10 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
-@Tag(name = "Language Controller")
-@RequiredArgsConstructor
 @RequestMapping({"/", "/api"})
+@RequiredArgsConstructor
 @Slf4j
+@Tag(name = "Language Controller")
 public class LanguageController {
     private final LanguageService languageService;
 

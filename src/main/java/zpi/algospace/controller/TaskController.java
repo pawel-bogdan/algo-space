@@ -16,10 +16,10 @@ import zpi.algospace.service.TaskService;
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor
-@Tag(name = "Task Controller")
 @RequestMapping({"/", "/api"})
+@RequiredArgsConstructor
 @Slf4j
+@Tag(name = "Task Controller")
 public class TaskController {
     private final TaskService taskService;
 

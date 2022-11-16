@@ -16,11 +16,11 @@ import zpi.algospace.service.SolutionService;
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor
-@Tag(name = "Solution Judge")
 @RequestMapping({"/solution", "/api/solution"})
-@SecurityRequirement(name = "Bearer Authentication")
+@RequiredArgsConstructor
 @Slf4j
+@Tag(name = "Solution Judge")
+@SecurityRequirement(name = "Bearer Authentication")
 public class SolutionController {
     private final SolutionService solutionService;
     private final ApplicationUserService applicationUserService;
