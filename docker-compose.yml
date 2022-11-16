@@ -3,8 +3,7 @@ services:
 
   algo-space-backend:
     container_name: algo-space-backend
-    image: zpi/algo-space
-    build: .
+    image: algospacezpi/algospace-backend
     ports:
       - '8080:8080'
     environment:
@@ -40,7 +39,7 @@ services:
       - algo-space-network
 
   algo-space-frontend:
-    image: cellitaes/algospace
+    image: algospacezpi/algospace-frontend
     container_name: algo-space-frontend
     ports:
       - '3000:3000'
