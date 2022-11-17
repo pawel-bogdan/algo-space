@@ -17,7 +17,7 @@ services:
       # set docker host to DockerNAT IPv4Address and add port 2375
       DOCKER_HOST: tcp://host.docker.internal:2375
       DOCKER_NETWORK: algo-space_algo-space-network
-      WORKER_IMAGE: algospacezpi/algo-space-worker:1.0
+      WORKER_IMAGE: algospacezpi/algospace-worker
       REDIS_HOST: redis
       REDIS_PORT: 6379
     restart: always
