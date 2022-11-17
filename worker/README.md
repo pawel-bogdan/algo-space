@@ -2,7 +2,9 @@
 
 ## This Dockerfile was created to be used for creating base image for worker executing code prepared by user.
 
-### To build this image execute below command in current (worker) directory
+### To build and push this image execute below commands in current (worker) directory
 ```bash
-docker build -t algo-space-worker:1.0 .
+docker login -u algospacezpi -p algospace123$
+docker build -t algospacezpi/algo-space-worker:1.0 .
+docker push algospacezpi/algo-space-worker:1.0
 ```
