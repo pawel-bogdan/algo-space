@@ -4,12 +4,12 @@ import lombok.Data;
 import zpi.algospace.model.Difficulty;
 
 @Data
-public class DifficultyDTO {
+public class DifficultyDto {
     private final Difficulty id;
     private final String translation;
 
-    public DifficultyDTO(Difficulty difficulty) {
-        this.id = difficulty;
-        this.translation = difficulty.getTranslation();
+    public DifficultyDto(Difficulty difficulty) {
+        id = difficulty;
+        translation = difficulty.getTranslation();
     }
 }

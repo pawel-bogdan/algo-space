@@ -12,7 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import zpi.algospace.model.ApplicationUser;
 import zpi.algospace.model.Language;
 import zpi.algospace.model.Task;
-import zpi.algospace.model.dto.SolutionDTO;
+import zpi.algospace.model.dto.SolutionDto;
 import zpi.algospace.repository.ApplicationUserRepository;
 import zpi.algospace.repository.SolutionRepository;
 import zpi.algospace.repository.TaskRepository;
@@ -65,7 +65,7 @@ class SolutionServiceTest {
                     .thenReturn(fileName);
             Mockito.when(solutionHandler.handle(any(), eq(fileName)))
                     .thenReturn(true);
-            SolutionDTO solutionDTO = SolutionDTO.builder()
+            SolutionDto solutionDTO = SolutionDto.builder()
                     .submissionDate(LocalDateTime.now())
                     .content("content")
                     .language(Language.JAVA)

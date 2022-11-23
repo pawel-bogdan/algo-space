@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import zpi.algospace.model.Solution;
-import zpi.algospace.model.dto.SolutionDTO;
+import zpi.algospace.model.dto.SolutionDto;
 import zpi.algospace.repository.ApplicationUserRepository;
 import zpi.algospace.repository.SolutionRepository;
 import zpi.algospace.repository.TaskRepository;
@@ -24,7 +24,7 @@ public class SolutionService {
     private final SolutionRepository solutionRepository;
     private final ApplicationUserService applicationUserService;
 
-    public Boolean judgeSolution(SolutionDTO solutionDTO) {
+    public Boolean judgeSolution(SolutionDto solutionDTO) {
         Solution solution = convertToSolution(solutionDTO);
         String jobId = JobIdentifierCreator.createJobId(solution);
         try {
@@ -35,13 +35,13 @@ public class SolutionService {
 
         boolean result = solutionHandler.handle(solution, jobId);
 
-        if (result == true) {
+        if (result) {
             saveSolutionAndUpdatePoints(solution);
         }
         return result;
     }
 
-    private Solution convertToSolution(SolutionDTO solutionDTO) {
+    private Solution convertToSolution(SolutionDto solutionDTO) {
         return Solution.builder()
                 .submissionDate(solutionDTO.getSubmissionDate())
                 .content(solutionDTO.getContent())

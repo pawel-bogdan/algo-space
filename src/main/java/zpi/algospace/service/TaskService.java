@@ -3,7 +3,7 @@ package zpi.algospace.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import zpi.algospace.model.*;
-import zpi.algospace.model.dto.TaskDTO;
+import zpi.algospace.model.dto.TaskDto;
 import zpi.algospace.model.dto.TaskGeneralInfo;
 import zpi.algospace.repository.TaskRepository;
 
@@ -35,8 +35,8 @@ public class TaskService {
         return (int) taskRepository.count();
     }
 
-    public TaskDTO findTask(Long id) {
-        return new TaskDTO(taskRepository.findById(id)
+    public TaskDto findTask(Long id) {
+        return new TaskDto(taskRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException(String.format(TASK_NOT_FOUND_TEXT, id)))
         );
     }

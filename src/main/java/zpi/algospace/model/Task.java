@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import zpi.algospace.model.dto.CategoryDTO;
-import zpi.algospace.model.dto.DifficultyDTO;
+import zpi.algospace.model.dto.CategoryDto;
+import zpi.algospace.model.dto.DifficultyDto;
 import zpi.algospace.model.dto.TaskGeneralInfo;
 
 import javax.persistence.*;
@@ -20,7 +20,7 @@ public class Task {
     @Id
     private Long id;
     private String name;
-    @Column(length = 2000)
+    @Column(columnDefinition = "TEXT")
     private String content;
     private String expectedOutput;
     @OneToMany
@@ -43,10 +43,10 @@ public class Task {
 
     public TaskGeneralInfo toTaskGeneralInfo() {
         return TaskGeneralInfo.builder()
-                .id(this.id)
-                .name(this.name)
-                .category(new CategoryDTO(this.category))
-                .difficulty(new DifficultyDTO(this.difficulty))
+                .id(id)
+                .name(name)
+                .category(new CategoryDto(category))
+                .difficulty(new DifficultyDto(difficulty))
                 .build();
     }
 }

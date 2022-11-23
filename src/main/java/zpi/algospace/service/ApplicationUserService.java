@@ -9,10 +9,12 @@ import org.springframework.stereotype.Service;
 import zpi.algospace.model.ApplicationUser;
 import zpi.algospace.model.Difficulty;
 import zpi.algospace.model.Solution;
-import zpi.algospace.model.dto.ApplicationUserDTO;
+import zpi.algospace.model.dto.ApplicationUserDto;
 import zpi.algospace.model.dto.ApplicationUserRegistrationModel;
+import zpi.algospace.model.dto.SolutionDto;
+import zpi.algospace.model.exception.SolutionNotFoundException;
+import zpi.algospace.model.exception.UserAlreadyExistException;
 import zpi.algospace.repository.ApplicationUserRepository;
-import zpi.algospace.service.exception.UserAlreadyExistException;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -28,6 +30,7 @@ public class ApplicationUserService implements UserDetailsService {
 
     private final static String USERNAME_NOT_FOUND_MSG = "Username: %s does not exist";
     private final static String USER_ALREADY_EXIST_MSG = "User with given username: %s exist.";
+    private final static String SOLUTION_NOT_FOUND_MSG = "User with name: %s did not solve task with id: %s";
     private final ApplicationUserRepository applicationUserRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -37,17 +40,30 @@ public class ApplicationUserService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException(String.format(USERNAME_NOT_FOUND_MSG, username)));
     }
 
-    public ApplicationUserDTO findUser(String username) throws UsernameNotFoundException {
+    public ApplicationUserDto findUser(String username) throws UsernameNotFoundException {
         return applicationUserRepository
-                .findByUsername(username).map(ApplicationUserDTO::new)
+                .findByUsername(username).map(ApplicationUserDto::new)
                 .orElseThrow(() -> new UsernameNotFoundException(String.format(USERNAME_NOT_FOUND_MSG, username)));
     }
 
-    public List<Solution> findSolutions(String username) throws UsernameNotFoundException {
+    public SolutionDto findSolution(Integer taskId, String username) throws UsernameNotFoundException, SolutionNotFoundException {
+        List<SolutionDto> solutions = findSolutions(username);
+
+        return solutions.stream()
+                .filter(solution -> solution.getTaskId() == taskId.longValue())
+                .findFirst()
+                .orElseThrow(
+                        () -> new SolutionNotFoundException(String.format(SOLUTION_NOT_FOUND_MSG, username, taskId))
+                );
+    }
+
+    public List<SolutionDto> findSolutions(String username) throws UsernameNotFoundException {
         ApplicationUser user = applicationUserRepository
                 .findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException(String.format(USERNAME_NOT_FOUND_MSG, username)));
-        return user.getSolutions();
+        return user.getSolutions().stream()
+                .map(SolutionDto::new)
+                .collect(toList());
     }
 
     public ApplicationUser createUser(ApplicationUserRegistrationModel userRegistrationModel) throws UserAlreadyExistException {
@@ -70,10 +86,10 @@ public class ApplicationUserService implements UserDetailsService {
         }
     }
 
-    public List<ApplicationUserDTO> getUsersSortedByPoints() {
+    public List<ApplicationUserDto> getUsersSortedByPoints() {
         return applicationUserRepository.findAll().stream()
-                .map(ApplicationUserDTO::new)
-                .sorted(Comparator.comparingInt(ApplicationUserDTO::getPoints).reversed())
+                .map(ApplicationUserDto::new)
+                .sorted(Comparator.comparingInt(ApplicationUserDto::getPoints).reversed())
                 .collect(toList());
     }
 

@@ -9,10 +9,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
-import zpi.algospace.model.dto.ApplicationUserDTO;
+import zpi.algospace.model.dto.ApplicationUserDto;
 import zpi.algospace.model.dto.ApplicationUserRegistrationModel;
 import zpi.algospace.service.ApplicationUserService;
-import zpi.algospace.service.exception.UserAlreadyExistException;
+import zpi.algospace.model.exception.UserAlreadyExistException;
 
 import java.net.URI;
 import java.util.List;
@@ -27,7 +27,7 @@ public class ApplicationUserController {
 
     @GetMapping("/{username}")
     @Operation(summary = "Gets basic info (such as login and points) about user.")
-    public ResponseEntity<ApplicationUserDTO> getUser(@PathVariable String username) {
+    public ResponseEntity<ApplicationUserDto> getUser(@PathVariable String username) {
         try {
             log.info(" >>> Request got. /users/{}", username);
             return ResponseEntity.ok(applicationUserService.findUser(username));
@@ -60,7 +60,7 @@ public class ApplicationUserController {
 
     @GetMapping("/ranking")
     @Operation(summary = "Returns users sorted by their points in descending order")
-    public ResponseEntity<List<ApplicationUserDTO>> getUsers() {
+    public ResponseEntity<List<ApplicationUserDto>> getUsers() {
         log.info(" >>> Request got. /users/ranking");
         return ResponseEntity.ok(applicationUserService.getUsersSortedByPoints());
     }

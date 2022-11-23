@@ -2,7 +2,7 @@ package zpi.algospace.service;
 
 import org.springframework.stereotype.Service;
 import zpi.algospace.model.Language;
-import zpi.algospace.model.dto.LanguageDTO;
+import zpi.algospace.model.dto.LanguageDto;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -13,9 +13,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class LanguageService {
-    public List<LanguageDTO> findLanguages() {
+    public List<LanguageDto> findLanguages() {
         return Arrays.stream(Language.values())
-                .map(LanguageDTO::new)
+                .map(LanguageDto::new)
                 .collect(Collectors.toList());
     }
 

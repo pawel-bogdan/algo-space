@@ -2,17 +2,17 @@ package zpi.algospace.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import zpi.algospace.model.Code;
 import zpi.algospace.syntax.CppSyntaxChecker;
 import zpi.algospace.syntax.JavaSyntaxChecker;
 import zpi.algospace.syntax.PythonSyntaxChecker;
-import zpi.algospace.model.Code;
 
 import java.io.IOException;
 
 @Service
 @Slf4j
 public class SyntaxService {
-    private static final String SUCCESS_MESSAGE = "SUCCESS - no errors found!!!";
+    private static final String SUCCESS_MESSAGE = "Success. No errors found.";
 
     public String checkSyntax(Code code) throws IllegalArgumentException, IOException, InterruptedException {
         String checkingOutput = handleChecking(code);

@@ -8,6 +8,6 @@ import lombok.Data;
 public class TaskGeneralInfo {
     private final Long id;
     private final String name;
-    private final CategoryDTO category;
-    private final DifficultyDTO difficulty;
+    private final CategoryDto category;
+    private final DifficultyDto difficulty;
 }

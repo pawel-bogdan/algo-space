@@ -52,8 +52,10 @@ public class JwtUsernamePasswordAuthenticationFilter extends UsernamePasswordAut
                         .atZone(ZoneId.systemDefault())
                         .toInstant());
 
+        String subject = authResult.getName();
+
         String token = Jwts.builder()
-                .setSubject(authResult.getName())
+                .setSubject(subject)
                 .claim("authorities", authResult.getAuthorities())
                 .setIssuedAt(new Date())
                 .setExpiration(expirationDate)
@@ -63,7 +65,7 @@ public class JwtUsernamePasswordAuthenticationFilter extends UsernamePasswordAut
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         JwtPayload jwtPayload = JwtPayload.builder()
-                .username(authResult.getName())
+                .username(subject)
                 .token(jwtConfig.getTokenPrefix() + token)
                 .build();
         try {

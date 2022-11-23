@@ -6,12 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.Builder;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Transient;
-import javax.persistence.ManyToOne;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -25,6 +20,7 @@ public class Solution {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDateTime submissionDate;
+    @Column(columnDefinition = "TEXT")
     private String content;
     @Transient
     private String complementedContent;

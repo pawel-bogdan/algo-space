@@ -4,12 +4,12 @@ import lombok.Data;
 import zpi.algospace.model.Language;
 
 @Data
-public class LanguageDTO {
+public class LanguageDto {
     private final Language languageId;
     private final String translation;
 
-    public LanguageDTO(Language language) {
-        this.languageId = language;
-        this.translation = language.getName();
+    public LanguageDto(Language language) {
+        languageId = language;
+        translation = language.getName();
     }
 }

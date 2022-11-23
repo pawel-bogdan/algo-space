@@ -4,12 +4,12 @@ import lombok.Data;
 import zpi.algospace.model.Category;
 
 @Data
-public class CategoryDTO {
+public class CategoryDto {
     private final Category categoryId;
     private final String translation;
 
-    public CategoryDTO(Category category) {
-        this.categoryId = category;
-        this.translation = category.getTranslation();
+    public CategoryDto(Category category) {
+        categoryId = category;
+        translation = category.getTranslation();
     }
 }

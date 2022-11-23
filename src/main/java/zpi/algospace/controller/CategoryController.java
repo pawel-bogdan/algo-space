@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import zpi.algospace.model.dto.CategoryDTO;
+import zpi.algospace.model.dto.CategoryDto;
 import zpi.algospace.service.CategoryService;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public class CategoryController {
 
     @GetMapping("/categories")
     @Operation(summary = "Get all available categories.")
-    public List<CategoryDTO> getCategories() {
+    public List<CategoryDto> getCategories() {
         log.info(" >>> Request got. /categories");
         return categoryService.findCategories();
     }

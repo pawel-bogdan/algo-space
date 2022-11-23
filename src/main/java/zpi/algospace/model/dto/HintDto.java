@@ -4,12 +4,12 @@ import lombok.Data;
 import zpi.algospace.model.Hint;
 
 @Data
-public class HintDTO {
+public class HintDto {
     private final String content;
     private final Integer level;
 
-    public HintDTO(Hint hint) {
-        this.content = hint.getContent();
-        this.level = hint.getLevel();
+    public HintDto(Hint hint) {
+        content = hint.getContent();
+        level = hint.getLevel();
     }
 }

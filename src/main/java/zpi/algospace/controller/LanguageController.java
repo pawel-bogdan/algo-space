@@ -8,7 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import zpi.algospace.model.Language;
-import zpi.algospace.model.dto.LanguageDTO;
+import zpi.algospace.model.dto.LanguageDto;
 import zpi.algospace.service.LanguageService;
 
 import java.io.IOException;
@@ -42,7 +42,7 @@ public class LanguageController {
 
     @GetMapping(value = "/languages")
     @Operation(summary = "Get all available languages.")
-    public List<LanguageDTO> getAllLanguages() {
+    public List<LanguageDto> getAllLanguages() {
         log.info(" >>> Request got. /languages");
         return languageService.findLanguages();
     }
