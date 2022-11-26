@@ -30,7 +30,6 @@ public class SolutionService {
 
     public Boolean judgeSolution(SolutionDto solutionDTO) {
         Solution solution = convertToSolution(solutionDTO);
-        saveSolutionAndUpdatePoints(solution);
         String jobId = JobIdentifierCreator.createJobId(solution);
         try {
             SolutionComplementer.complement(solution, jobId);
