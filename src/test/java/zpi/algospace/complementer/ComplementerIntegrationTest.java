@@ -3,10 +3,12 @@ package zpi.algospace.complementer;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
+import zpi.algospace.EmbeddedMysql;
 import zpi.algospace.model.Language;
 import zpi.algospace.model.Solution;
 import zpi.algospace.repository.TaskRepository;
@@ -19,8 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class ComplementerIntegrationTest {
-    private static EmbeddedMysqlForComplementers embeddedMysql;
-
+    private static EmbeddedMysql embeddedMysql;
     private final JavaComplementer javaComplementer = new JavaComplementer("testSolution");
     private final PythonComplementer pythonComplementer = new PythonComplementer();
     private final CppComplementer cppComplementer = new CppComplementer();
@@ -30,7 +31,7 @@ public class ComplementerIntegrationTest {
 
     @BeforeAll
     public static void setUp() {
-        embeddedMysql = new EmbeddedMysqlForComplementers();
+        embeddedMysql = new EmbeddedMysql("initTasks.sql");
     }
 
     @AfterAll
@@ -42,23 +43,9 @@ public class ComplementerIntegrationTest {
     @Test
     void javaComplement() {
         //given
-        String expectedComplementedContent = """
-                import java.util.*;
-                            
-                public class testSolution {
-                    public static void main(String [] args) {
-                    System.out.println(returnInput("siema"));System.out.println(returnInput("elo"));
-                    }
-                    
-                static String returnInput(String input) {
-                    return input;
-                }
-                            
-                }
-                """;
         String content = """
                 static String returnInput(String input) {
-                    return input; 
+                    return input;
                 }
                 """;
 
@@ -73,6 +60,20 @@ public class ComplementerIntegrationTest {
         javaComplementer.complement(solution);
 
         //then
+        String expectedComplementedContent = """
+                import java.util.*;
+                            
+                public class testSolution {
+                    public static void main(String [] args) {
+                    System.out.println(returnInput("siema"));System.out.println(returnInput("elo"));
+                    }
+                    
+                static String returnInput(String input) {
+                    return input;
+                }
+                            
+                }
+                """;
         assertThat(solution.getComplementedContent()).isEqualTo(expectedComplementedContent);
     }
 
@@ -80,15 +81,6 @@ public class ComplementerIntegrationTest {
     @Test
     void pythonComplement() {
         //given
-        String expectedComplementedContent = """
-                def returnInput(input):
-                    return input
-                     
-                if __name__ == "__main__":
-                    print(returnInput("siema"))
-                \tprint(returnInput("elo"))
-                 """;
-
         String content = """
                 def returnInput(input):
                     return input""";
@@ -104,6 +96,14 @@ public class ComplementerIntegrationTest {
         pythonComplementer.complement(solution);
 
         //then
+        String expectedComplementedContent = """
+                def returnInput(input):
+                    return input
+                     
+                if __name__ == "__main__":
+                    print(returnInput("siema"))
+                \tprint(returnInput("elo"))
+                 """;
         assertThat(solution.getComplementedContent()).isEqualTo(expectedComplementedContent);
     }
 
@@ -115,6 +115,18 @@ public class ComplementerIntegrationTest {
                 string returnInput(string input) {
                     return input;
                 }""";
+
+        Solution solution = Solution.builder()
+                .id(1L)
+                .content(content)
+                .language(Language.CPP)
+                .task(taskRepository.findById(1L).get())
+                .build();
+
+        //when
+        cppComplementer.complement(solution);
+
+        //then
         String expectedComplementedContent = """
                 #include <iostream>
                 #include <stdio.h>
@@ -128,18 +140,6 @@ public class ComplementerIntegrationTest {
                 cout << returnInput("siema") << endl;cout << returnInput("elo") << endl;
                 }
                 """;
-
-        Solution solution = Solution.builder()
-                .id(1L)
-                .content(content)
-                .language(Language.CPP)
-                .task(taskRepository.findById(1L).get())
-                .build();
-
-        //when
-        cppComplementer.complement(solution);
-
-        //then
         assertThat(solution.getComplementedContent()).isEqualTo(expectedComplementedContent);
     }
 }

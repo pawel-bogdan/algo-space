@@ -1,4 +1,4 @@
-package zpi.algospace.solution.service;
+package zpi.algospace.service;
 
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
@@ -18,7 +18,6 @@ import zpi.algospace.model.dto.ApplicationUserDto;
 import zpi.algospace.model.dto.SolutionDto;
 import zpi.algospace.model.exception.SolutionNotFoundException;
 import zpi.algospace.repository.ApplicationUserRepository;
-import zpi.algospace.service.ApplicationUserService;
 
 import java.util.Collections;
 import java.util.List;

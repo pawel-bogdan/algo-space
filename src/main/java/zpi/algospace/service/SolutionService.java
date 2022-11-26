@@ -12,6 +12,10 @@ import zpi.algospace.solution.JobIdentifierCreator;
 import zpi.algospace.solution.SolutionComplementer;
 import zpi.algospace.solution.SolutionHandler;
 
+import java.util.Optional;
+
+import static java.util.stream.Collectors.toSet;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -26,6 +30,7 @@ public class SolutionService {
 
     public Boolean judgeSolution(SolutionDto solutionDTO) {
         Solution solution = convertToSolution(solutionDTO);
+        saveSolutionAndUpdatePoints(solution);
         String jobId = JobIdentifierCreator.createJobId(solution);
         try {
             SolutionComplementer.complement(solution, jobId);
@@ -41,6 +46,17 @@ public class SolutionService {
         return result;
     }
 
+    public void saveSolutionAndUpdatePoints(Solution solution) {
+        solutionRepository.save(solution);
+        var solverSolutionIds = solution.getSolver().getSolutions().stream()
+                .map(Solution::getId)
+                .collect(toSet());
+        boolean alreadySolved = solverSolutionIds.contains(solution.getTask().getId());
+        if (!alreadySolved) {
+            applicationUserService.assign(solution);
+        }
+    }
+
     private Solution convertToSolution(SolutionDto solutionDTO) {
         return Solution.builder()
                 .submissionDate(solutionDTO.getSubmissionDate())
@@ -51,10 +67,5 @@ public class SolutionService {
                 .solver(applicationUserRepository.findByUsername(solutionDTO.getSolverUsername())
                         .orElseThrow(() -> new IllegalArgumentException("Requested user doesn't exist")))
                 .build();
-    }
-
-    public void saveSolutionAndUpdatePoints(Solution solution) {
-        solutionRepository.save(solution);
-        applicationUserService.assign(solution);
     }
 }

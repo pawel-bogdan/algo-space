@@ -1,4 +1,4 @@
-package zpi.algospace.solution.service;
+package zpi.algospace.service;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,7 +11,6 @@ import zpi.algospace.model.Task;
 import zpi.algospace.model.dto.TaskDto;
 import zpi.algospace.model.dto.TaskGeneralInfo;
 import zpi.algospace.repository.TaskRepository;
-import zpi.algospace.service.TaskService;
 
 import java.util.List;
 import java.util.Optional;
