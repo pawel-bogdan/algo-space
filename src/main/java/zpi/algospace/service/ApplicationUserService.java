@@ -63,6 +63,7 @@ public class ApplicationUserService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException(String.format(USERNAME_NOT_FOUND_MSG, username)));
         return user.getSolutions().stream()
                 .map(SolutionPreviewModel::new)
+                .sorted(Comparator.comparing(SolutionPreviewModel::getSubmissionDate))
                 .collect(toList());
     }
 

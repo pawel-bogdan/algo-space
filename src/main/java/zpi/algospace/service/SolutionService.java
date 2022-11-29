@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import zpi.algospace.model.Solution;
+import zpi.algospace.model.Task;
 import zpi.algospace.model.dto.SolutionDto;
 import zpi.algospace.repository.ApplicationUserRepository;
 import zpi.algospace.repository.SolutionRepository;
@@ -11,8 +12,6 @@ import zpi.algospace.repository.TaskRepository;
 import zpi.algospace.solution.JobIdentifierCreator;
 import zpi.algospace.solution.SolutionComplementer;
 import zpi.algospace.solution.SolutionHandler;
-
-import java.util.Optional;
 
 import static java.util.stream.Collectors.toSet;
 
@@ -46,14 +45,15 @@ public class SolutionService {
     }
 
     public void saveSolutionAndUpdatePoints(Solution solution) {
-        solutionRepository.save(solution);
         var solverSolutionIds = solution.getSolver().getSolutions().stream()
-                .map(Solution::getId)
+                .map(Solution::getTask)
+                .map(Task::getId)
                 .collect(toSet());
         boolean alreadySolved = solverSolutionIds.contains(solution.getTask().getId());
         if (!alreadySolved) {
             applicationUserService.assign(solution);
         }
+        solutionRepository.save(solution);
     }
 
     private Solution convertToSolution(SolutionDto solutionDTO) {
