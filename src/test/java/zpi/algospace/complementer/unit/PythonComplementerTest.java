@@ -45,8 +45,8 @@ class PythonComplementerTest {
                     
             if __name__ == "__main__":
                 print(solution("test1"))
-            \tprint(solution("test2"))
-            \tprint(solution("test3"))
+                print(solution("test2"))
+                print(solution("test3"))
             """;
 
         assertEquals(expectedComplementedContent, solution.getComplementedContent());
