@@ -1,0 +1,20 @@
+static int convertRomanToArabic(String roman) {
+    String[] ROMAN_NUMERALS = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+    int[] ARABIC_EQUIVALENTS = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+
+    int result = 0;
+    int i = 0;
+    int currentPosition = 0;
+
+    while ((currentPosition < roman.length()) && (i < ROMAN_NUMERALS.length)) {
+        String symbol = ROMAN_NUMERALS[i];
+        if (roman.startsWith(symbol, currentPosition)) {
+            result += ARABIC_EQUIVALENTS[i];
+            currentPosition += symbol.length();
+        } else {
+            i++;
+        }
+    }
+
+    return result;
+}
