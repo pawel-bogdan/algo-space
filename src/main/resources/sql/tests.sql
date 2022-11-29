@@ -15,11 +15,11 @@ INSERT INTO test(content, language, task_id) VALUES ('print(shortestWord(["aaaa"
 INSERT INTO test(content, language, task_id) VALUES ('print(shortestWord(["aaaa", "bbbb", "c"]))', 1, 1);
 INSERT INTO test(content, language, task_id) VALUES ('print(shortestWord(["aaaa", "bbb", "cccccccc"]))', 1, 1);
 #cpp
-INSERT INTO test(content, language, task_id) VALUES ('cout << shortestWord({"aaaa", "bbbb", "cccccccc"}) << endl;', 2, 1);
-INSERT INTO test(content, language, task_id) VALUES ('cout << shortestWord({"aaaa", "bbbbb", ""}) << endl;', 2, 1);
-INSERT INTO test(content, language, task_id) VALUES ('cout << shortestWord({"aaaa", "bbbb", "cccc"}) << endl;', 2, 1);
-INSERT INTO test(content, language, task_id) VALUES ('cout << shortestWord({"aaaa", "bbbb", "c"}) << endl;', 2, 1);
-INSERT INTO test(content, language, task_id) VALUES ('cout << shortestWord({"aaaa", "bbb", "cccccccc"}) << endl;', 2, 1);
+INSERT INTO test(content, language, task_id) VALUES ('cout << shortestWord(new string[3]{"aaaa", "bbbb", "cccccccc"}) << endl;', 2, 1);
+INSERT INTO test(content, language, task_id) VALUES ('cout << shortestWord(new string[3]{"aaaa", "bbbbb", ""}) << endl;', 2, 1);
+INSERT INTO test(content, language, task_id) VALUES ('cout << shortestWord(new string[3]{"aaaa", "bbbb", "cccc"}) << endl;', 2, 1);
+INSERT INTO test(content, language, task_id) VALUES ('cout << shortestWord(new string[3]{"aaaa", "bbbb", "c"}) << endl;', 2, 1);
+INSERT INTO test(content, language, task_id) VALUES ('cout << shortestWord(new string[3]{"aaaa", "bbb", "cccccccc"}) << endl;', 2, 1);
 #------------task_2#------------int 76\n47\n-3
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(biggestNumber(new int[]{12, 12, 76}));', 0, 2);
@@ -30,9 +30,9 @@ INSERT INTO test(content, language, task_id) VALUES ('print(biggestNumber([12, 1
 INSERT INTO test(content, language, task_id) VALUES ('print(biggestNumber([12, 47, -3]))', 1, 2);
 INSERT INTO test(content, language, task_id) VALUES ('print(biggestNumber([-3, -10, -21]))', 1, 2);
 #cpp
-INSERT INTO test(content, language, task_id) VALUES ('cout << biggestNumber({12, 12, 76}) << endl;', 2, 2);
-INSERT INTO test(content, language, task_id) VALUES ('cout << biggestNumber({12, 47, -3}) << endl;', 2, 2);
-INSERT INTO test(content, language, task_id) VALUES ('cout << biggestNumber({-3, -10, -21}) << endl;', 2, 2);
+INSERT INTO test(content, language, task_id) VALUES ('cout << biggestNumber(new int[3]{12, 12, 76}) << endl;', 2, 2);
+INSERT INTO test(content, language, task_id) VALUES ('cout << biggestNumber(new int[3]{12, 47, -3}) << endl;', 2, 2);
+INSERT INTO test(content, language, task_id) VALUES ('cout << biggestNumber(new int[3]{-3, -10, -21}) << endl;', 2, 2);
 #------------task_3#------------int[] 2\n\n1,4\n1,2
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(findDuplicates(new int[]{1,2}, new int[]{2,3}));', 0, 3);
@@ -45,10 +45,10 @@ INSERT INTO test(content, language, task_id) VALUES ('print(findDuplicates([1,2]
 INSERT INTO test(content, language, task_id) VALUES ('print(findDuplicates([1,2,3,4,5,6], [1,4,15,21,0]))', 1, 3);
 INSERT INTO test(content, language, task_id) VALUES ('print(findDuplicates([1,2], [1,2]))', 1, 3);
 #cpp
-INSERT INTO test(content, language, task_id) VALUES ('cout << findDuplicates({1,2}, {2,3}) << endl;', 2, 3);
-INSERT INTO test(content, language, task_id) VALUES ('cout << findDuplicates({1,2}, {3,4}) << endl;', 2, 3);
-INSERT INTO test(content, language, task_id) VALUES ('cout << findDuplicates({1,2,3,4,5,6}, {1,4,15,21,0}) << endl;', 2, 3);
-INSERT INTO test(content, language, task_id) VALUES ('cout << findDuplicates({1,2}, {1,2}) << endl;', 2, 3);
+INSERT INTO test(content, language, task_id) VALUES ('cout << findDuplicates(new int[2]{1,2}, new int[2]{2,3}) << endl;', 2, 3);
+INSERT INTO test(content, language, task_id) VALUES ('cout << findDuplicates(new int[2]{1,2}, new int[2]{3,4}) << endl;', 2, 3);
+INSERT INTO test(content, language, task_id) VALUES ('cout << findDuplicates(new int[6]{1,2,3,4,5,6}, new int[6]{1,4,15,21,0}) << endl;', 2, 3);
+INSERT INTO test(content, language, task_id) VALUES ('cout << findDuplicates(new int[2]{1,2}, new int[2]{1,2}) << endl;', 2, 3);
 #------------task_4#------------int[] -1,-1\n3,-1,3,2\n0,0,0,0
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(arraysDiff(new int[]{1,2}, new int[]{2,3}));', 0, 4);
@@ -59,9 +59,9 @@ INSERT INTO test(content, language, task_id) VALUES ('print(arraysDiff([1,2], [2
 INSERT INTO test(content, language, task_id) VALUES ('print(arraysDiff([1,2,3,4], [-2,3,0,2]))', 1, 4);
 INSERT INTO test(content, language, task_id) VALUES ('print(arraysDiff([1,2,3,4], [1,2,3,4]))', 1, 4);
 #cpp
-INSERT INTO test(content, language, task_id) VALUES ('cout << arraysDiff({1,2}, {2,3}) << endl;', 2, 4);
-INSERT INTO test(content, language, task_id) VALUES ('cout << arraysDiff({1,2,3,4}, {2,3,0,2}) << endl;', 2, 4);
-INSERT INTO test(content, language, task_id) VALUES ('cout << arraysDiff({1,2,3,4}, {1,2,3,4}) << endl;', 2, 4);
+INSERT INTO test(content, language, task_id) VALUES ('cout << arraysDiff(new int[2]{1,2}, new int[2]{2,3}) << endl;', 2, 4);
+INSERT INTO test(content, language, task_id) VALUES ('cout << arraysDiff(new int[4]{1,2,3,4}, new int[4]{2,3,0,2}) << endl;', 2, 4);
+INSERT INTO test(content, language, task_id) VALUES ('cout << arraysDiff(new int[4]{1,2,3,4}, new int[4]{1,2,3,4}) << endl;', 2, 4);
 #------------task_5#------------int[] 5,1,2,3\n7,5,12,3\n12,3\n3,12
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(rotateArray(new int[]{1,2,3,5}, 1));', 0, 5);
@@ -74,10 +74,10 @@ INSERT INTO test(content, language, task_id) VALUES ('print(rotateArray([12,3,7,
 INSERT INTO test(content, language, task_id) VALUES ('print(rotateArray([12,3], 8))', 1, 5);
 INSERT INTO test(content, language, task_id) VALUES ('print(rotateArray([12,3], 7))', 1, 5);
 #cpp
-INSERT INTO test(content, language, task_id) VALUES ('cout << rotateArray({1,2,3,5}, 1) << endl;', 2, 5);
-INSERT INTO test(content, language, task_id) VALUES ('cout << rotateArray({12,3,7,5}, 2) << endl;', 2, 5);
-INSERT INTO test(content, language, task_id) VALUES ('cout << rotateArray({12,3}, 8) << endl;', 2, 5);
-INSERT INTO test(content, language, task_id) VALUES ('cout << rotateArray({12,3}, 7) << endl;', 2, 5);
+INSERT INTO test(content, language, task_id) VALUES ('cout << rotateArray(new int[4]{1,2,3,5}, 1) << endl;', 2, 5);
+INSERT INTO test(content, language, task_id) VALUES ('cout << rotateArray(new int[4]{12,3,7,5}, 2) << endl;', 2, 5);
+INSERT INTO test(content, language, task_id) VALUES ('cout << rotateArray(new int[2]{12,3}, 8) << endl;', 2, 5);
+INSERT INTO test(content, language, task_id) VALUES ('cout << rotateArray(new int[2]{12,3}, 7) << endl;', 2, 5);
 #------------task_6#------------boolean true\ntrue\nfalse\nfalse
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(nestsCorrectness("{()()}"));', 0, 6);
@@ -264,9 +264,9 @@ INSERT INTO test(content, language, task_id) VALUES ('print(concatArrays(["jeden
 INSERT INTO test(content, language, task_id) VALUES ('print(concatArrays(["siema","czesc","hej"], \',\'))', 1, 17);
 INSERT INTO test(content, language, task_id) VALUES ('print(concatArrays(["jeden"], \',\'))', 1, 17);
 #cpp
-INSERT INTO test(content, language, task_id) VALUES ('cout << concatArrays({"jeden","dwa","trzy"}, \',\') << endl;', 2, 17);
-INSERT INTO test(content, language, task_id) VALUES ('cout << concatArrays({"siema","czesc","hej"}, \',\') << endl;', 2, 17);
-INSERT INTO test(content, language, task_id) VALUES ('cout << concatArrays({"jeden"}, \',\') << endl;', 2, 17);
+INSERT INTO test(content, language, task_id) VALUES ('cout << concatArrays(new string[3]{"jeden","dwa","trzy"}, \',\') << endl;', 2, 17);
+INSERT INTO test(content, language, task_id) VALUES ('cout << concatArrays(new string[3]{"siema","czesc","hej"}, \',\') << endl;', 2, 17);
+INSERT INTO test(content, language, task_id) VALUES ('cout << concatArrays(new string[1]{"jeden"}, \',\') << endl;', 2, 17);
 #------------task_18#------------int 4\n3\n0\n6\n6
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(longestCommonSubstring("aatrala", "wwatrasw"));', 0, 18);
@@ -328,8 +328,8 @@ INSERT INTO test(content, language, task_id) VALUES ('print(missingNumber([1,2,3
 INSERT INTO test(content, language, task_id) VALUES ('print(missingNumber([2,3,4,5,6,7]))', 1, 21);
 INSERT INTO test(content, language, task_id) VALUES ('numbers = []\n\tfor i in range(1000000000, 1):\n\t\tif(i != 6456):\n\t\t\tnumbers.append(i)\n\tprintln(missingNumber(numbers))', 1, 21);
 #cpp
-INSERT INTO test(content, language, task_id) VALUES ('cout << missingNumber({1,2,3,4,5,7}) << endl;', 2, 21);
-INSERT INTO test(content, language, task_id) VALUES ('cout << missingNumber({2,3,4,5,6,7}) << endl;', 2, 21);
+INSERT INTO test(content, language, task_id) VALUES ('cout << missingNumber(new int[6]{1,2,3,4,5,7}) << endl;', 2, 21);
+INSERT INTO test(content, language, task_id) VALUES ('cout << missingNumber(new int[6]{2,3,4,5,6,7}) << endl;', 2, 21);
 INSERT INTO test(content, language, task_id) VALUES ('int numbers[999999999];int counter=0;for(int i=1000000000;i>0;i--){if(i!=6456) {numbers[counter]=i;counter++; }} cout << missingNumber(numbers) << endl;', 2, 21);
 #------------task_22#------------int 4\n-1
 #java
@@ -339,15 +339,15 @@ INSERT INTO test(content, language, task_id) VALUES ('System.out.println(itemInd
 INSERT INTO test(content, language, task_id) VALUES ('print(itemIndex([0,2,3,4,5,7,8], 5))', 1, 22);
 INSERT INTO test(content, language, task_id) VALUES ('print(itemIndex([0,2,3,4,5,7,8], 15))', 1, 22);
 #cpp
-INSERT INTO test(content, language, task_id) VALUES ('cout << itemIndex({0,2,3,4,5,7,8}, 5) << endl;', 2, 22);
-INSERT INTO test(content, language, task_id) VALUES ('cout << itemIndex({0,2,3,4,5,7,8}, 15) << endl;', 2, 22);
+INSERT INTO test(content, language, task_id) VALUES ('cout << itemIndex(new int[7]{0,2,3,4,5,7,8}, 5) << endl;', 2, 22);
+INSERT INTO test(content, language, task_id) VALUES ('cout << itemIndex(new int[7]{0,2,3,4,5,7,8}, 15) << endl;', 2, 22);
 #------------task_23#------------String 8 9\n1 2
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(closestPair(new int[]{1,5,12,8,3,9,3,5}));', 0, 23);
 #python
 INSERT INTO test(content, language, task_id) VALUES ('print(closestPair([1,5,12,8,3,9,3,5]))', 1, 23);
 #cpp
-INSERT INTO test(content, language, task_id) VALUES ('cout << closestPair({1,5,12,8,3,9,3,5}) << endl;', 2, 23);
+INSERT INTO test(content, language, task_id) VALUES ('cout << closestPair(new int[8]{1,5,12,8,3,9,3,5}) << endl;', 2, 23);
 #------------task_24#------------String "   *\n  ***\n *****\n*******"
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(pyramid(4));', 0, 24);
@@ -361,4 +361,4 @@ INSERT INTO test(content, language, task_id) VALUES ('System.out.println(mostCom
 #python
 INSERT INTO test(content, language, task_id) VALUES ('print(mostCommonNumber(["1,15","15,16"]))', 1, 25);
 #cpp
-INSERT INTO test(content, language, task_id) VALUES ('cout << mostCommonNumber({"1,15","15,16"}) << endl;', 2, 25);
+INSERT INTO test(content, language, task_id) VALUES ('cout << mostCommonNumber(new string[2]{"1,15","15,16"}) << endl;', 2, 25);
