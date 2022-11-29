@@ -1,0 +1,3 @@
+def biggestNumber(numbers):
+    numbers.sort()
+    return numbers[-1]
