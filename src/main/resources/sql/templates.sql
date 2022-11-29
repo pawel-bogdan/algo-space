@@ -78,9 +78,9 @@ INSERT INTO template (content, language, task_id) VALUE('//import java.util.*;\n
 INSERT INTO template (content, language, task_id) VALUE('def convertRomanToArabic(roman): ', 1, 19);
 INSERT INTO template (content, language, task_id) VALUE('//#include <iostream>\n//#include <stdio.h>\n//using namespace std;\n\nint convertRomanToArabic(string roman) {  }', 2, 19);
 #task20
-INSERT INTO template (content, language, task_id) VALUE('//import java.util.*;\n\nstatic int convertArabicToRoman(int arabic) {  }', 0, 20);
+INSERT INTO template (content, language, task_id) VALUE('//import java.util.*;\n\nstatic String convertArabicToRoman(int arabic) {  }', 0, 20);
 INSERT INTO template (content, language, task_id) VALUE('def convertArabicToRoman(arabic): ', 1, 20);
-INSERT INTO template (content, language, task_id) VALUE('//#include <iostream>\n//#include <stdio.h>\n//using namespace std;\n\nint convertArabicToRoman(int arabic) {  }', 2, 20);
+INSERT INTO template (content, language, task_id) VALUE('//#include <iostream>\n//#include <stdio.h>\n//using namespace std;\n\nString convertArabicToRoman(int arabic) {  }', 2, 20);
 #task21
 INSERT INTO template (content, language, task_id) VALUE('//import java.util.*;\n\nstatic int missingNumber(int[] input) {  }', 0, 21);
 INSERT INTO template (content, language, task_id) VALUE('def missingNumber(input): ', 1, 21);
