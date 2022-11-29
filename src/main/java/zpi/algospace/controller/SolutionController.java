@@ -29,7 +29,7 @@ public class SolutionController {
     @PostMapping("/check")
     @Operation(summary = "Checks whether solution is correct")
     public Boolean judgeSolution(@RequestBody SolutionDto solution) {
-        log.info(" >>> Request got. /solution/check with params: solution: {}", solution);
+        log.info(" >>> Request got. /solution/check with params: solution:\n{}", solution);
         return solutionService.judgeSolution(solution);
     }
 
@@ -45,7 +45,7 @@ public class SolutionController {
             log.error(">>> Cannot find user with given id: {}", user);
             return ResponseEntity.notFound().build();
         }
-        log.info(" >>> Returned response with data: {}", solutions);
+        log.info(" >>> Returned response with data:\n{}", solutions);
         return ResponseEntity.ok(solutions);
     }
 
@@ -64,7 +64,7 @@ public class SolutionController {
             log.error(">>> Cannot find solution of user with name: {} for task with id: {}", user, taskId);
             return ResponseEntity.notFound().build();
         }
-        log.info(" >>> Returned response with data: {}", solution);
+        log.info(" >>> Returned response with data:\n{}", solution);
         return ResponseEntity.ok(solution);
     }
 }

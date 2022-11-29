@@ -31,7 +31,7 @@ public class TaskController {
             @RequestParam(required = false) Difficulty difficulty) {
         log.info(" >>> Request got. /tasks with params: category: {} difficulty: {}", category, difficulty);
         List<TaskGeneralInfo> tasks = taskService.findTasks(category, difficulty);
-        log.info(" >>> Returned response with data: {}", tasks);
+        log.info(" >>> Returned response with data:\n{}", tasks);
         return ResponseEntity.ok(tasks);
     }
 
@@ -42,7 +42,7 @@ public class TaskController {
         log.info(" >>> Request got. /tasks/{}", id);
         try {
             TaskDto task = taskService.findTask(id);
-            log.info(" >>> Returned response with data: {}", task);
+            log.info(" >>> Returned response with data:\n{}", task);
             return ResponseEntity.ok(task);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.notFound().build();

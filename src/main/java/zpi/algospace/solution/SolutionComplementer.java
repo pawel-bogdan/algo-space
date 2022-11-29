@@ -26,6 +26,6 @@ public class SolutionComplementer {
             }
         }
         complementer.complement(solution);
-        log.debug("Complemented solution: {}", solution.getComplementedContent());
+        log.debug("Complemented solution:\n{}", solution.getComplementedContent());
     }
 }

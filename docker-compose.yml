@@ -12,10 +12,10 @@ services:
       MYSQL_USERNAME: root
       MYSQL_PASSWORD: pass
       MYSQL_DATABASE: algo_space
-      # to run on windows enable | Expose daemon on tcp://localhost:2375 without TLS | option in docker desktop
+      # to run on Windows enable | Expose daemon on tcp://localhost:2375 without TLS | option in docker desktop
       # check docker host using ipconfig command in cmd
       # set docker host to DockerNAT IPv4Address and add port 2375
-      DOCKER_HOST: tcp://host.docker.internal:2375
+      DOCKER_HOST: tcp://172.17.0.1:2375
       DOCKER_NETWORK: algo-space_algo-space-network
       WORKER_IMAGE: algospacezpi/algospace-worker
       REDIS_HOST: redis
@@ -42,7 +42,7 @@ services:
     image: algospacezpi/algospace-frontend
     container_name: algo-space-frontend
     ports:
-      - '3000:3000'
+      - '80:80'
     stdin_open: true
     tty: true
     depends_on:

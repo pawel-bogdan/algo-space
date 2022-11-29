@@ -32,6 +32,6 @@ public class PythonComplementer implements Complementary {
         return tests.stream()
                 .filter(t -> t.getLanguage() == Language.PYTHON)
                 .map(Test::getContent)
-                .collect(Collectors.joining(StringUtils.LF + "\t"));
+                .collect(Collectors.joining(StringUtils.LF + "    "));
     }
 }

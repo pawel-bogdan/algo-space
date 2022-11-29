@@ -25,7 +25,7 @@ public class SyntaxController {
     @Operation(summary = "Check syntax of method in given language")
     public ResponseEntity<String> checkSyntax(@RequestBody Code code) {
         try {
-            log.info(" >>> Request got. /syntax/check with params: code: {}", code);
+            log.info(" >>> Request got. /syntax/check with params: code:\n{}", code);
             return ResponseEntity.ok(syntaxService.checkSyntax(code));
         } catch (IOException | InterruptedException e) {
             log.error(e.getMessage(), e);

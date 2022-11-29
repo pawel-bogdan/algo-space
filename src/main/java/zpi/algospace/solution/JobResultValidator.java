@@ -36,8 +36,8 @@ public class JobResultValidator {
         ).start();
 
         if (jobOutput != null) {
-            log.debug("Successfully executed given solution with output:\n {}", jobOutput.get(1));
-            log.debug("Expected output:\n {}", expectedOutput);
+            log.debug("Successfully executed given solution with output:\n{}", jobOutput.get(1));
+            log.debug("Expected output:\n{}", expectedOutput);
             return Objects.equals(jobOutput.get(1).trim(), expectedOutput.trim());
         } else {
             log.debug("Failed to execute given solution.");
