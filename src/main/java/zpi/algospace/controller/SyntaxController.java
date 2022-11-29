@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import zpi.algospace.model.Code;
+import zpi.algospace.model.dto.SyntaxMessageWrapper;
 import zpi.algospace.service.SyntaxService;
 
 import java.io.IOException;
@@ -23,10 +24,10 @@ public class SyntaxController {
 
     @PostMapping("/check")
     @Operation(summary = "Check syntax of method in given language")
-    public ResponseEntity<String> checkSyntax(@RequestBody Code code) {
+    public ResponseEntity<SyntaxMessageWrapper> checkSyntax(@RequestBody Code code) {
         try {
             log.info(" >>> Request got. /syntax/check with params: code:\n{}", code);
-            return ResponseEntity.ok(syntaxService.checkSyntax(code));
+            return ResponseEntity.ok(new SyntaxMessageWrapper(syntaxService.checkSyntax(code)));
         } catch (IOException | InterruptedException e) {
             log.error(e.getMessage(), e);
             return ResponseEntity.internalServerError().build();
