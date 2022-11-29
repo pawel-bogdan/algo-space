@@ -1,0 +1,8 @@
+//import java.util.*;
+
+static int fibonacci(int index) {
+    if (index == 1 || index == 0) {
+        return index;
+    }
+    return fibonacci(index-1) + fibonacci(index-2);
+}

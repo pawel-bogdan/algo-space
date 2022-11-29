@@ -1,0 +1,16 @@
+//import java.util.*;
+
+static int lcm(int firstNumber, int secondNumber) {
+      if (firstNumber == 0 || secondNumber == 0) {
+        return 0;
+    }
+    int absNumber1 = Math.abs(firstNumber);
+    int absNumber2 = Math.abs(secondNumber);
+    int absHigherNumber = Math.max(absNumber1, absNumber2);
+    int absLowerNumber = Math.min(absNumber1, absNumber2);
+    int lcm = absHigherNumber;
+    while (lcm % absLowerNumber != 0) {
+        lcm += absHigherNumber;
+    }
+    return lcm;
+ }
