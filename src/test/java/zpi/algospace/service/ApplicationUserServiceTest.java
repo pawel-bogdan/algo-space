@@ -15,7 +15,7 @@ import zpi.algospace.model.Language;
 import zpi.algospace.model.Solution;
 import zpi.algospace.model.Task;
 import zpi.algospace.model.dto.ApplicationUserDto;
-import zpi.algospace.model.dto.SolutionDto;
+import zpi.algospace.model.dto.SolutionPreviewModel;
 import zpi.algospace.model.exception.SolutionNotFoundException;
 import zpi.algospace.repository.ApplicationUserRepository;
 
@@ -90,10 +90,10 @@ class ApplicationUserServiceTest {
                 .thenReturn(Optional.of(dummyUser));
 
         //when
-        List<SolutionDto> result = uut.findSolutions(DUMMY_USERNAME);
+        List<SolutionPreviewModel> result = uut.findSolutions(DUMMY_USERNAME);
 
         //then
-        assertThat(result).isEqualTo(Stream.of(s1, s2).map(SolutionDto::new).collect(toList()));
+        assertThat(result).isEqualTo(Stream.of(s1, s2).map(SolutionPreviewModel::new).collect(toList()));
     }
 
     @Test
@@ -107,7 +107,7 @@ class ApplicationUserServiceTest {
                 .thenReturn(Optional.of(dummyUser));
 
         //when
-        List<SolutionDto> result = uut.findSolutions(DUMMY_USERNAME);
+        List<SolutionPreviewModel> result = uut.findSolutions(DUMMY_USERNAME);
 
         //then
         assertThat(result).isEqualTo(Collections.emptyList());
@@ -154,10 +154,10 @@ class ApplicationUserServiceTest {
                 .thenReturn(Optional.of(dummyUser));
 
         //when
-        SolutionDto result = uut.findSolution(1, DUMMY_USERNAME);
+        SolutionPreviewModel result = uut.findSolution(1, DUMMY_USERNAME);
 
         //then
-        SolutionDto expectedResult = new SolutionDto(s1);
+        SolutionPreviewModel expectedResult = new SolutionPreviewModel(s1);
         assertThat(result).isEqualTo(expectedResult);
     }
 

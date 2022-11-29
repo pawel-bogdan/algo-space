@@ -11,7 +11,7 @@ import zpi.algospace.model.Difficulty;
 import zpi.algospace.model.Solution;
 import zpi.algospace.model.dto.ApplicationUserDto;
 import zpi.algospace.model.dto.ApplicationUserRegistrationModel;
-import zpi.algospace.model.dto.SolutionDto;
+import zpi.algospace.model.dto.SolutionPreviewModel;
 import zpi.algospace.model.exception.SolutionNotFoundException;
 import zpi.algospace.model.exception.UserAlreadyExistException;
 import zpi.algospace.repository.ApplicationUserRepository;
@@ -46,27 +46,27 @@ public class ApplicationUserService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException(String.format(USERNAME_NOT_FOUND_MSG, username)));
     }
 
-    public SolutionDto findSolution(Integer taskId, String username) throws UsernameNotFoundException, SolutionNotFoundException {
-        List<SolutionDto> solutions = findSolutions(username);
+    public SolutionPreviewModel findSolution(Integer taskId, String username) throws UsernameNotFoundException, SolutionNotFoundException {
+        List<SolutionPreviewModel> solutions = findSolutions(username);
 
         return solutions.stream()
-                .filter(solution -> solution.getTaskId() == taskId.longValue())
+                .filter(solution -> solution.getTaskGeneralInfo().getId() == taskId.longValue())
                 .findFirst()
                 .orElseThrow(
                         () -> new SolutionNotFoundException(String.format(SOLUTION_NOT_FOUND_MSG, username, taskId))
                 );
     }
 
-    public List<SolutionDto> findSolutions(String username) throws UsernameNotFoundException {
+    public List<SolutionPreviewModel> findSolutions(String username) throws UsernameNotFoundException {
         ApplicationUser user = applicationUserRepository
                 .findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException(String.format(USERNAME_NOT_FOUND_MSG, username)));
         return user.getSolutions().stream()
-                .map(SolutionDto::new)
+                .map(SolutionPreviewModel::new)
                 .collect(toList());
     }
 
-    public ApplicationUser createUser(ApplicationUserRegistrationModel userRegistrationModel) throws UserAlreadyExistException {
+    public void createUser(ApplicationUserRegistrationModel userRegistrationModel) throws UserAlreadyExistException {
         if (!isUsernameAvailable(userRegistrationModel.getUsername())) {
             throw new UserAlreadyExistException(String.format(USER_ALREADY_EXIST_MSG, userRegistrationModel));
         }
@@ -80,7 +80,7 @@ public class ApplicationUserService implements UserDetailsService {
                     .points(0)
                     .solutions(new ArrayList<>())
                     .build();
-            return applicationUserRepository.save(user);
+            applicationUserRepository.save(user);
         } else {
             throw new IllegalStateException("User data are invalid");
         }

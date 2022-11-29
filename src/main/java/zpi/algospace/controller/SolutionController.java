@@ -10,6 +10,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import zpi.algospace.model.dto.SolutionDto;
+import zpi.algospace.model.dto.SolutionPreviewModel;
 import zpi.algospace.model.exception.SolutionNotFoundException;
 import zpi.algospace.service.ApplicationUserService;
 import zpi.algospace.service.SolutionService;
@@ -36,9 +37,9 @@ public class SolutionController {
     @GetMapping(value = "/all/{user}")
     @Operation(summary = "Get solutions of given user.")
     @PreAuthorize("#user == authentication.name")
-    public ResponseEntity<List<SolutionDto>> getSolutions(@RequestParam String user) {
+    public ResponseEntity<List<SolutionPreviewModel>> getSolutions(@PathVariable String user) {
         log.info(" >>> Request got. /user/{}", user);
-        List<SolutionDto> solutions;
+        List<SolutionPreviewModel> solutions;
         try {
             solutions = applicationUserService.findSolutions(user);
         } catch (IllegalArgumentException ex) {
@@ -52,9 +53,9 @@ public class SolutionController {
     @GetMapping(value = "/task/{taskId}/{user}")
     @Operation(summary = "Get solution for given task and user.")
     @PreAuthorize("#user == authentication.name")
-    public ResponseEntity<SolutionDto> getSolution(@RequestParam Integer taskId, @RequestParam String user) {
+    public ResponseEntity<SolutionPreviewModel> getSolution(@PathVariable Integer taskId, @PathVariable String user) {
         log.info(" >>> Request got. /task/{}/{}", taskId, user);
-        SolutionDto solution;
+        SolutionPreviewModel solution;
         try {
             solution = applicationUserService.findSolution(taskId, user);
         } catch (UsernameNotFoundException e) {
