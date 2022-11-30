@@ -1,0 +1,5 @@
+//import java.util.*;
+
+static String concatArrays(String[] input, char separator) {
+    return String.join(String.valueOf(separator), input);
+}

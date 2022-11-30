@@ -1,0 +1,2 @@
+def distinctChars(input):
+    return len(set(input))

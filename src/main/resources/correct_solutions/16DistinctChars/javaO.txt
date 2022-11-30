@@ -1,0 +1,12 @@
+//import java.util.*;
+
+static int distinctChars(String input) {
+    Set<Character> charsSet = new HashSet<>();
+    char[] chars = input.toCharArray();
+
+    for(char ch: chars){
+        charsSet.add(ch);
+    }
+
+    return charsSet.size();
+}

@@ -261,7 +261,7 @@ INSERT INTO test(content, language, task_id) VALUES ('System.out.println(concatA
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(concatArrays(new String[]{"jeden"}, \',\'));', 0, 17);
 #python
 INSERT INTO test(content, language, task_id) VALUES ('print(concatArrays(["jeden","dwa","trzy"], \',\'))', 1, 17);
-INSERT INTO test(content, language, task_id) VALUES ('print(concatArrays(["siema","czesc","hej"], \',\'))', 1, 17);
+INSERT INTO test(content, language, task_id) VALUES ('print(concatArrays(["siema","czesc","hej"], \';\'))', 1, 17);
 INSERT INTO test(content, language, task_id) VALUES ('print(concatArrays(["jeden"], \',\'))', 1, 17);
 #cpp
 INSERT INTO test(content, language, task_id) VALUES ('cout << concatArrays(new string[3]{"jeden","dwa","trzy"}, \',\') << endl;', 2, 17);

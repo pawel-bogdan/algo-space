@@ -1,0 +1,12 @@
+//import java.util.*;
+
+static String invertedString(String input) {
+    String nstr="";
+    char ch;
+
+    for (int i=0; i<input.length(); i++) {
+        ch= input.charAt(i);
+        nstr= ch+nstr;
+    }
+    return nstr;
+}

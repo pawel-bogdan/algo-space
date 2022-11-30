@@ -1,0 +1,2 @@
+def concatArrays(input, separator):
+    return separator.join(input)
