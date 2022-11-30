@@ -348,7 +348,7 @@ INSERT INTO test(content, language, task_id) VALUES ('System.out.println(closest
 INSERT INTO test(content, language, task_id) VALUES ('print(closestPair([1,5,12,8,3,9,3,5]))', 1, 23);
 #cpp
 INSERT INTO test(content, language, task_id) VALUES ('cout << closestPair(new int[8]{1,5,12,8,3,9,3,5}) << endl;', 2, 23);
-#------------task_24#------------String "   *\n  ***\n *****\n*******"
+#------------task_24#------------String "   *   \n  ***  \n ***** \n*******"
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(pyramid(4));', 0, 24);
 #python
