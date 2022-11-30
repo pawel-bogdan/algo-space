@@ -14,7 +14,7 @@ public class PythonProgramConfig extends ProgramConfig {
 
     @Override
     protected String getBuildCommands(String jobId) {
-        return String.format("python3.6 %s",
+        return String.format("python3 %s",
                 jobId + extension
         );
     }

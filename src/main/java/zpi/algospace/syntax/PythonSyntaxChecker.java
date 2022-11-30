@@ -19,7 +19,7 @@ public class PythonSyntaxChecker extends SyntaxChecker {
 
     @Override
     public String getSyntaxCheckingCommands() {
-        return String.format("python3.6 -m py_compile %s", codeFile.getPath());
+        return String.format("python3 -m py_compile %s", codeFile.getPath());
     }
 
     @Override
