@@ -10,15 +10,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import zpi.algospace.model.ApplicationUser;
-import zpi.algospace.model.Language;
-import zpi.algospace.model.Solution;
-import zpi.algospace.model.Task;
+import zpi.algospace.model.*;
 import zpi.algospace.model.dto.ApplicationUserDto;
 import zpi.algospace.model.dto.SolutionPreviewModel;
 import zpi.algospace.model.exception.SolutionNotFoundException;
 import zpi.algospace.repository.ApplicationUserRepository;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -75,13 +73,22 @@ class ApplicationUserServiceTest {
 
         Solution s1 = Solution.builder()
                 .id(4L)
-                .task(Task.builder().build())
+                .submissionDate(LocalDateTime.now())
+                .task(Task.builder()
+                        .category(Category.ARRAYS)
+                        .difficulty(Difficulty.MEDIUM).build())
                 .solver(dummyUser)
+                .language(Language.JAVA)
                 .build();
         Solution s2 = Solution.builder()
                 .id(8L)
-                .task(Task.builder().build())
+                .submissionDate(LocalDateTime.now())
+                .task(Task.builder()
+                        .category(Category.ARRAYS)
+                        .difficulty(Difficulty.MEDIUM)
+                        .build())
                 .solver(dummyUser)
+                .language(Language.JAVA)
                 .build();
 
         dummyUser.setSolutions(List.of(s1, s2));
@@ -134,18 +141,30 @@ class ApplicationUserServiceTest {
 
         Solution s1 = Solution.builder()
                 .id(4L)
-                .task(Task.builder().id(1L).build())
+                .submissionDate(LocalDateTime.now())
                 .content("content1")
-                .language(Language.CPP)
+                .task(Task.builder()
+                        .id(1L)
+                        .category(Category.ARRAYS)
+                        .difficulty(Difficulty.MEDIUM)
+                        .build()
+                )
                 .solver(dummyUser)
+                .language(Language.JAVA)
                 .build();
 
         Solution s2 = Solution.builder()
                 .id(8L)
-                .task(Task.builder().id(2L).build())
+                .submissionDate(LocalDateTime.now())
                 .content("content2")
-                .language(Language.JAVA)
+                .task(Task.builder()
+                        .id(2L)
+                        .category(Category.ARRAYS)
+                        .difficulty(Difficulty.MEDIUM)
+                        .build()
+                )
                 .solver(dummyUser)
+                .language(Language.JAVA)
                 .build();
 
         dummyUser.setSolutions(List.of(s1, s2));
@@ -170,18 +189,30 @@ class ApplicationUserServiceTest {
 
         Solution s1 = Solution.builder()
                 .id(4L)
-                .task(Task.builder().id(1L).build())
+                .submissionDate(LocalDateTime.now())
                 .content("content1")
-                .language(Language.CPP)
+                .task(Task.builder()
+                        .id(1L)
+                        .category(Category.ARRAYS)
+                        .difficulty(Difficulty.MEDIUM)
+                        .build()
+                )
                 .solver(dummyUser)
+                .language(Language.JAVA)
                 .build();
 
         Solution s2 = Solution.builder()
                 .id(8L)
-                .task(Task.builder().id(2L).build())
+                .submissionDate(LocalDateTime.now())
                 .content("content2")
-                .language(Language.JAVA)
+                .task(Task.builder()
+                        .id(2L)
+                        .category(Category.ARRAYS)
+                        .difficulty(Difficulty.MEDIUM)
+                        .build()
+                )
                 .solver(dummyUser)
+                .language(Language.JAVA)
                 .build();
 
         dummyUser.setSolutions(List.of(s1, s2));

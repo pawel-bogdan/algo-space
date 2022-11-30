@@ -17,7 +17,7 @@ public class SolutionPreviewModel {
     public SolutionPreviewModel(Solution solution) {
         Task task = solution.getTask();
         taskGeneralInfo = TaskGeneralInfo.builder()
-                .id(solution.getId())
+                .id(task.getId())
                 .name(task.getName())
                 .category(new CategoryDto(task.getCategory()))
                 .difficulty(new DifficultyDto(task.getDifficulty()))

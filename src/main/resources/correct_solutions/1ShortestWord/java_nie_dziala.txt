@@ -1,0 +1,6 @@
+static String shortestWord(String[] words) {
+        return Arrays.stream(words).toList()
+                .stream()
+                .min(Comparator.comparingInt(String::length))
+                .get();
+    }
