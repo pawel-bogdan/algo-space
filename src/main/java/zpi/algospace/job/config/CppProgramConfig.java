@@ -14,7 +14,7 @@ public class CppProgramConfig extends ProgramConfig {
 
     @Override
     protected String getBuildCommands(String jobId) {
-        return String.format("g++ %s -o %s\n./%s",
+        return String.format("g++ -std=c++11 %s -o %s\n./%s",
                 jobId + extension,
                 jobId,
                 jobId
