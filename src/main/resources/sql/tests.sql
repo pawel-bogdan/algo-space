@@ -326,7 +326,7 @@ INSERT INTO test(content, language, task_id) VALUES ('int[] numbers = new int[99
 #python
 INSERT INTO test(content, language, task_id) VALUES ('print(missingNumber([1,2,3,4,5,7]))', 1, 21);
 INSERT INTO test(content, language, task_id) VALUES ('print(missingNumber([2,3,4,5,6,7]))', 1, 21);
-INSERT INTO test(content, language, task_id) VALUES ('numbers = []\n\tfor i in range(1000000000, 1):\n\t\tif(i != 6456):\n\t\t\tnumbers.append(i)\n\tprintln(missingNumber(numbers))', 1, 21);
+INSERT INTO test(content, language, task_id) VALUES ('numbers = []\n    for i in range(1000000000, 1):\n\tif(i != 6456):\n\t    numbers.append(i)\n    print(missingNumber(numbers))', 1, 21);
 #cpp
 INSERT INTO test(content, language, task_id) VALUES ('cout << missingNumber(new int[6]{1,2,3,4,5,7}) << endl;', 2, 21);
 INSERT INTO test(content, language, task_id) VALUES ('cout << missingNumber(new int[6]{2,3,4,5,6,7}) << endl;', 2, 21);
@@ -348,7 +348,7 @@ INSERT INTO test(content, language, task_id) VALUES ('System.out.println(closest
 INSERT INTO test(content, language, task_id) VALUES ('print(closestPair([1,5,12,8,3,9,3,5]))', 1, 23);
 #cpp
 INSERT INTO test(content, language, task_id) VALUES ('cout << closestPair(new int[8]{1,5,12,8,3,9,3,5}) << endl;', 2, 23);
-#------------task_24#------------String "   *\n  ***\n *****\n*******"
+#------------task_24#------------String "   *   \n  ***  \n ***** \n*******"
 #java
 INSERT INTO test(content, language, task_id) VALUES ('System.out.println(pyramid(4));', 0, 24);
 #python

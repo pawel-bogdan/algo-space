@@ -43,7 +43,7 @@ public class CppSyntaxChecker extends SyntaxChecker {
 
     @Override
     public String getSyntaxCheckingCommands() {
-        return String.format("g++ %s -o %s",
+        return String.format("g++ -std=c++11 %s -o %s",
                 codeFile.getPath(),
                 codeFile.getPath().replace(EXTENSION, ""));
     }

@@ -1,0 +1,14 @@
+//import java.util.*;
+
+static int itemIndex(int[] input, int item) {
+    int index=-1;
+    int i=0;
+    for(int a: input) {
+        if (a == item){
+            index = i;
+        }
+        i++;
+    }
+
+    return index;
+ }
