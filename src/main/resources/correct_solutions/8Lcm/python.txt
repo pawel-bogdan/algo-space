@@ -1,0 +1,6 @@
+def lcm(firstNumber, secondNumber):
+    currentPossibleLCM = 0
+    for currentPossibleLCM in range(max(firstNumber, secondNumber), (firstNumber*secondNumber)+1):
+         if((currentPossibleLCM % firstNumber == 0) and (currentPossibleLCM % secondNumber == 0)):
+              return currentPossibleLCM
+    return currentPossibleLCM

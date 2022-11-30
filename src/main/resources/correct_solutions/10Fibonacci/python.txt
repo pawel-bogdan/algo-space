@@ -1,0 +1,4 @@
+def fibonacci(index):
+    if index == 1 or index == 0:
+        return index;
+    return fibonacci(index-1) + fibonacci(index-2)

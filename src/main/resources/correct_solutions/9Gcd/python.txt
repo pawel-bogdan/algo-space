@@ -1,0 +1,4 @@
+def gcd(firstNumber, secondNumber):
+    while(secondNumber):
+       firstNumber, secondNumber = secondNumber, firstNumber % secondNumber
+    return abs(firstNumber)
