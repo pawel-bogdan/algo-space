@@ -1,0 +1,14 @@
+//import java.util.*;
+
+static boolean isPalindrome(String input) {
+
+    String nstr="";
+    char ch;
+
+    for (int i=0; i<input.length(); i++) {
+        ch= input.charAt(i);
+        nstr= ch+nstr;
+    }
+
+    return nstr.equals(input);
+}

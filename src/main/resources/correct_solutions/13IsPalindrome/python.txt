@@ -1,0 +1,2 @@
+def isPalindrome(input):
+    return input == input[::-1]
