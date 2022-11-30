@@ -1,0 +1,13 @@
+//import java.util.*;
+
+static int missingNumber(int[] input) {
+    Arrays.sort(input);
+    int result=0;
+    for(int i=1;i<=input.length;i++){
+        if (i!=input[i-1]){
+            result = i;
+            break;
+        }
+    }
+    return result;
+ }
