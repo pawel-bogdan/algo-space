@@ -326,7 +326,7 @@ INSERT INTO test(content, language, task_id) VALUES ('int[] numbers = new int[99
 #python
 INSERT INTO test(content, language, task_id) VALUES ('print(missingNumber([1,2,3,4,5,7]))', 1, 21);
 INSERT INTO test(content, language, task_id) VALUES ('print(missingNumber([2,3,4,5,6,7]))', 1, 21);
-INSERT INTO test(content, language, task_id) VALUES ('numbers = []\n    for i in range(1000000000, 1):\n\tif(i != 6456):\n\t    numbers.append(i)\n    print(missingNumber(numbers))', 1, 21);
+INSERT INTO test(content, language, task_id) VALUES ('numbers = []\n    for i in reversed(range(1, 10000000)):\n\tif(i != 6456):\n\t    numbers.append(i)\n    print(missingNumber(numbers))', 1, 21);
 #cpp
 INSERT INTO test(content, language, task_id) VALUES ('cout << missingNumber(new int[6]{1,2,3,4,5,7}) << endl;', 2, 21);
 INSERT INTO test(content, language, task_id) VALUES ('cout << missingNumber(new int[6]{2,3,4,5,6,7}) << endl;', 2, 21);

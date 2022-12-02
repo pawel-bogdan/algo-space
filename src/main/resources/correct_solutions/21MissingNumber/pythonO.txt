@@ -1,7 +1,5 @@
 def missingNumber(input):
     input.sort()
-    result = 0
-    for i in range (1, input.size):
-        if(i != input[i-1]):
-            result = i
-    return result
+    for i in range (len(input)+1):
+        if(i+1 != input[i]):
+            return i+1
