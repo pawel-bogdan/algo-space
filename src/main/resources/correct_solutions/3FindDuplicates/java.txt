@@ -1,0 +1,9 @@
+static int[] findDuplicates(int[] firstArray, int[] secondArray) {
+        Set<Integer> firstArraySet = Arrays.stream(firstArray)
+                .boxed()
+                .collect(toSet());
+        return Arrays.stream(secondArray)
+                .filter(num -> firstArraySet.contains(num))
+                .distinct()
+                .toArray();
+    }
