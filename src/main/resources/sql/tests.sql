@@ -35,10 +35,10 @@ INSERT INTO test(content, language, task_id) VALUES ('cout << biggestNumber(new 
 INSERT INTO test(content, language, task_id) VALUES ('cout << biggestNumber(new int[3]{-3, -10, -21}) << endl;', 2, 2);
 #------------task_3#------------int[] 2\n\n1,4\n1,2
 #java
-INSERT INTO test(content, language, task_id) VALUES ('System.out.println(findDuplicates(new int[]{1,2}, new int[]{2,3}));', 0, 3);
-INSERT INTO test(content, language, task_id) VALUES ('System.out.println(findDuplicates(new int[]{1,2}, new int[]{3,4}));', 0, 3);
-INSERT INTO test(content, language, task_id) VALUES ('System.out.println(findDuplicates(new int[]{1,2,3,4,5,6}, new int[]{1,4,15,21,0}));', 0, 3);
-INSERT INTO test(content, language, task_id) VALUES ('System.out.println(findDuplicates(new int[]{1,2}, new int[]{1,2}));', 0, 3);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(Arrays.stream(findDuplicates(new int[]{1, 2}, new int[]{2, 3})).boxed().map(num -> num.toString()).collect(Collectors.joining(",")));', 0, 3);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(Arrays.stream(findDuplicates(new int[]{1, 2}, new int[]{3, 4})).boxed().map(num -> num.toString()).collect(Collectors.joining(",")));', 0, 3);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(Arrays.stream(findDuplicates(new int[]{1,2,3,4,5,6}, new int[]{1,4,15,21,0})).boxed().map(num -> num.toString()).collect(Collectors.joining(",")));', 0, 3);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(Arrays.stream(findDuplicates(new int[]{1, 2}, new int[]{1, 2})).boxed().map(num -> num.toString()).collect(Collectors.joining(",")));', 0, 3);
 #python
 INSERT INTO test(content, language, task_id) VALUES ('print(findDuplicates([1,2], [2,3]))', 1, 3);
 INSERT INTO test(content, language, task_id) VALUES ('print(findDuplicates([1,2], [3,4]))', 1, 3);
@@ -51,9 +51,9 @@ INSERT INTO test(content, language, task_id) VALUES ('cout << findDuplicates(new
 INSERT INTO test(content, language, task_id) VALUES ('cout << findDuplicates(new int[2]{1,2}, new int[2]{1,2}) << endl;', 2, 3);
 #------------task_4#------------int[] -1,-1\n3,-1,3,2\n0,0,0,0
 #java
-INSERT INTO test(content, language, task_id) VALUES ('System.out.println(arraysDiff(new int[]{1,2}, new int[]{2,3}));', 0, 4);
-INSERT INTO test(content, language, task_id) VALUES ('System.out.println(arraysDiff(new int[]{1,2,3,4}, new int[]{-2,3,0,2}));', 0, 4);
-INSERT INTO test(content, language, task_id) VALUES ('System.out.println(arraysDiff(new int[]{1,2,3,4}, new int[]{1,2,3,4}));', 0, 4);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(Arrays.stream(arraysDiff(new int[]{1,2}, new int[]{2,3})).boxed().map(num -> num.toString()).collect(Collectors.joining(",")));', 0, 4);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(Arrays.stream(arraysDiff(new int[]{1,2,3,4}, new int[]{-2,3,0,2})).boxed().map(num -> num.toString()).collect(Collectors.joining(",")));', 0, 4);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(Arrays.stream(arraysDiff(new int[]{1,2,3,4}, new int[]{1,2,3,4})).boxed().map(num -> num.toString()).collect(Collectors.joining(",")));', 0, 4);
 #python
 INSERT INTO test(content, language, task_id) VALUES ('print(arraysDiff([1,2], [2,3]))', 1, 4);
 INSERT INTO test(content, language, task_id) VALUES ('print(arraysDiff([1,2,3,4], [-2,3,0,2]))', 1, 4);
@@ -64,10 +64,10 @@ INSERT INTO test(content, language, task_id) VALUES ('cout << arraysDiff(new int
 INSERT INTO test(content, language, task_id) VALUES ('cout << arraysDiff(new int[4]{1,2,3,4}, new int[4]{1,2,3,4}) << endl;', 2, 4);
 #------------task_5#------------int[] 5,1,2,3\n7,5,12,3\n12,3\n3,12
 #java
-INSERT INTO test(content, language, task_id) VALUES ('System.out.println(rotateArray(new int[]{1,2,3,5}, 1));', 0, 5);
-INSERT INTO test(content, language, task_id) VALUES ('System.out.println(rotateArray(new int[]{12,3,7,5}, 2));', 0, 5);
-INSERT INTO test(content, language, task_id) VALUES ('System.out.println(rotateArray(new int[]{12,3}, 8));', 0, 5);
-INSERT INTO test(content, language, task_id) VALUES ('System.out.println(rotateArray(new int[]{12,3}, 7));', 0, 5);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(Arrays.stream(rotateArray(new int[]{1,2,3,5}, 1)).boxed().map(num -> num.toString()).collect(Collectors.joining(",")));', 0, 5);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(Arrays.stream(rotateArray(new int[]{12,3,7,5}, 2)).boxed().map(num -> num.toString()).collect(Collectors.joining(",")));', 0, 5);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(Arrays.stream(rotateArray(new int[]{12,3}, 8)).boxed().map(num -> num.toString()).collect(Collectors.joining(",")));', 0, 5);
+INSERT INTO test(content, language, task_id) VALUES ('System.out.println(Arrays.stream(rotateArray(new int[]{12,3}, 7)).boxed().map(num -> num.toString()).collect(Collectors.joining(",")));', 0, 5);
 #python
 INSERT INTO test(content, language, task_id) VALUES ('print(rotateArray([1,2,3,5], 1))', 1, 5);
 INSERT INTO test(content, language, task_id) VALUES ('print(rotateArray([12,3,7,5], 2))', 1, 5);

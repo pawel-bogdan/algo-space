@@ -1,0 +1,9 @@
+//import java.util.*;
+
+static int[] arraysDiff(int[] firstArray, int[] secondArray) {
+    int[] result = new int[firstArray.length];
+    for(int i = 0; i < firstArray.length; i++) {
+        result[i] = firstArray[i] - secondArray[i];
+    }
+    return result;
+ }

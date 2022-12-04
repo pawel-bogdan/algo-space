@@ -17,6 +17,8 @@ public class JavaSyntaxChecker extends SyntaxChecker {
     private static final String COMPILED_FILE_EXTENSION = ".class";
     private static final String CLASS_TEMPLATE = """
             import java.util.*;
+            import java.util.stream.Collectors;
+            import static java.util.stream.Collectors.*;
                         
             class java {
             %s

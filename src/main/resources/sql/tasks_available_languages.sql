@@ -9,13 +9,10 @@ INSERT INTO task_available_languages(task_id, available_languages) VALUES (2, 1)
 INSERT INTO task_available_languages(task_id, available_languages) VALUES (2, 2);
 INSERT INTO task_available_languages(task_id, available_languages) VALUES (3, 0);
 INSERT INTO task_available_languages(task_id, available_languages) VALUES (3, 1);
-INSERT INTO task_available_languages(task_id, available_languages) VALUES (3, 2);
 INSERT INTO task_available_languages(task_id, available_languages) VALUES (4, 0);
 INSERT INTO task_available_languages(task_id, available_languages) VALUES (4, 1);
-INSERT INTO task_available_languages(task_id, available_languages) VALUES (4, 2);
 INSERT INTO task_available_languages(task_id, available_languages) VALUES (5, 0);
 INSERT INTO task_available_languages(task_id, available_languages) VALUES (5, 1);
-INSERT INTO task_available_languages(task_id, available_languages) VALUES (5, 2);
 INSERT INTO task_available_languages(task_id, available_languages) VALUES (6, 0);
 INSERT INTO task_available_languages(task_id, available_languages) VALUES (6, 1);
 INSERT INTO task_available_languages(task_id, available_languages) VALUES (6, 2);
