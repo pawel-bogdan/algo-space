@@ -19,6 +19,7 @@ services:
       # DOCKER_HOST: tcp://172.17.0.1:2375
       # Uncomment for Windows
       DOCKER_HOST: tcp://host.docker.internal:2375
+      # name of network should be preceded by the name of the folder where the docker-compose.yaml file is located and an underscore
       DOCKER_NETWORK: algo-space_algo-space-network
       WORKER_IMAGE: algospacezpi/algospace-worker
       REDIS_HOST: redis
